@@ -1,0 +1,81 @@
+/* Colors, defined once so you can change the whole look in one place */
+:root {
+  --bg: #f6f7f4;
+  --text: #1f2a2e;
+  --accent: #1d6b5f;
+  --border: #d5dbd6;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  line-height: 1.5;
+  color: var(--text);
+  background: var(--bg);
+}
+
+header {
+  padding: 2rem 1.5rem;
+  background: var(--accent);
+  color: white;
+}
+
+header h1 {
+  margin: 0 0 0.25rem;
+}
+
+header p {
+  margin: 0;
+  max-width: 60ch;
+}
+
+main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+section {
+  margin-bottom: 2rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: white;
+}
+
+footer {
+  padding: 1.5rem;
+  text-align: center;
+  color: #5c6a6e;
+}
+
+#shop-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1rem;
+}
+
+.card {
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.card h3 {
+  margin: 0 0 0.25rem;
+}
+
+.card .address {
+  margin: 0 0 0.75rem;
+  color: #5c6a6e;
+  font-size: 0.9rem;
+}
+
+.card ul {
+  margin: 0;
+  padding-left: 1.2rem;
+}
