@@ -1,9 +1,10 @@
 /* Colors, defined once so you can change the whole look in one place */
 :root {
-  --bg: #f6f7f4;
-  --text: #1f2a2e;
-  --accent: #1d6b5f;
-  --border: #d5dbd6;
+  --bg: #faf5ee;
+  --text: #3b2a22;
+  --accent: #8a4b25;
+  --highlight: #d9962b;
+  --border: #e6d9c8;
 }
 
 * {
@@ -78,4 +79,26 @@ footer {
 .card ul {
   margin: 0;
   padding-left: 1.2rem;
+}
+
+body { font-family: "DM Sans", system-ui, sans-serif; }
+h1, h2, h3 { font-family: "Fraunces", Georgia, serif; }
+
+body {
+  background:
+    radial-gradient(circle at 20% 0%, rgba(255, 255, 255, 0.8), transparent 45%),
+    linear-gradient(160deg, #fbf3e6 0%, #f3e2cc 100%);
+  background-attachment: fixed;
+}
+
+section {
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow: 0 8px 24px rgba(138, 75, 37, 0.12);
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 4px 14px rgba(138, 75, 37, 0.1);
 }
