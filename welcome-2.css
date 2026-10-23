@@ -1,0 +1,109 @@
+/* Styles only used on screen 2. Colors and the .btn style come from welcome.css */
+
+.intro {
+  padding: max(2.5rem, env(safe-area-inset-top)) 1.5rem 1rem;
+}
+
+.intro h1 {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-weight: 600;
+  font-size: 2.6rem;
+  line-height: 1.05;
+  color: var(--brown);
+}
+
+.intro p {
+  margin-top: 0.6rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+/* ---------- The four cards ---------- */
+.features {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 0 1rem;
+}
+
+.feature {
+  display: flex;
+  gap: 0.75rem;
+  padding: 0.5rem;
+  border-radius: 22px;
+  background: linear-gradient(180deg, rgba(255, 252, 246, 0.9), rgba(246, 236, 220, 0.75));
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow:
+    0 6px 16px rgba(90, 58, 38, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+/* Photo on the left. Each one has a gradient behind it in case the image is missing. */
+.photo {
+  flex: 0 0 38%;
+  min-height: 112px;
+  border-radius: 16px;
+  background-size: cover;
+  background-position: center;
+}
+
+.photo-cafe      { background-image: url("images/cafe.jpg"),      linear-gradient(135deg, #c89b6d, #7a5233); }
+.photo-quiet     { background-image: url("images/quiet.jpg"),     linear-gradient(135deg, #a98a66, #5a3a26); }
+.photo-nearby    { background-image: url("images/nearby.jpg"),    linear-gradient(135deg, #8fa886, #3e5639); }
+.photo-favorites { background-image: url("images/favorites.jpg"), linear-gradient(135deg, #d8b98f, #8a5a3a); }
+
+.text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.2rem;
+  padding: 0.25rem 0.25rem 0.25rem 0;
+}
+
+.text h2 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.text p {
+  font-size: 0.78rem;
+  line-height: 1.4;
+}
+
+/* Little round icon above each title */
+.icon {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+.icon svg {
+  width: 17px;
+  height: 17px;
+  fill: none;
+  stroke: #fff;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.icon-green { background: linear-gradient(180deg, var(--green-light), var(--green)); }
+.icon-brown { background: linear-gradient(180deg, #b07a52, var(--brown-soft)); }
+
+/* ---------- Bottom area: dots, button, skip ---------- */
+.screen-two .dots { margin: 0 0 1rem; }
+
+.skip {
+  display: block;
+  margin-top: 0.9rem;
+  text-align: center;
+  color: var(--brown-soft);
+  text-decoration: none;
+  font-size: 0.95rem;
+}
