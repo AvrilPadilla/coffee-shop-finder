@@ -197,3 +197,8 @@ body {
     animation: none;
   }
 }
+
+a.btn {
+  text-align: center;
+  text-decoration: none;
+}
