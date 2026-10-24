@@ -28,7 +28,7 @@ function load(key) {
     try { return localStorage.getItem(key); } catch (error) { return null; }
 }
 
-let selectedId = load("nookSchool");   // remembers the choice from last time
+let selectedId = load("crunchSchool");   // remembers the choice from last time
 
 // ---------- Drawing the list ----------
 const pinIcon =
@@ -91,7 +91,7 @@ list.addEventListener("click", (event) => {
     }
 
     selectedId = college.id;
-    save("nookSchool", selectedId);
+    save("crunchSchool", selectedId);
     delete message.dataset.sticky;
     render();
 });

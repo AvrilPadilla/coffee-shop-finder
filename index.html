@@ -8,10 +8,10 @@
   <script>
     try {
       // Make sure the browser can actually save things before we rely on it
-      localStorage.setItem("nookTest", "1");
-      localStorage.removeItem("nookTest");
+      localStorage.setItem("crunchTest", "1");
+      localStorage.removeItem("crunchTest");
 
-      if (localStorage.getItem("nookSeenWelcome") !== "yes") {
+      if (localStorage.getItem("crunchSeenWelcome") !== "yes") {
         location.replace("welcome.html");
       }
     } catch (error) {

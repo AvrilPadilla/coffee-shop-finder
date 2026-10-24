@@ -13,6 +13,6 @@ createButton.addEventListener("click", () => {
 
 // Continue as guest: remember the intro is finished, then the link goes to index.html
 guestLink.addEventListener("click", () => {
-    save("nookSeenWelcome", "yes");
-    save("nookTier", "guest");
+    save("crunchSeenWelcome", "yes");
+    save("crunchTier", "guest");
 });
