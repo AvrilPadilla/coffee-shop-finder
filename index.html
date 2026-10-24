@@ -5,6 +5,19 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600&family=Fraunces:wght@600&display=swap"
     rel="stylesheet">
   <meta charset="UTF-8">
+  <script>
+    try {
+      // Make sure the browser can actually save things before we rely on it
+      localStorage.setItem("nookTest", "1");
+      localStorage.removeItem("nookTest");
+
+      if (localStorage.getItem("nookSeenWelcome") !== "yes") {
+        location.replace("welcome.html");
+      }
+    } catch (error) {
+      // Storage is blocked (some private modes): skip the intro instead of looping
+    }
+  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Coffee Shop Finder</title>
   <link rel="stylesheet" href="style.css">
