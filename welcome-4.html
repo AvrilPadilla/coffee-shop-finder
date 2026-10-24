@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>nook. | Create an account?</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=DM+Sans:wght@400;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="welcome.css">
+  <link rel="stylesheet" href="welcome-4.css">
+</head>
+
+<body>
+
+  <!-- SCREEN 4 of 4 -->
+  <main class="screen screen-four">
+
+    <header class="top">
+      <p class="logo">nook.</p>
+      <h1>Create an account?</h1>
+      <p class="sub">Save your favorites, leave reviews, earn rewards, and more.</p>
+    </header>
+
+    <!-- What an account gives you -->
+    <section class="perks">
+      <div class="perk">
+        <span class="icon icon-green"><svg viewBox="0 0 24 24">
+            <path d="M12 21s-7-4.6-9.3-9A5.3 5.3 0 0 1 12 6.5 5.3 5.3 0 0 1 21.3 12C19 16.4 12 21 12 21z" />
+          </svg></span>
+        <div>
+          <h2>Save your favorite places</h2>
+          <p>Keep track of the spots you love.</p>
+        </div>
+      </div>
+      <div class="perk">
+        <span class="icon icon-brown"><svg viewBox="0 0 24 24">
+            <path d="M5 6h14a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2h-7l-4 3.5V17H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2z" />
+          </svg></span>
+        <div>
+          <h2>Read and write reviews</h2>
+          <p>Get real student recommendations.</p>
+        </div>
+      </div>
+      <div class="perk">
+        <span class="icon icon-green"><svg viewBox="0 0 24 24">
+            <rect x="3" y="8" width="18" height="4" rx="1" />
+            <path d="M5 12v8h14v-8M12 8v12M12 8C10 4 7 5 8 7c.7 1.2 2.5 1 4 1zm0 0c2-4 5-3 4-1-.7 1.2-2.5 1-4 1z" />
+          </svg></span>
+        <div>
+          <h2>Earn points and unlock rewards</h2>
+          <p>Discover exclusive student perks.</p>
+        </div>
+      </div>
+      <div class="perk">
+        <span class="icon icon-brown"><svg viewBox="0 0 24 24">
+            <path d="M3 12V4h8l10 10-8 8L3 12z" />
+            <circle cx="7.5" cy="8.5" r="1.2" />
+          </svg></span>
+        <div>
+          <h2>Access student discounts</h2>
+          <p>Save money at local businesses.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="actions">
+      <div class="dots" aria-label="Page 4 of 4">
+        <span></span><span></span><span></span><span class="active"></span>
+      </div>
+
+      <!-- Accounts aren't built yet, so this shows a message instead of signing anyone up -->
+      <button class="btn" type="button" id="create"><span>Create an account &rarr;</span></button>
+      <a class="btn btn-outline" id="guest" href="index.html"><span>Continue as guest</span></a>
+
+      <p class="message" id="message" role="status"></p>
+
+      <div class="warning">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 4l9 16H3L12 4z" />
+          <path d="M12 10v4M12 17v.5" />
+        </svg>
+        <p>Some features will not be available without an account, including saving favorite places, writing reviews,
+          viewing all reviews, earning rewards, and accessing exclusive student discounts.</p>
+      </div>
+    </div>
+
+  </main>
+
+  <script src="welcome-4.js"></script>
+</body>
+
+</html>

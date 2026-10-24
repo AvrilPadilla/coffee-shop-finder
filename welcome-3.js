@@ -96,9 +96,4 @@ list.addEventListener("click", (event) => {
     render();
 });
 
-// Get started: remember that the intro has been seen, then the link goes to index.html
-startButton.addEventListener("click", () => {
-    save("nookSeenWelcome", "yes");
-});
-
 render();
