@@ -1,0 +1,142 @@
+/* Styles only used on screen 3. Shared colors and .btn come from welcome.css */
+
+.top {
+  padding: max(2rem, env(safe-area-inset-top)) 1.5rem 0;
+}
+
+.logo {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-weight: 600;
+  font-size: 1.9rem;
+  color: var(--brown);
+}
+
+.top h1 {
+  margin-top: 1.25rem;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-weight: 600;
+  font-size: 2.4rem;
+  line-height: 1.05;
+  color: var(--brown);
+}
+
+.sub {
+  margin-top: 0.6rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+/* ---------- Search bar ---------- */
+.search {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 1.25rem 1rem 0;
+  padding: 0.8rem 1rem;
+  border-radius: 18px;
+  background: linear-gradient(180deg, rgba(255, 252, 246, 0.95), rgba(246, 236, 220, 0.8));
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 6px 16px rgba(90, 58, 38, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.search:focus-within {
+  box-shadow: 0 0 0 3px rgba(79, 107, 74, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.search svg {
+  flex: 0 0 20px;
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: var(--brown-soft);
+  stroke-width: 1.8;
+  stroke-linecap: round;
+}
+
+.search input {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  font: inherit;
+  color: var(--text);
+}
+
+/* ---------- College list ---------- */
+.colleges {
+  padding: 1.25rem 1rem 0;
+}
+
+.colleges h2 {
+  margin: 0 0.25rem 0.6rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+#college-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.college {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 0.8rem 0.9rem;
+  border-radius: 18px;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  background: linear-gradient(180deg, rgba(255, 252, 246, 0.9), rgba(246, 236, 220, 0.75));
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 4px 12px rgba(90, 58, 38, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.college.selected {
+  border-color: var(--green);
+  box-shadow: 0 0 0 2px rgba(79, 107, 74, 0.4), 0 4px 12px rgba(90, 58, 38, 0.12);
+}
+
+.college.soon { opacity: 0.7; }
+
+.college .pin {
+  flex: 0 0 18px;
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: var(--brown-soft);
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.college .info { flex: 1; }
+.college .name { display: block; font-weight: 600; font-size: 0.95rem; }
+.college .city { display: block; font-size: 0.78rem; color: var(--brown-soft); }
+
+.college .tag { font-size: 1.2rem; color: var(--brown-soft); }
+.college.selected .tag { color: var(--green); font-weight: 600; }
+
+.badge {
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  background: var(--cream-deep);
+  color: var(--brown-soft);
+}
+
+.message {
+  min-height: 1.3rem;
+  margin: 0.75rem 0.25rem 0;
+  font-size: 0.85rem;
+  color: var(--brown-soft);
+}
+
+.screen-three .dots { margin: 0 0 1rem; }

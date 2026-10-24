@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Crunch. | Choose your college</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=DM+Sans:wght@400;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="welcome.css">
+  <link rel="stylesheet" href="welcome-3.css">
+</head>
+
+<body>
+
+  <!-- SCREEN 3 of 3 -->
+  <main class="screen screen-three">
+
+    <header class="top">
+      <p class="logo">Crunch.</p>
+      <h1>Where do you go to school?</h1>
+      <p class="sub">Select your college to discover study spots nearby.</p>
+    </header>
+
+    <!-- Search bar: typing here filters the list below (see welcome-3.js) -->
+    <label class="search">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <circle cx="11" cy="11" r="6.5" />
+        <path d="M16 16l4.5 4.5" />
+      </svg>
+      <input id="college-search" type="search" placeholder="Search for your college…" autocomplete="off">
+    </label>
+
+    <section class="colleges">
+      <h2 id="list-label">Popular nearby</h2>
+      <div id="college-list"></div>
+      <p id="message" class="message" role="status"></p>
+    </section>
+
+    <div class="actions">
+      <div class="dots" aria-label="Page 3 of 3">
+        <span></span><span></span><span class="active"></span>
+      </div>
+      <a class="btn" id="start" href="index.html"><span>Get started &rarr;</span></a>
+    </div>
+
+  </main>
+
+  <script src="welcome-3.js"></script>
+</body>
+
+</html>

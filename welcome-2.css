@@ -48,10 +48,21 @@
   background-position: center;
 }
 
-.photo-cafe      { background-image: url("images/cafe.jpg"),      linear-gradient(135deg, #c89b6d, #7a5233); }
-.photo-quiet     { background-image: url("images/quiet.jpg"),     linear-gradient(135deg, #a98a66, #5a3a26); }
-.photo-nearby    { background-image: url("images/nearby.jpg"),    linear-gradient(135deg, #8fa886, #3e5639); }
-.photo-favorites { background-image: url("images/favorites.jpg"), linear-gradient(135deg, #d8b98f, #8a5a3a); }
+.photo-cafe {
+  background-image: url("images/cafe.jpg"), linear-gradient(135deg, #c89b6d, #7a5233);
+}
+
+.photo-quiet {
+  background-image: url("images/quiet.jpg"), linear-gradient(135deg, #a98a66, #5a3a26);
+}
+
+.photo-nearby {
+  background-image: url("images/nearby.jpg"), linear-gradient(135deg, #8fa886, #3e5639);
+}
+
+.photo-favorites {
+  background-image: url("images/favorites.jpg"), linear-gradient(135deg, #d8b98f, #8a5a3a);
+}
 
 .text {
   flex: 1;
@@ -93,11 +104,18 @@
   stroke-linejoin: round;
 }
 
-.icon-green { background: linear-gradient(180deg, var(--green-light), var(--green)); }
-.icon-brown { background: linear-gradient(180deg, #b07a52, var(--brown-soft)); }
+.icon-green {
+  background: linear-gradient(180deg, var(--green-light), var(--green));
+}
+
+.icon-brown {
+  background: linear-gradient(180deg, #b07a52, var(--brown-soft));
+}
 
 /* ---------- Bottom area: dots, button, skip ---------- */
-.screen-two .dots { margin: 0 0 1rem; }
+.screen-two .dots {
+  margin: 0 0 1rem;
+}
 
 .skip {
   display: block;
