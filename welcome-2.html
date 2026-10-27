@@ -14,16 +14,19 @@
   <link rel="stylesheet" href="welcome-2.css">
 </head>
 
-<script>
-  document.querySelector(".skip").addEventListener("click", () => {
-    try { localStorage.setItem("crunchSeenWelcome", "yes"); } catch (error) { }
-  });
-</script>
-
 <body>
 
   <!-- SCREEN 2 of 3 -->
   <main class="screen screen-two">
+
+    <script>
+      // Listen on the whole page, so it works even if the script runs before the link exists
+      document.addEventListener("click", (event) => {
+        if (event.target.closest(".skip")) {
+          try { localStorage.setItem("crunchSeenWelcome", "yes"); } catch (error) { }
+        }
+      });
+    </script>
 
     <header class="intro">
       <h1>More than just coffee shops.</h1>
