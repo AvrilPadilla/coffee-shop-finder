@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<pre id="out"></pre>
+<script>
+    let text = "";
+    try {
+        localStorage.setItem("debugTest", "1");
+        text += "Storage works: " + (localStorage.getItem("debugTest") === "1") + "\n";
+        localStorage.removeItem("debugTest");
+        text += "Saved items: " + JSON.stringify(Object.entries(localStorage));
+    } catch (error) {
+        text = "Storage blocked: " + error;
+    }
+    document.getElementById("out").textContent = text;
+</script>

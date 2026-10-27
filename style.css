@@ -81,8 +81,15 @@ footer {
   padding-left: 1.2rem;
 }
 
-body { font-family: "DM Sans", system-ui, sans-serif; }
-h1, h2, h3 { font-family: "Fraunces", Georgia, serif; }
+body {
+  font-family: "DM Sans", system-ui, sans-serif;
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Fraunces", Georgia, serif;
+}
 
 body {
   background:
@@ -101,4 +108,37 @@ section {
 .card {
   background: rgba(255, 255, 255, 0.7);
   box-shadow: 0 4px 14px rgba(138, 75, 37, 0.1);
+}
+
+#filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: end;
+}
+
+#filters h2 {
+  width: 100%;
+  margin: 0;
+}
+
+#filters label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 0.9rem;
+}
+
+#filters .check {
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+select {
+  font: inherit;
+  padding: 0.4rem 0.6rem;
+  border: 1px solid #d5dbd6;
+  border-radius: 8px;
+  background: white;
 }
