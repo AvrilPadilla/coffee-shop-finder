@@ -1,4 +1,3 @@
-
 const accountForm = document.getElementById("account-form");
 const emailInput = document.getElementById("account-email");
 const passwordInput = document.getElementById("account-password");
@@ -8,6 +7,7 @@ const submitButton = document.getElementById("submit-account");
 const switchButton = document.getElementById("switch-mode");
 const logoutButton = document.getElementById("logout-button");
 const accountMessage = document.getElementById("account-message");
+const continueButton = document.getElementById("continue-button");
 
 let accountMode = "signup";
 
@@ -58,13 +58,9 @@ accountForm.addEventListener("submit", async (event) => {
 
     try {
         if (accountMode === "signup") {
-            const { error } = await db.auth.signUp({
-                email,
-                password,
-                options: {
-                    emailRedirectTo:
-                        new URL("account.html", window.location.href).href
-                }
+            const { data, error } = await db.auth.signUp({
+                email: email,
+                password: password
             });
 
             if (error) throw error;
@@ -100,14 +96,18 @@ logoutButton.addEventListener("click", async () => {
     await checkAccount();
 });
 
+
 async function checkAccount() {
-    const { data } = await db.auth.getUser();
-    const user = data?.user || null;
+    const { data, error } = await db.auth.getUser();
+
+    const user = error ? null : data?.user || null;
 
     if (!user) {
         accountForm.hidden = false;
         switchButton.hidden = false;
         logoutButton.hidden = true;
+        continueButton.hidden = true;
+
         updateAccountMode();
         return;
     }
@@ -115,6 +115,7 @@ async function checkAccount() {
     accountForm.hidden = true;
     switchButton.hidden = true;
     logoutButton.hidden = false;
+    continueButton.hidden = false;
 
     const verified = await getVerifiedStudent();
 
@@ -125,8 +126,10 @@ async function checkAccount() {
     } else {
         accountTitle.textContent = "Verification required";
         accountMessage.textContent =
-            "Your account currently has guest permissions.";
+            "Please confirm your school email to unlock student features. " +
+            "You can still explore crunch. as a guest.";
     }
 }
+
 
 checkAccount();
