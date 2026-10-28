@@ -7,7 +7,8 @@
     "wifi": true,
     "outlets": "plenty",
     "noise": "quiet",
-    "seating": "large"
+    "seating": "large",
+    "type": "study"
   },
   {
     "name": "Vivot Craft Cafe",
@@ -17,7 +18,8 @@
     "wifi": true,
     "outlets": "limited",
     "noise": "moderate",
-    "seating": "small"
+    "seating": "small",
+    "type": "study"
   },
   {
     "name": "Bird Dog Coffee",
@@ -27,7 +29,8 @@
     "wifi": true,
     "outlets": "limited",
     "noise": "quiet",
-    "seating": "medium"
+    "seating": "medium",
+    "type": "study"
   },
   {
     "name": "Concrete Coffee",
@@ -37,7 +40,8 @@
     "wifi": false,
     "outlets": "limited",
     "noise": "quiet",
-    "seating": "large"
+    "seating": "large",
+    "type": "study"
   },
   {
     "name": "Americano's Coffee",
@@ -47,7 +51,8 @@
     "wifi": true,
     "outlets": "plenty",
     "noise": "quiet",
-    "seating": "medium"
+    "seating": "medium",
+    "type": "study"
   },
   {
     "name": "ChocoBean Coffee",
@@ -57,7 +62,8 @@
     "wifi": true,
     "outlets": "plenty",
     "noise": "quiet",
-    "seating": "large"
+    "seating": "large",
+    "type": "study"
   },
   {
     "name": "High Ground Coffee House",
@@ -67,7 +73,8 @@
     "wifi": true,
     "outlets": "plenty",
     "noise": "loud",
-    "seating": "large"
+    "seating": "large",
+    "type": "study"
   },
   {
     "name": "Kona Loa Coffee",
@@ -77,7 +84,8 @@
     "wifi": true,
     "outlets": "plenty",
     "noise": "moderate",
-    "seating": "large"
+    "seating": "large",
+    "type": "study"
   },
   {
     "name": "MoonGoat Coffee",
@@ -87,6 +95,7 @@
     "wifi": true,
     "outlets": "plenty",
     "noise": "quiet",
-    "seating": "large"
+    "seating": "large",
+    "type": "study"
   }
 ]

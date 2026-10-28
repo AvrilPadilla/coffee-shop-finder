@@ -147,3 +147,25 @@ select {
   height: 380px;
   border-radius: 8px;
 }
+
+.pin {
+  border-radius: 50%;
+  border: 2px solid white;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+}
+
+.pin-study {
+  background: #6b8561;
+}
+
+.pin-food {
+  background: #b98a5a;
+}
+
+.pin-activity {
+  background: #a98bbf;
+}
+
+.pin-campus {
+  background: #7f9bb0;
+}

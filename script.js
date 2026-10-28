@@ -10,6 +10,8 @@ L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
   attribution: "&copy; OpenStreetMap contributors"
 }).addTo(map);
 
+const markerLayer = L.layerGroup().addTo(map);
+
 // Turn true/false into words people can read
 function wifiText(hasWifi) {
   return hasWifi ? "Yes" : "No";
@@ -35,10 +37,30 @@ function makeCard(shop) {
   `;
 }
 
+const PIN_SIZES = { study: 28, food: 20, activity: 16, campus: 12 };
+
+function makePin(type) {
+  const kind = type in PIN_SIZES ? type : "study";   // unknown types fall back to study
+  const size = PIN_SIZES[kind];
+  return L.divIcon({
+    className: "",
+    html: `<div class="pin pin-${kind}" style="width:${size}px;height:${size}px"></div>`,
+    iconSize: [size, size],
+    iconAnchor: [size / 2, size / 2]
+  });
+}
+
 // Put a list of shops onto the page
 function showShops(shops) {
-  // For each shop, make a card, then join them all into one big string
   cardContainer.innerHTML = shops.map(makeCard).join("");
+
+  markerLayer.clearLayers();
+  shops.forEach((shop) => {
+    if (typeof shop.lat !== "number" || typeof shop.lng !== "number") return;
+    L.marker([shop.lat, shop.lng], { icon: makePin(shop.type) })
+      .bindPopup(`<strong>${shop.name}</strong><br>${shop.address}`)
+      .addTo(markerLayer);
+  });
 }
 
 // Load the data file, then show it
