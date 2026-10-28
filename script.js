@@ -69,7 +69,7 @@ function makeCard(shop) {
   const image = shop.image || "images/default-cafe.jpg";
 
   return `
-    <article class="card shop-card">
+    <article class="card shop-card" data-shop="${shop.name}" tabindex="0" role="button">
 
       <div class="shop-image">
         <img src="${image}" alt="${shop.name}">
@@ -147,11 +147,132 @@ function showShops(shops) {
     L.marker([shop.lat, shop.lng], {
       icon: makePin(shop.type)
     })
-      .bindPopup(`<strong>${shop.name}</strong><br>${shop.address}`)
+      .on("click", () => {
+        openShopDetails(shop);
+      })
       .addTo(markerLayer);
   });
 }
 
+
+const shopModal = document.getElementById("shop-modal");
+const modalDetails = document.getElementById("modal-details");
+const closeModalButton = document.getElementById("close-modal");
+
+function openShopDetails(shop) {
+  const distance = getDistance(
+    school.lat,
+    school.lng,
+    shop.lat,
+    shop.lng
+  ).toFixed(1);
+
+  const image = shop.image || "images/default-cafe.jpg";
+
+  modalDetails.innerHTML = `
+    <img class="modal-image" src="${image}" alt="${shop.name}">
+
+    <div class="modal-body">
+      <h2>${shop.name}</h2>
+
+      <p class="modal-distance">
+        📍 ${distance} miles from campus
+      </p>
+
+      <p class="address">${shop.address}</p>
+
+      <div class="shop-tags">
+        <span class="shop-tag">
+          ${shop.wifi ? "✓ Wi-Fi" : "No Wi-Fi"}
+        </span>
+
+        <span class="shop-tag">
+          Outlets: ${capitalize(shop.outlets)}
+        </span>
+
+        <span class="shop-tag">
+          Noise: ${capitalize(shop.noise)}
+        </span>
+
+        <span class="shop-tag">
+          Seating: ${capitalize(shop.seating)}
+        </span>
+      </div>
+
+      <h3>About this spot</h3>
+      <p class="modal-description">
+        ${shop.description || "More details coming soon!"}
+      </p>
+
+      <h3>Student reviews</h3>
+      <div class="modal-reviews">
+        Verify your student email to read all reviews
+        and share your experience.
+      </div>
+
+      <button class="modal-save" type="button">
+        ♡ Save this spot
+      </button>
+    </div>
+  `;
+
+  shopModal.classList.remove("hidden");
+  document.body.classList.add("modal-open");
+}
+
+function closeShopDetails() {
+  shopModal.classList.add("hidden");
+  document.body.classList.remove("modal-open");
+}
+
+// Open details when a shop card is clicked
+cardContainer.addEventListener("click", (event) => {
+  if (event.target.closest(".save-button")) return;
+
+  const card = event.target.closest(".shop-card");
+  if (!card) return;
+
+  const shop = allShops.find(item => item.name === card.dataset.shop);
+
+  if (shop) openShopDetails(shop);
+});
+
+// Keyboard access for shop cards
+cardContainer.addEventListener("keydown", (event) => {
+  if (event.key !== "Enter" && event.key !== " ") return;
+  if (event.target.closest(".save-button")) return;
+
+  const card = event.target.closest(".shop-card");
+  if (!card) return;
+
+  event.preventDefault();
+
+  const shop = allShops.find(item => item.name === card.dataset.shop);
+
+  if (shop) openShopDetails(shop);
+});
+
+// Close popup with X
+closeModalButton.addEventListener("click", closeShopDetails);
+
+// Close popup when clicking outside
+shopModal.addEventListener("click", (event) => {
+  if (event.target === shopModal) {
+    closeShopDetails();
+  }
+});
+
+// Close popup with Escape
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") closeShopDetails();
+});
+
+// Save button inside popup
+modalDetails.addEventListener("click", (event) => {
+  if (event.target.closest(".modal-save")) {
+    alert("Verify your student email to save places on crunch.");
+  }
+});
 
 // Load the data file, then show it
 async function loadShops() {

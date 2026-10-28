@@ -286,3 +286,90 @@ select {
   cursor: pointer;
   line-height: 1;
 }
+
+
+/* Shop details popup */
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(35, 32, 27, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 2000;
+}
+
+.modal-content {
+  position: relative;
+  background: #fffdf8;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 500px;
+  max-height: 85vh;
+  overflow-y: auto;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
+}
+
+.close-modal {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 2;
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  background: #fffdf8;
+  color: #493e32;
+  font-size: 26px;
+  cursor: pointer;
+}
+
+.modal-image {
+  width: 100%;
+  height: 210px;
+  object-fit: cover;
+}
+
+.modal-body {
+  padding: 22px;
+}
+
+.modal-body h2 {
+  margin: 0 0 8px;
+  color: #493e32;
+}
+
+.modal-distance {
+  color: #637b5a;
+  font-size: 14px;
+}
+
+.modal-description {
+  color: #655c51;
+  line-height: 1.6;
+}
+
+.modal-save {
+  width: 100%;
+  background: #637b5a;
+  color: white;
+  padding: 13px;
+  border: none;
+  border-radius: 12px;
+  margin-top: 18px;
+  cursor: pointer;
+}
+
+.modal-reviews {
+  background: #f1f0e8;
+  padding: 14px;
+  border-radius: 12px;
+  color: #655c51;
+}
+
+body.modal-open {
+  overflow: hidden;
+}
