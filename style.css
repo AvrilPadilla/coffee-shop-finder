@@ -373,3 +373,120 @@ select {
 body.modal-open {
   overflow: hidden;
 }
+
+
+/* crunch. student account */
+
+.account-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: #f6f2e9;
+}
+
+.account-card {
+  width: 100%;
+  max-width: 430px;
+  padding: 32px;
+  background: #fffdf8;
+  border-radius: 22px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+}
+
+.account-card h1 {
+  font-family: "Fraunces", serif;
+  color: #637b5a;
+  font-size: 40px;
+}
+
+.account-card h2 {
+  color: #493e32;
+}
+
+.account-card form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 22px 0;
+}
+
+.account-card label {
+  color: #493e32;
+  font-weight: 600;
+}
+
+.account-card input {
+  padding: 13px;
+  border: 1px solid #d9d5ca;
+  border-radius: 10px;
+  font: inherit;
+}
+
+.account-card button {
+  padding: 13px;
+  border: none;
+  border-radius: 10px;
+  background: #637b5a;
+  color: white;
+  cursor: pointer;
+}
+
+.account-card button:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+#switch-mode {
+  background: #eeeade;
+  color: #493e32;
+  width: 100%;
+}
+
+#logout-button {
+  width: 100%;
+}
+
+#account-message {
+  color: #526b49;
+  line-height: 1.5;
+}
+
+.guest-link {
+  display: block;
+  margin-top: 22px;
+  text-align: center;
+  color: #637b5a;
+}
+
+
+/* Saved places */
+
+.saved-page {
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+.saved-page h1 {
+  font-family: "Fraunces", serif;
+  color: #637b5a;
+}
+
+.saved-item {
+  padding: 20px;
+}
+
+.saved-item button {
+  background: #eeeade;
+  color: #493e32;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 16px;
+  cursor: pointer;
+}
+
+[hidden] {
+  display: none !important;
+}

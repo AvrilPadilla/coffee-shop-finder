@@ -1,7 +1,7 @@
 // Find the empty box on the page where our cards will go
 const cardContainer = document.getElementById("shop-cards");
-
 let allShops = [];
+let currentShop = null;
 
 const SCHOOLS = {
   saddleback: {
@@ -160,6 +160,8 @@ const modalDetails = document.getElementById("modal-details");
 const closeModalButton = document.getElementById("close-modal");
 
 function openShopDetails(shop) {
+  currentShop = shop;
+
   const distance = getDistance(
     school.lat,
     school.lng,
@@ -223,6 +225,7 @@ function openShopDetails(shop) {
 function closeShopDetails() {
   shopModal.classList.add("hidden");
   document.body.classList.remove("modal-open");
+  currentShop = null;
 }
 
 // Open details when a shop card is clicked
@@ -265,13 +268,6 @@ shopModal.addEventListener("click", (event) => {
 // Close popup with Escape
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape") closeShopDetails();
-});
-
-// Save button inside popup
-modalDetails.addEventListener("click", (event) => {
-  if (event.target.closest(".modal-save")) {
-    alert("Verify your student email to save places on crunch.");
-  }
 });
 
 // Load the data file, then show it
@@ -379,16 +375,6 @@ listButton.addEventListener("click", () => {
 
   listButton.classList.add("active");
   mapButton.classList.remove("active");
-});
-
-cardContainer.addEventListener("click", (event) => {
-  const saveButton = event.target.closest(".save-button");
-
-  if (!saveButton) return;
-
-  alert(
-    "Create an account and verify your student email to save places on crunch."
-  );
 });
 
 loadShops();

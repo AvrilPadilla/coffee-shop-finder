@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Student Account | crunch.</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600&family=Fraunces:wght@600&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main class="account-page">
+        <section class="account-card">
+
+            <h1>crunch.</h1>
+            <h2 id="account-title">Create your student account</h2>
+
+            <p id="account-description">
+                Verify your school email to unlock saved places,
+                student reviews, and rewards.
+            </p>
+
+            <form id="account-form">
+                <label for="account-email">School email</label>
+                <input id="account-email" type="email" autocomplete="email" required>
+
+                <label for="account-password">Password</label>
+                <input id="account-password" type="password" minlength="8" autocomplete="new-password" required>
+
+                <button id="submit-account" type="submit">
+                    Create account
+                </button>
+            </form>
+
+            <button id="switch-mode" type="button">
+                Already have an account? Log in
+            </button>
+
+            <button id="logout-button" type="button" hidden>
+                Log out
+            </button>
+
+            <p id="account-message" role="status"></p>
+
+            <a href="index.html" class="guest-link">
+                Continue exploring as a guest
+            </a>
+
+        </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-client.js"></script>
+    <script src="account.js"></script>
+
+</body>
+
+</html>
