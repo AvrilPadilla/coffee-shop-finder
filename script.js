@@ -57,20 +57,65 @@ function capitalize(word) {
 }
 
 // Build the HTML for ONE shop
+
 function makeCard(shop) {
+  const distance = getDistance(
+    school.lat,
+    school.lng,
+    shop.lat,
+    shop.lng
+  ).toFixed(1);
+
+  const image = shop.image || "images/default-cafe.jpg";
+
   return `
-    <article class="card">
-      <h3>${shop.name}</h3>
-      <p class="address">${shop.address}</p>
-      <ul>
-        <li>Wifi: ${wifiText(shop.wifi)}</li>
-        <li>Outlets: ${capitalize(shop.outlets)}</li>
-        <li>Noise: ${capitalize(shop.noise)}</li>
-        <li>Seating: ${capitalize(shop.seating)}</li>
-      </ul>
+    <article class="card shop-card">
+
+      <div class="shop-image">
+        <img src="${image}" alt="${shop.name}">
+      </div>
+
+      <div class="shop-info">
+
+        <div class="shop-heading">
+          <div>
+            <h3>${shop.name}</h3>
+            <p class="shop-distance">
+              📍 ${distance} miles from campus
+            </p>
+          </div>
+
+          <button class="save-button" type="button"
+            aria-label="Save ${shop.name}">
+            ♡
+          </button>
+        </div>
+
+        <p class="address">${shop.address}</p>
+
+        <div class="shop-tags">
+          <span class="shop-tag">
+            ${shop.wifi ? "✓ Wi-Fi" : "No Wi-Fi"}
+          </span>
+
+          <span class="shop-tag">
+            Outlets: ${capitalize(shop.outlets)}
+          </span>
+
+          <span class="shop-tag">
+            Noise: ${capitalize(shop.noise)}
+          </span>
+
+          <span class="shop-tag">
+            Seating: ${capitalize(shop.seating)}
+          </span>
+        </div>
+
+      </div>
     </article>
   `;
 }
+
 
 const PIN_SIZES = { study: 28, food: 20, activity: 16, campus: 12 };
 
@@ -213,6 +258,16 @@ listButton.addEventListener("click", () => {
 
   listButton.classList.add("active");
   mapButton.classList.remove("active");
+});
+
+cardContainer.addEventListener("click", (event) => {
+  const saveButton = event.target.closest(".save-button");
+
+  if (!saveButton) return;
+
+  alert(
+    "Create an account and verify your student email to save places on crunch."
+  );
 });
 
 loadShops();
