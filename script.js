@@ -139,6 +139,10 @@ function showShops(shops) {
     cardContainer.innerHTML = shops.map(makeCard).join("");
   }
 
+  if (typeof updateSavedHearts === "function") {
+    updateSavedHearts();
+  }
+
   markerLayer.clearLayers();
 
   shops.forEach((shop) => {
@@ -220,6 +224,8 @@ function openShopDetails(shop) {
 
   shopModal.classList.remove("hidden");
   document.body.classList.add("modal-open");
+
+  updateSavedHearts();
 }
 
 function closeShopDetails() {
