@@ -5,9 +5,9 @@
     "lat": 33.56295,
     "lng": -117.71075,
     "wifi": true,
-    "outlets": "Plenty",
-    "noise": "Quiet",
-    "seating": "Large"
+    "outlets": "plenty",
+    "noise": "quiet",
+    "seating": "large"
   },
   {
     "name": "Vivot Craft Cafe",
@@ -15,9 +15,9 @@
     "lat": 33.58525,
     "lng": -117.67137,
     "wifi": true,
-    "outlets": "Limited",
-    "noise": "Moderate",
-    "seating": "Small"
+    "outlets": "limited",
+    "noise": "moderate",
+    "seating": "small"
   },
   {
     "name": "Bird Dog Coffee",
@@ -25,19 +25,19 @@
     "lat": 33.57776,
     "lng": -117.70082,
     "wifi": true,
-    "outlets": "Limited",
-    "noise": "Quiet",
-    "seating": "Moderate"
+    "outlets": "limited",
+    "noise": "quiet",
+    "seating": "medium"
   },
   {
     "name": "Concrete Coffee",
     "address": "Inside Union Market, 27741 Crown Valley Pkwy 6th Floor, Mission Viejo, CA 92691",
     "lat": 33.56098,
     "lng": -117.67143,
-    "wifi": true,
-    "outlets": "Limited",
-    "noise": "Quiet",
-    "seating": "Large"
+    "wifi": false,
+    "outlets": "limited",
+    "noise": "quiet",
+    "seating": "large"
   },
   {
     "name": "Americano's Coffee",
@@ -45,9 +45,9 @@
     "lat": 33.59325,
     "lng": -117.67575,
     "wifi": true,
-    "outlets": "Plenty",
-    "noise": "Quiet",
-    "seating": "Moderate"
+    "outlets": "plenty",
+    "noise": "quiet",
+    "seating": "medium"
   },
   {
     "name": "ChocoBean Coffee",
@@ -55,9 +55,9 @@
     "lat": 33.60155,
     "lng": -117.67812,
     "wifi": true,
-    "outlets": "Plenty",
-    "noise": "Quiet",
-    "seating": "Large"
+    "outlets": "plenty",
+    "noise": "quiet",
+    "seating": "large"
   },
   {
     "name": "High Ground Coffee House",
@@ -65,9 +65,9 @@
     "lat": 33.59322,
     "lng": -117.65912,
     "wifi": true,
-    "outlets": "Plenty",
-    "noise": "Loud",
-    "seating": "Large"
+    "outlets": "plenty",
+    "noise": "loud",
+    "seating": "large"
   },
   {
     "name": "Kona Loa Coffee",
@@ -75,9 +75,9 @@
     "lat": 33.56450,
     "lng": -117.67055,
     "wifi": true,
-    "outlets": "Plenty",
-    "noise": "Moderate",
-    "seating": "Large"
+    "outlets": "plenty",
+    "noise": "moderate",
+    "seating": "large"
   },
   {
     "name": "MoonGoat Coffee",
@@ -85,8 +85,8 @@
     "lat": 33.63967,
     "lng": -117.85438,
     "wifi": true,
-    "outlets": "Plenty",
-    "noise": "Quiet",
-    "seating": "Large"
+    "outlets": "plenty",
+    "noise": "quiet",
+    "seating": "large"
   }
 ]
