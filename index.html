@@ -66,17 +66,35 @@
           <option value="large">Large</option>
         </select>
       </label>
+
     </section>
 
-    <section id="map-section">
-      <h2>Map</h2>
-      <div id="map"></div>
+    <section id="explore-section">
+      <h2>Explore near campus</h2>
+      <p>Discover coffee shops and study spots around your school.</p>
+
+      <!-- Switch between Map and List -->
+      <div class="view-toggle">
+        <button id="map-button" class="active" type="button">
+          Map
+        </button>
+
+        <button id="list-button" type="button">
+          List
+        </button>
+      </div>
+
+      <!-- Map view -->
+      <div id="map-view">
+        <div id="map"></div>
+      </div>
+
+      <!-- List view -->
+      <div id="list-view" class="hidden">
+        <div id="shop-cards"></div>
+      </div>
     </section>
 
-    <section id="shop-list">
-      <h2>Shops</h2>
-      <div id="shop-cards"></div>
-    </section>
   </main>
 
   <footer>

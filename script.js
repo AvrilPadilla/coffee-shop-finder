@@ -139,4 +139,31 @@ function updateResults() {
   control.addEventListener("change", updateResults);
 });
 
+
+const mapButton = document.getElementById("map-button");
+const listButton = document.getElementById("list-button");
+
+const mapView = document.getElementById("map-view");
+const listView = document.getElementById("list-view");
+
+// Switch to Map
+mapButton.addEventListener("click", () => {
+  mapView.classList.remove("hidden");
+  listView.classList.add("hidden");
+
+  mapButton.classList.add("active");
+  listButton.classList.remove("active");
+
+  map.invalidateSize();
+});
+
+// Switch to List
+listButton.addEventListener("click", () => {
+  listView.classList.remove("hidden");
+  mapView.classList.add("hidden");
+
+  listButton.classList.add("active");
+  mapButton.classList.remove("active");
+});
+
 loadShops();
