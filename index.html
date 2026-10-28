@@ -21,6 +21,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Coffee Shop Finder</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 </head>
 
 <body>
@@ -32,7 +33,6 @@
   </header>
 
   <main>
-    <!-- Week 3: filters will go here -->
     <section id="filters">
       <h2>Filters</h2>
 
@@ -68,7 +68,11 @@
       </label>
     </section>
 
-    <!-- Week 2: JavaScript will fill this with a card for each shop -->
+    <section id="map-section">
+      <h2>Map</h2>
+      <div id="map"></div>
+    </section>
+
     <section id="shop-list">
       <h2>Shops</h2>
       <div id="shop-cards"></div>
@@ -79,7 +83,7 @@
     <p>Built by Avril Padilla at Saddleback College</p>
   </footer>
 
-  <!-- Week 2: our JavaScript file will be linked here -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="script.js"></script>
 </body>
 

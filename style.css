@@ -142,3 +142,8 @@ select {
   border-radius: 8px;
   background: white;
 }
+
+#map {
+  height: 380px;
+  border-radius: 8px;
+}

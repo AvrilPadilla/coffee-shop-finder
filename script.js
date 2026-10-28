@@ -3,6 +3,13 @@ const cardContainer = document.getElementById("shop-cards");
 
 let allShops = [];
 
+const map = L.map("map").setView([33.63, -117.65], 11);
+
+L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+  maxZoom: 19,
+  attribution: "&copy; OpenStreetMap contributors"
+}).addTo(map);
+
 // Turn true/false into words people can read
 function wifiText(hasWifi) {
   return hasWifi ? "Yes" : "No";
