@@ -3,7 +3,24 @@ const cardContainer = document.getElementById("shop-cards");
 
 let allShops = [];
 
-const map = L.map("map").setView([33.63, -117.65], 11);
+const SCHOOLS = {
+  saddleback: {
+    name: "Saddleback College",
+    lat: 33.553,
+    lng: -117.665
+  },
+  ivc: {
+    name: "Irvine Valley College",
+    lat: 33.676,
+    lng: -117.778
+  }
+}
+
+const selectedSchool = localStorage.getItem("selectedSchool") || "saddleback";
+
+const school = SCHOOLS[selectedSchool] || SCHOOLS.saddleback;
+
+const map = L.map("map").setView([school.lat, school.lng], 14);
 
 L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
   maxZoom: 19,
@@ -51,17 +68,27 @@ function makePin(type) {
 }
 
 // Put a list of shops onto the page
+
 function showShops(shops) {
-  cardContainer.innerHTML = shops.map(makeCard).join("");
+  if (shops.length === 0) {
+    cardContainer.innerHTML = "<p>No shops match those filters. Try loosening one.</p>";
+  } else {
+    cardContainer.innerHTML = shops.map(makeCard).join("");
+  }
 
   markerLayer.clearLayers();
+
   shops.forEach((shop) => {
     if (typeof shop.lat !== "number" || typeof shop.lng !== "number") return;
-    L.marker([shop.lat, shop.lng], { icon: makePin(shop.type) })
+
+    L.marker([shop.lat, shop.lng], {
+      icon: makePin(shop.type)
+    })
       .bindPopup(`<strong>${shop.name}</strong><br>${shop.address}`)
       .addTo(markerLayer);
   });
 }
+
 
 // Load the data file, then show it
 async function loadShops() {

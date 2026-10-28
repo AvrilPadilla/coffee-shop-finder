@@ -6,7 +6,7 @@
     "lng": -117.71075,
     "wifi": true,
     "outlets": "plenty",
-    "noise": "quiet",
+    "noise": "loud",
     "seating": "large",
     "type": "study"
   },
@@ -61,7 +61,7 @@
     "lng": -117.67812,
     "wifi": true,
     "outlets": "plenty",
-    "noise": "quiet",
+    "noise": "loud",
     "seating": "large",
     "type": "study"
   },
@@ -94,7 +94,7 @@
     "lng": -117.85438,
     "wifi": true,
     "outlets": "plenty",
-    "noise": "quiet",
+    "noise": "loud",
     "seating": "large",
     "type": "study"
   }
