@@ -16,6 +16,24 @@ const SCHOOLS = {
   }
 }
 
+
+function getDistance(lat1, lng1, lat2, lng2) {
+  const R = 3958.8; // Earth's radius in miles
+
+  const dLat = (lat2 - lat1) * Math.PI / 180;
+  const dLng = (lng2 - lng1) * Math.PI / 180;
+
+  const a =
+    Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+    Math.cos(lat1 * Math.PI / 180) *
+    Math.cos(lat2 * Math.PI / 180) *
+    Math.sin(dLng / 2) * Math.sin(dLng / 2);
+
+  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+  return R * c;
+}
+
 const selectedSchool = localStorage.getItem("selectedSchool") || "saddleback";
 
 const school = SCHOOLS[selectedSchool] || SCHOOLS.saddleback;
@@ -115,34 +133,65 @@ const wifiBox = document.getElementById("filter-wifi");
 const outletsSelect = document.getElementById("filter-outlets");
 const noiseSelect = document.getElementById("filter-noise");
 const seatingSelect = document.getElementById("filter-seating");
+const distanceSelect = document.getElementById("filter-distance");
 
 // Does ONE shop pass ALL the filters? "return false" means reject it.
+
 function matchesFilters(shop) {
   if (wifiBox.checked && shop.wifi !== true) return false;
 
   // Outlets and seating: at least this much
-  if (outletsSelect.value !== "any" && RANK[shop.outlets] < RANK[outletsSelect.value]) return false;
-  if (seatingSelect.value !== "any" && RANK[shop.seating] < RANK[seatingSelect.value]) return false;
+  if (outletsSelect.value !== "any" &&
+    RANK[shop.outlets] < RANK[outletsSelect.value]) {
+    return false;
+  }
+
+  if (seatingSelect.value !== "any" &&
+    RANK[shop.seating] < RANK[seatingSelect.value]) {
+    return false;
+  }
 
   // Noise: no louder than this
-  if (noiseSelect.value !== "any" && RANK[shop.noise] > RANK[noiseSelect.value]) return false;
+  if (noiseSelect.value !== "any" &&
+    RANK[shop.noise] > RANK[noiseSelect.value]) {
+    return false;
+  }
 
-  return true;   // survived every test
+  // Distance from selected campus
+  if (distanceSelect.value !== "any") {
+    if (typeof shop.lat !== "number" ||
+      typeof shop.lng !== "number") {
+      return false;
+    }
+
+    const distance = getDistance(
+      school.lat,
+      school.lng,
+      shop.lat,
+      shop.lng
+    );
+
+    if (distance > Number(distanceSelect.value)) {
+      return false;
+    }
+  }
+
+  return true;
 }
+
 
 function updateResults() {
   showShops(allShops.filter(matchesFilters));
 }
 
 // Every control runs the same function
-[wifiBox, outletsSelect, noiseSelect, seatingSelect].forEach((control) => {
+[wifiBox, outletsSelect, noiseSelect, seatingSelect, distanceSelect].forEach((control) => {
   control.addEventListener("change", updateResults);
 });
 
 
 const mapButton = document.getElementById("map-button");
 const listButton = document.getElementById("list-button");
-
 const mapView = document.getElementById("map-view");
 const listView = document.getElementById("list-view");
 
