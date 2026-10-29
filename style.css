@@ -538,3 +538,62 @@ body.modal-open {
   color: #493e32;
   cursor: pointer;
 }
+
+
+/* Privacy Policy page */
+
+.privacy-page {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 30px;
+  font-family: "DM Sans", sans-serif;
+  line-height: 1.8;
+}
+
+.privacy-page h1 {
+  font-family: "Fraunces", serif;
+  font-size: 38px;
+  color: #637b5a;
+  margin-bottom: 8px;
+}
+
+.privacy-page h2 {
+  font-family: "Fraunces", serif;
+  font-size: 23px;
+  color: #493e32;
+  margin-top: 35px;
+  margin-bottom: 12px;
+}
+
+.privacy-page p {
+  margin-bottom: 15px;
+}
+
+.privacy-updated {
+  font-size: 14px;
+  opacity: 0.7;
+  margin-bottom: 30px;
+}
+
+.privacy-back {
+  display: inline-block;
+  margin-bottom: 25px;
+  color: #637b5a;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.privacy-back:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+  .privacy-page {
+    margin: 20px auto;
+    padding: 20px;
+  }
+
+  .privacy-page h1 {
+    font-size: 30px;
+  }
+}
