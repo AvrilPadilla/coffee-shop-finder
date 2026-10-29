@@ -1,5 +1,6 @@
 [
   {
+    "id": "high-tide-laguna-niguel",
     "name": "High Tide Coffee",
     "address": "27271 La Paz Rd, Laguna Niguel, CA 92677",
     "lat": 33.56295,
@@ -11,6 +12,7 @@
     "type": "study"
   },
   {
+    "id": "vivot-mission-viejo",
     "name": "Vivot Craft Cafe",
     "address": "28662 Marguerite Pkwy, Mission Viejo, CA 92692",
     "lat": 33.58525,
@@ -22,6 +24,7 @@
     "type": "study"
   },
   {
+    "id": "bird-dog-laguna-hills",
     "name": "Bird Dog Coffee",
     "address": "26548 Moulton Pkwy Ste 48J, Laguna Hills, CA 92653",
     "lat": 33.57776,
@@ -33,6 +36,7 @@
     "type": "study"
   },
   {
+    "id": "concrete-union-market",
     "name": "Concrete Coffee",
     "address": "Inside Union Market, 27741 Crown Valley Pkwy 6th Floor, Mission Viejo, CA 92691",
     "lat": 33.56098,
@@ -44,6 +48,7 @@
     "type": "study"
   },
   {
+    "id": "americanos-mission-viejo",
     "name": "Americano's Coffee",
     "address": "28251 Marguerite Pkwy J, Mission Viejo, CA 92692",
     "lat": 33.59325,
@@ -55,6 +60,7 @@
     "type": "study"
   },
   {
+    "id": "chocobean-mission-viejo",
     "name": "ChocoBean Coffee",
     "address": "26032 Marguerite Pkwy # D, Mission Viejo, CA 92692",
     "lat": 33.60155,
@@ -66,8 +72,9 @@
     "type": "study"
   },
   {
+    "id": "high-ground-mission-viejo",
     "name": "High Ground Coffee House",
-    "address": "26032 Marguerite Pkwy # D, Mission Viejo, CA 92692",
+    "address": "25522 Marguerite Pkwy, #102, Mission Viejo, CA 92692",
     "lat": 33.59322,
     "lng": -117.65912,
     "wifi": true,
@@ -77,6 +84,7 @@
     "type": "study"
   },
   {
+    "id": "kona-loa-mission-viejo",
     "name": "Kona Loa Coffee",
     "address": "27525 Puerta Real #500, Mission Viejo, CA 92691",
     "lat": 33.56450,
@@ -88,6 +96,7 @@
     "type": "study"
   },
   {
+    "id": "moongoat-irvine",
     "name": "MoonGoat Coffee",
     "address": "5171 California Ave Unit 100, Irvine, CA 92617",
     "lat": 33.63967,

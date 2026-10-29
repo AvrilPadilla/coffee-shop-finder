@@ -528,3 +528,13 @@ body.modal-open {
   opacity: 0.6;
   cursor: wait;
 }
+
+.remove-saved {
+  margin-top: 14px;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 10px;
+  background: #eeeade;
+  color: #493e32;
+  cursor: pointer;
+}

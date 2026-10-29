@@ -1,5 +1,9 @@
+let savedPlaces = new Set();   // holds shop ids, like "moongoat-irvine"
 
-let savedPlaces = new Set();
+function shopNameFor(shopId) {
+    const shop = allShops.find((item) => item.id === shopId);
+    return shop ? shop.name : "this place";
+}
 
 async function loadSavedHearts() {
     const student = await getVerifiedStudent();
@@ -13,50 +17,44 @@ async function loadSavedHearts() {
 
     const { data, error } = await db
         .from("saved_places")
-        .select("shop_name");
+        .select("shop_id");
 
     if (error) {
         console.error("Could not load saved places:", error);
         return;
     }
 
-    data.forEach((place) => {
-        savedPlaces.add(place.shop_name);
-    });
+    data.forEach((place) => savedPlaces.add(place.shop_id));
 
     updateSavedHearts();
 }
 
 function updateSavedHearts() {
-    const buttons = document.querySelectorAll(
-        ".save-button, .modal-save"
-    );
+    const buttons = document.querySelectorAll(".save-button, .modal-save");
 
     buttons.forEach((button) => {
-        let shopName;
+        let shopId;
 
         if (button.classList.contains("save-button")) {
             const card = button.closest(".shop-card");
             if (!card) return;
-
-            shopName = card.dataset.shop;
+            shopId = card.dataset.shopId;
         } else {
             if (!currentShop) return;
-            shopName = currentShop.name;
+            shopId = currentShop.id;
         }
 
-        const isSaved = savedPlaces.has(shopName);
+        const isSaved = savedPlaces.has(shopId);
+        const name = shopNameFor(shopId);
 
         button.classList.toggle("is-saved", isSaved);
 
         if (button.classList.contains("modal-save")) {
-            button.textContent = isSaved
-                ? "Remove saved spot"
-                : "Save this spot";
+            button.textContent = isSaved ? "Remove saved spot" : "Save this spot";
         } else {
             button.innerHTML = `
         <svg class="heart-icon" viewBox="0 0 24 24"
-             fill="${isSaved ? 'currentColor' : 'none'}"
+             fill="${isSaved ? "currentColor" : "none"}"
              stroke="currentColor"
              stroke-width="2"
              stroke-linecap="round"
@@ -69,15 +67,13 @@ function updateSavedHearts() {
 
         button.setAttribute(
             "aria-label",
-            isSaved ? `Remove ${shopName} from saved places`
-                : `Save ${shopName}`
+            isSaved ? `Remove ${name} from saved places` : `Save ${name}`
         );
-
         button.setAttribute("aria-pressed", String(isSaved));
     });
 }
 
-async function toggleSavedPlace(shopName) {
+async function toggleSavedPlace(shopId) {
     const student = await getVerifiedStudent();
 
     if (!student) {
@@ -93,7 +89,7 @@ async function toggleSavedPlace(shopName) {
         return;
     }
 
-    const alreadySaved = savedPlaces.has(shopName);
+    const alreadySaved = savedPlaces.has(shopId);
 
     let error;
 
@@ -102,7 +98,7 @@ async function toggleSavedPlace(shopName) {
             .from("saved_places")
             .delete()
             .eq("user_id", student.id)
-            .eq("shop_name", shopName);
+            .eq("shop_id", shopId);
 
         error = result.error;
     } else {
@@ -110,7 +106,7 @@ async function toggleSavedPlace(shopName) {
             .from("saved_places")
             .insert({
                 user_id: student.id,
-                shop_name: shopName
+                shop_id: shopId
             });
 
         error = result.error;
@@ -122,9 +118,9 @@ async function toggleSavedPlace(shopName) {
     }
 
     if (alreadySaved) {
-        savedPlaces.delete(shopName);
+        savedPlaces.delete(shopId);
     } else {
-        savedPlaces.add(shopName);
+        savedPlaces.add(shopId);
     }
 
     updateSavedHearts();
@@ -144,7 +140,7 @@ cardContainer.addEventListener("click", async (event) => {
     button.disabled = true;
 
     try {
-        await toggleSavedPlace(card.dataset.shop);
+        await toggleSavedPlace(card.dataset.shopId);
     } finally {
         button.disabled = false;
     }
@@ -159,7 +155,7 @@ modalDetails.addEventListener("click", async (event) => {
     button.disabled = true;
 
     try {
-        await toggleSavedPlace(currentShop.name);
+        await toggleSavedPlace(currentShop.id);
     } finally {
         button.disabled = false;
     }

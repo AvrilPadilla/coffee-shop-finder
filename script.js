@@ -69,7 +69,7 @@ function makeCard(shop) {
   const image = shop.image || "images/default-cafe.jpg";
 
   return `
-    <article class="card shop-card" data-shop="${shop.name}" tabindex="0" role="button">
+       <article class="card shop-card" data-shop-id="${shop.id}" tabindex="0" role="button">
 
       <div class="shop-image">
         <img src="${image}" alt="${shop.name}">
@@ -241,7 +241,7 @@ cardContainer.addEventListener("click", (event) => {
   const card = event.target.closest(".shop-card");
   if (!card) return;
 
-  const shop = allShops.find(item => item.name === card.dataset.shop);
+  const shop = allShops.find(item => item.id === card.dataset.shopId);
 
   if (shop) openShopDetails(shop);
 });
@@ -256,7 +256,7 @@ cardContainer.addEventListener("keydown", (event) => {
 
   event.preventDefault();
 
-  const shop = allShops.find(item => item.name === card.dataset.shop);
+  const shop = allShops.find(item => item.id === card.dataset.shopId);
 
   if (shop) openShopDetails(shop);
 });
