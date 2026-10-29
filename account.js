@@ -66,8 +66,9 @@ accountForm.addEventListener("submit", async (event) => {
             if (error) throw error;
 
             accountMessage.textContent =
+                accountMessage.textContent =
                 "Check your school inbox for a confirmation link. " +
-                "After confirming, return here to log in.";
+                "If you already have an account, tap Log in below instead.";
         } else {
             const { error } = await db.auth.signInWithPassword({
                 email,
