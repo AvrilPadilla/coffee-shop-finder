@@ -901,3 +901,38 @@ body.modal-open {
     height: 200px;
   }
 }
+
+/* crunch. - Get Directions Button */
+
+.modal-directions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 15px;
+  margin-top: 12px;
+
+  background: transparent;
+  color: #637b5a;
+  border: 2px solid #637b5a;
+  border-radius: 14px;
+
+  font-family: "DM Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+
+  transition: all 0.2s ease;
+}
+
+.modal-directions:hover {
+  background: #edf1e9;
+  color: #526b49;
+  border-color: #526b49;
+}
+
+.modal-directions:focus-visible {
+  outline: 3px solid #d9962b;
+  outline-offset: 3px;
+}

@@ -263,6 +263,17 @@ function openShopDetails(shop) {
       </div>
 
       <button class="modal-save" type="button">♡ Save this spot</button>
+
+      <a
+        class="modal-directions"
+        href="https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(
+          `${shop.lat},${shop.lng}`,
+        )}"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        📍 Get Directions
+      </a>
     </div>
   `;
 
