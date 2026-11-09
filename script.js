@@ -731,13 +731,30 @@ async function loadShops() {
   try {
     const response = await fetch("shops.json");
     const shops = await response.json();
+
     allShops = shops;
+
     updateResults();
     await loadShopRatings();
+
+    // Open a specific shop when arriving from Home
+    const urlParams = new URLSearchParams(window.location.search);
+    const requestedShopId = urlParams.get("shop");
+
+    if (requestedShopId) {
+      const requestedShop = allShops.find(
+        (shop) => shop.id === requestedShopId,
+      );
+
+      if (requestedShop) {
+        openShopDetails(requestedShop);
+      }
+    }
   } catch (error) {
     // If something goes wrong, tell the user and log details for you
     cardContainer.innerHTML =
       "<p>Could not load shops. Check shops.json for typos.</p>";
+
     console.error("Problem loading shops:", error);
   }
 }

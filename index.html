@@ -1,171 +1,161 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <link
-      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600&family=Fraunces:wght@600&display=swap"
-      rel="stylesheet"
-    />
     <meta charset="UTF-8" />
-    <script>
-      try {
-        // Make sure the browser can actually save things before we rely on it
-        localStorage.setItem("crunchTest", "1");
-        localStorage.removeItem("crunchTest");
-
-        if (localStorage.getItem("crunchSeenWelcome") !== "yes") {
-          location.replace("welcome.html");
-        }
-      } catch (error) {
-        // Storage is blocked (some private modes): skip the intro instead of looping
-      }
-    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>crunch. | Explore</title>
-    <link rel="stylesheet" href="style.css" />
+
+    <title>crunch. | Home</title>
+
     <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:wght@600;700&display=swap"
       rel="stylesheet"
-      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
     />
+
+    <link rel="stylesheet" href="style.css" />
+    <script
+      src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"
+      defer
+    ></script>
   </head>
 
-  <body>
-    <!-- The top of the page -->
-    <header>
-      <h1>crunch.</h1>
-      <p>
-        Find a cafe with the wifi, outlets, noise level, and seating you need to
-        get work done.
-      </p>
+  <body class="home-page">
+    <header class="home-header">
+      <div class="home-header-inner">
+        <span class="home-header-spacer"></span>
 
-      <a href="account.html">Student account</a>
-      <a href="saved.html">Saved places</a>
+        <a href="index.html" class="home-logo">crunch.</a>
+
+        <a
+          href="account.html"
+          class="home-profile"
+          aria-label="Student account"
+        >
+          ♙
+        </a>
+      </div>
     </header>
 
-    <main>
-      <section id="filters">
-        <h2>Filters</h2>
-
-        <label class="check">
-          <input type="checkbox" id="filter-wifi" /> Wi-Fi required
-        </label>
-
-        <label
-          >Outlets
-          <select id="filter-outlets">
-            <option value="any">Any</option>
-            <option value="limited">Limited</option>
-            <option value="some">Some</option>
-            <option value="plenty">Plenty</option>
-          </select>
-        </label>
-
-        <label
-          >Noise
-          <select id="filter-noise">
-            <option value="any">Any</option>
-            <option value="quiet">Quiet</option>
-            <option value="moderate">Moderate</option>
-            <option value="loud">Loud</option>
-          </select>
-        </label>
-
-        <label
-          >Seating
-          <select id="filter-seating">
-            <option value="any">Any</option>
-            <option value="small">Small</option>
-            <option value="medium">Medium</option>
-            <option value="large">Large</option>
-          </select>
-        </label>
-
-        <label
-          >Distance from campus
-          <select id="filter-distance">
-            <option value="any">Any distance</option>
-            <option value="1">Within 1 mile</option>
-            <option value="3">Within 3 miles</option>
-            <option value="5">Within 5 miles</option>
-            <option value="10">Within 10 miles</option>
-            <option value="15">Within 15 miles</option>
-          </select>
-        </label>
-      </section>
-
-      <section id="explore-section">
-        <h2>Explore near campus</h2>
-        <p>Discover coffee shops and study spots around your school.</p>
-
-        <!-- Search and sorting -->
-        <div class="explore-tools">
-          <label for="search-shops">Search locations</label>
+    <main class="home-main">
+      <!-- Search -->
+      <div class="home-search-row">
+        <label class="home-search-box">
+          <span aria-hidden="true">⌕</span>
           <input
             type="search"
-            id="search-shops"
-            placeholder="Search coffee shops..."
+            id="home-search"
+            placeholder="Search for cafés, food, events..."
+            aria-label="Search places"
+          />
+        </label>
+
+        <a
+          href="explore.html"
+          class="home-filter-button"
+          aria-label="Open Explore filters"
+        >
+          ☷
+        </a>
+      </div>
+
+      <!-- Distance -->
+      <section class="home-distance">
+        <div class="home-distance-heading">
+          <h2>Distance from campus</h2>
+          <span id="home-distance-value">5 miles</span>
+        </div>
+
+        <div class="home-slider-container">
+          <input
+            type="range"
+            id="home-distance-slider"
+            min="1"
+            max="15"
+            value="5"
+            step="1"
           />
 
-          <label for="sort-shops">Sort by</label>
-          <select id="sort-shops">
-            <option value="closest">Closest first</option>
-            <option value="az">Name: A to Z</option>
-            <option value="rating">Highest Rated</option>
-          </select>
-
-          <div class="results-toolbar">
-            <p id="results-count" role="status">Loading locations...</p>
-
-            <button id="reset-filters" type="button">Reset filters</button>
+          <div class="home-slider-labels">
+            <span>1 mi</span>
+            <span>3 mi</span>
+            <span>5 mi</span>
+            <span>10 mi</span>
+            <span>15 mi</span>
           </div>
         </div>
+      </section>
 
-        <!-- Switch between Map and List -->
-        <div class="view-toggle">
-          <button id="map-button" class="active" type="button">Map</button>
+      <!-- Categories -->
 
-          <button id="list-button" type="button">List</button>
+      <div class="home-categories">
+        <a href="explore.html" class="home-category active">
+          <i data-lucide="laptop"></i>
+          <span>Study</span>
+        </a>
+
+        <a href="explore.html" class="home-category">
+          <i data-lucide="coffee"></i>
+          <span>Food</span>
+        </a>
+
+        <a href="explore.html" class="home-category">
+          <i data-lucide="calendar-days"></i>
+          <span>Events</span>
+        </a>
+
+        <a href="explore.html" class="home-category">
+          <i data-lucide="compass"></i>
+          <span>Activities</span>
+        </a>
+      </div>
+
+      <!-- Popular Now -->
+      <section class="home-discovery-section">
+        <div class="home-section-heading">
+          <h2>Popular now</h2>
+          <a href="explore.html">See all →</a>
         </div>
 
-        <!-- Map view -->
-        <div id="map-view">
-          <div id="map"></div>
+        <div class="home-card-carousel" id="popular-now">
+          <p>Popular places coming soon!</p>
+        </div>
+      </section>
+
+      <!-- Near Campus -->
+      <section class="home-discovery-section">
+        <div class="home-section-heading">
+          <h2>Near your campus</h2>
+          <a href="explore.html">See all →</a>
         </div>
 
-        <!-- List view -->
-        <div id="list-view" class="hidden">
-          <div id="shop-cards"></div>
+        <div class="home-card-carousel" id="near-campus">
+          <p>Nearby places coming soon!</p>
         </div>
       </section>
     </main>
 
-    <!-- Shop details popup -->
-    <div id="shop-modal" class="modal hidden">
-      <div class="modal-content">
-        <button
-          id="close-modal"
-          class="close-modal"
-          type="button"
-          aria-label="Close details"
-        >
-          &times;
-        </button>
+    <!-- Bottom Navigation -->
+    <nav class="home-bottom-nav" aria-label="Main navigation">
+      <a href="index.html" class="active">
+        <span>⌂</span>
+        Home
+      </a>
 
-        <div id="modal-details"></div>
-      </div>
-    </div>
+      <a href="explore.html">
+        <span>◎</span>
+        Explore
+      </a>
 
-    <footer>
-      <p>Built by Avril Padilla at Saddleback College</p>
+      <a href="saved.html">
+        <span>♡</span>
+        Saved
+      </a>
+    </nav>
 
-      <p>
-        <a href="privacy.html">Privacy Policy</a>
-      </p>
-    </footer>
-
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="supabase-client.js"></script>
-    <script src="script.js" defer></script>
-    <script src="saved.js" defer></script>
+    <script src="home.js" defer></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        lucide.createIcons();
+      });
+    </script>
   </body>
 </html>
