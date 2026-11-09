@@ -467,9 +467,11 @@ body.modal-open {
 /* Saved places */
 
 .saved-page {
-  max-width: 700px;
-  margin: 40px auto;
-  padding: 20px;
+  min-height: 100vh;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background: #faf5ee;
 }
 
 .saved-page h1 {
@@ -1776,13 +1778,6 @@ body.modal-open {
 
 /* Desktop and larger tablets */
 @media (min-width: 768px) {
-  .home-page .home-header-inner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 24px;
-  }
-
   /* Hide the mobile spacer */
   .home-page .home-header-spacer {
     display: none;
@@ -1923,55 +1918,6 @@ body.modal-open {
 }
 
 /* =========================================
-   crunch. - Explore Responsive Header
-   ========================================= */
-
-.explore-page {
-  background: #faf5ee;
-  min-height: 100vh;
-}
-
-.explore-page .home-header-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-}
-
-.explore-page .home-header-spacer {
-  flex: 1;
-}
-
-.explore-page .home-logo {
-  font-family: "Fraunces", serif;
-  font-size: 27px;
-  font-weight: 700;
-  color: #637b5a;
-  text-decoration: none;
-}
-
-.explore-page .home-profile {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.explore-page .home-profile svg {
-  width: 23px;
-  height: 23px;
-}
-
-@media (min-width: 768px) {
-  .explore-page .home-header-spacer {
-    display: none;
-  }
-
-  .explore-page .home-desktop-nav {
-    margin-left: auto;
-  }
-}
-
-/* =========================================
    crunch. - Brown & Cream Navigation
    ========================================= */
 
@@ -2036,125 +1982,6 @@ body.modal-open {
 }
 
 /* =========================================
-   crunch. - Saved Header Layout Fix
-   ========================================= */
-
-/* Reset old Saved page width restrictions */
-html,
-body.saved-page {
-  margin: 0;
-  width: 100%;
-}
-
-body.saved-page {
-  display: block;
-  max-width: none;
-  min-height: 100vh;
-  padding: 0;
-  background: #faf5ee;
-}
-
-/* Full-width chocolate brown header */
-body.saved-page > header.home-header {
-  display: block;
-  width: 100%;
-  max-width: none;
-  margin: 0;
-  padding: 0;
-  background: #884a28;
-  box-sizing: border-box;
-}
-
-/* Keep header content aligned horizontally */
-.saved-page .home-header-inner {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  align-items: center;
-  justify-content: space-between;
-  width: min(100% - 40px, 1220px);
-  max-width: 1220px;
-  margin: 0 auto;
-  padding: 22px 0;
-  gap: 24px;
-  box-sizing: border-box;
-}
-
-/* Cream logo */
-.saved-page .home-logo {
-  flex: 0 0 auto;
-  margin: 0;
-  color: #faf5ee;
-  white-space: nowrap;
-}
-
-/* Profile icon stays on the same row */
-.saved-page .home-profile {
-  display: flex;
-  flex: 0 0 auto;
-  align-items: center;
-  justify-content: center;
-  margin: 0;
-  padding: 0;
-  color: #faf5ee;
-  background: transparent;
-  border: none;
-  box-shadow: none;
-}
-
-.saved-page .home-profile svg {
-  width: 24px;
-  height: 24px;
-  stroke: #faf5ee;
-}
-
-/* Desktop */
-@media (min-width: 768px) {
-  .saved-page .home-header-spacer {
-    display: none;
-  }
-
-  .saved-page .home-desktop-nav {
-    display: flex;
-    flex: 0 0 auto;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    align-items: center;
-    gap: 32px;
-    margin-left: auto;
-  }
-
-  .saved-page .home-bottom-nav {
-    display: none;
-  }
-}
-
-/* Mobile */
-@media (max-width: 767px) {
-  .saved-page .home-header-inner {
-    gap: 12px;
-    padding: 16px 0;
-  }
-
-  .saved-page .home-header-spacer {
-    display: block;
-    flex: 1;
-  }
-
-  .saved-page .home-desktop-nav {
-    display: none;
-  }
-
-  .saved-page .home-bottom-nav {
-    display: flex;
-  }
-
-  .saved-page .saved-main {
-    padding-bottom: 90px;
-  }
-}
-
-/* =========================================
    crunch. - Consistent Header Positioning
    ========================================= */
 
@@ -2196,7 +2023,7 @@ body.saved-page > .home-header {
   padding: 0;
   font-family: "Fraunces", serif;
   font-size: 27px;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 1.2;
   color: #faf5ee;
   text-decoration: none;
@@ -2271,19 +2098,4 @@ body.saved-page > .home-header {
   .saved-page .home-desktop-nav {
     display: none;
   }
-}
-/* =========================================
-   crunch. - Consistent Logo Typography
-   ========================================= */
-
-.home-page .home-logo,
-.explore-page .home-logo,
-.saved-page .home-logo {
-  font-family: "Fraunces", serif;
-  font-size: 27px;
-  font-weight: 600;
-  font-style: normal;
-  line-height: 1.2;
-  letter-spacing: 0;
-  text-shadow: none;
 }
