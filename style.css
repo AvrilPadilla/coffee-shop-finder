@@ -1771,26 +1771,8 @@ body.modal-open {
    crunch. - Responsive Website Navigation
    ========================================= */
 
-/* Desktop navigation hidden by default */
-.home-page .home-desktop-nav {
-  display: none;
-}
-
 /* Desktop and larger tablets */
 @media (min-width: 768px) {
-  /* Hide the mobile spacer */
-  .home-page .home-header-spacer {
-    display: none;
-  }
-
-  /* Show desktop navigation */
-  .home-page .home-desktop-nav {
-    display: flex;
-    align-items: center;
-    gap: 32px;
-    margin-left: auto;
-  }
-
   .home-page .home-desktop-nav a {
     color: #80776c;
     text-decoration: none;
@@ -1821,25 +1803,9 @@ body.modal-open {
   }
 }
 
-/* Mobile phones */
-@media (max-width: 767px) {
-  .home-page .home-desktop-nav {
-    display: none;
-  }
-
-  .home-page .home-bottom-nav {
-    display: flex;
-  }
-}
-
 /* =========================================
    crunch. - Shared Responsive Navigation
    ========================================= */
-
-.explore-page .home-desktop-nav,
-.saved-page .home-desktop-nav {
-  display: none;
-}
 
 .explore-page .home-bottom-nav,
 .saved-page .home-bottom-nav {
@@ -1847,14 +1813,6 @@ body.modal-open {
 }
 
 @media (min-width: 768px) {
-  .explore-page .home-desktop-nav,
-  .saved-page .home-desktop-nav {
-    display: flex;
-    align-items: center;
-    gap: 32px;
-    margin-left: auto;
-  }
-
   .explore-page .home-desktop-nav a,
   .saved-page .home-desktop-nav a {
     color: #80776c;
@@ -1921,20 +1879,6 @@ body.modal-open {
    crunch. - Brown & Cream Navigation
    ========================================= */
 
-/* Brown header across all three pages */
-.home-page .home-header,
-.explore-page .home-header,
-.saved-page .home-header {
-  background: #884a28;
-}
-
-/* Cream crunch. logo */
-.home-page .home-logo,
-.explore-page .home-logo,
-.saved-page .home-logo {
-  color: #faf5ee;
-}
-
 /* Cream desktop navigation links */
 .home-page .home-desktop-nav a,
 .explore-page .home-desktop-nav a,
@@ -1957,28 +1901,11 @@ body.modal-open {
   color: #e6d9c8;
 }
 
-/* Cream account icon */
-.home-page .home-profile,
-.explore-page .home-profile,
-.saved-page .home-profile {
-  color: #faf5ee;
-}
-
-/* Remove old account button backgrounds */
-.home-page .home-profile,
-.explore-page .home-profile,
-.saved-page .home-profile {
-  background: transparent;
-  border: none;
-  box-shadow: none;
-}
-
 /* Cream icon strokes */
 .home-page .home-profile svg,
 .explore-page .home-profile svg,
 .saved-page .home-profile svg {
   color: #faf5ee;
-  stroke: #faf5ee;
 }
 
 /* =========================================
