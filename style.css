@@ -13,7 +13,11 @@
 
 body {
   margin: 0;
-  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-family:
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    sans-serif;
   line-height: 1.5;
   color: var(--text);
   background: var(--bg);
@@ -93,7 +97,11 @@ h3 {
 
 body {
   background:
-    radial-gradient(circle at 20% 0%, rgba(255, 255, 255, 0.8), transparent 45%),
+    radial-gradient(
+      circle at 20% 0%,
+      rgba(255, 255, 255, 0.8),
+      transparent 45%
+    ),
     linear-gradient(160deg, #fbf3e6 0%, #f3e2cc 100%);
   background-attachment: fixed;
 }
@@ -170,7 +178,6 @@ select {
   background: #7f9bb0;
 }
 
-
 /* Explore Map / List toggle */
 
 .view-toggle {
@@ -208,7 +215,6 @@ select {
   border-radius: 12px;
   overflow: hidden;
 }
-
 
 /* Updated shop cards */
 
@@ -286,7 +292,6 @@ select {
   cursor: pointer;
   line-height: 1;
 }
-
 
 /* Shop details popup */
 
@@ -374,7 +379,6 @@ body.modal-open {
   overflow: hidden;
 }
 
-
 /* crunch. student account */
 
 .account-page {
@@ -460,7 +464,6 @@ body.modal-open {
   color: #637b5a;
 }
 
-
 /* Saved places */
 
 .saved-page {
@@ -491,13 +494,14 @@ body.modal-open {
   display: none !important;
 }
 
-
 /* Saved heart buttons */
 
 .save-button,
 .modal-save {
   cursor: pointer;
-  transition: color 0.2s ease, transform 0.2s ease;
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
 }
 
 .heart-icon {
@@ -538,7 +542,6 @@ body.modal-open {
   color: #493e32;
   cursor: pointer;
 }
-
 
 /* Privacy Policy page */
 
@@ -665,178 +668,236 @@ body.modal-open {
   }
 }
 
-
 /* crunch. - Enhanced Coffee Shop Details Popup */
 
 .modal {
-    padding: 20px;
-    backdrop-filter: blur(7px);
-    -webkit-backdrop-filter: blur(7px);
+  padding: 20px;
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
 }
 
 .modal-content {
-    max-width: 560px;
-    max-height: 88vh;
-    border-radius: 24px;
-    background: #fffdf8;
-    border: 1px solid rgba(255, 255, 255, 0.8);
-    box-shadow: 0 24px 70px rgba(59, 42, 34, 0.25);
+  max-width: 560px;
+  max-height: 88vh;
+  border-radius: 24px;
+  background: #fffdf8;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 24px 70px rgba(59, 42, 34, 0.25);
 }
 
 .modal-image {
-    display: block;
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
+  display: block;
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
 }
 
 .modal-body {
-    padding: 28px;
+  padding: 28px;
 }
 
 .modal-body h2 {
-    font-family: "Fraunces", Georgia, serif;
-    font-size: 30px;
-    color: #493e32;
-    margin-bottom: 8px;
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 30px;
+  color: #493e32;
+  margin-bottom: 8px;
 }
 
 .modal-body h3 {
-    font-family: "Fraunces", Georgia, serif;
-    color: #493e32;
-    margin-top: 26px;
-    margin-bottom: 12px;
+  font-family: "Fraunces", Georgia, serif;
+  color: #493e32;
+  margin-top: 26px;
+  margin-bottom: 12px;
 }
 
 .modal-distance {
-    color: #637b5a;
-    font-weight: 600;
-    margin: 8px 0;
+  color: #637b5a;
+  font-weight: 600;
+  margin: 8px 0;
 }
 
 .modal-body .address {
-    color: #80776c;
-    font-size: 14px;
+  color: #80776c;
+  font-size: 14px;
 }
 
 .modal-body .shop-tags {
-    margin-top: 22px;
-    margin-bottom: 22px;
-    gap: 10px;
+  margin-top: 22px;
+  margin-bottom: 22px;
+  gap: 10px;
 }
 
 .modal-body .shop-tag {
-    background: #edf1e9;
-    color: #526b49;
-    border-radius: 12px;
-    padding: 10px 14px;
-    font-size: 13px;
-    font-weight: 600;
+  background: #edf1e9;
+  color: #526b49;
+  border-radius: 12px;
+  padding: 10px 14px;
+  font-size: 13px;
+  font-weight: 600;
 }
 
 .modal-description {
-    color: #655c51;
-    font-size: 15px;
-    line-height: 1.8;
+  color: #655c51;
+  font-size: 15px;
+  line-height: 1.8;
 }
 
 .modal-reviews {
-    background: #f5f1e9;
-    border: 1px solid #e6d9c8;
-    border-radius: 16px;
-    padding: 18px;
-    line-height: 1.6;
+  background: #f5f1e9;
+  border: 1px solid #e6d9c8;
+  border-radius: 16px;
+  padding: 18px;
+  line-height: 1.6;
 }
 
 .close-modal {
-    position: sticky;
-    top: 12px;
-    float: right;
-    margin: 12px 12px -48px 0;
-    width: 40px;
-    height: 40px;
-    background: rgba(255, 253, 248, 0.95);
-    box-shadow: 0 3px 12px rgba(59, 42, 34, 0.12);
-    transition: background 0.2s ease;
+  position: sticky;
+  top: 12px;
+  float: right;
+  margin: 12px 12px -48px 0;
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 253, 248, 0.95);
+  box-shadow: 0 3px 12px rgba(59, 42, 34, 0.12);
+  transition: background 0.2s ease;
 }
 
 .close-modal:hover {
-    background: #edf1e9;
+  background: #edf1e9;
 }
 
 .modal-save {
-    background: #637b5a;
-    border-radius: 14px;
-    font-family: "DM Sans", sans-serif;
-    font-weight: 600;
-    padding: 15px;
+  background: #637b5a;
+  border-radius: 14px;
+  font-family: "DM Sans", sans-serif;
+  font-weight: 600;
+  padding: 15px;
 }
 
 .modal-save:hover {
-    background: #526b49;
+  background: #526b49;
 }
 
 @media (max-width: 600px) {
-    .modal {
-        padding: 12px;
-    }
+  .modal {
+    padding: 12px;
+  }
 
-    .modal-content {
-        max-height: 90vh;
-        border-radius: 20px;
-    }
+  .modal-content {
+    max-height: 90vh;
+    border-radius: 20px;
+  }
 
-    .modal-image {
-        height: 200px;
-    }
+  .modal-image {
+    height: 200px;
+  }
 
-    .modal-body {
-        padding: 20px;
-    }
+  .modal-body {
+    padding: 20px;
+  }
 
-    .modal-body h2 {
-        font-size: 25px;
-    }
+  .modal-body h2 {
+    font-size: 25px;
+  }
 }
-
 
 /* crunch. - Coffee Shop Amenities */
 
 .modal-amenities {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 12px;
-    margin: 16px 0 26px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin: 16px 0 26px;
 }
 
 .amenity-card {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    padding: 18px;
-    border-radius: 16px;
-    background: #f4f1e9;
-    border: 1px solid #e6e0d5;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 18px;
+  border-radius: 16px;
+  background: #f4f1e9;
+  border: 1px solid #e6e0d5;
 }
 
 .amenity-icon {
-    font-size: 23px;
-    line-height: 1.3;
+  font-size: 23px;
+  line-height: 1.3;
 }
 
 .amenity-label {
-    font-size: 13px;
-    color: #80776c;
+  font-size: 13px;
+  color: #80776c;
 }
 
 .amenity-card strong {
-    font-size: 15px;
-    color: #493e32;
-    font-weight: 600;
+  font-size: 15px;
+  color: #493e32;
+  font-weight: 600;
 }
 
 @media (max-width: 360px) {
-    .modal-amenities {
-        grid-template-columns: 1fr;
-    }
+  .modal-amenities {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* crunch. - Coffee Shop Photo Gallery */
+
+.modal-gallery {
+  position: relative;
+  background: #eeeade;
+}
+
+.modal-gallery .modal-image {
+  display: block;
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+}
+
+.gallery-controls {
+  position: absolute;
+  bottom: 14px;
+  left: 14px;
+  right: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.gallery-controls button {
+  width: 38px;
+  height: 38px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 253, 248, 0.95);
+  color: #493e32;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.gallery-controls button:hover:not(:disabled) {
+  background: #edf1e9;
+}
+
+.gallery-controls button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+#gallery-counter {
+  padding: 7px 13px;
+  border-radius: 20px;
+  background: rgba(59, 42, 34, 0.75);
+  color: white;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+@media (max-width: 600px) {
+  .modal-gallery .modal-image {
+    height: 200px;
+  }
 }
