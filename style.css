@@ -1118,3 +1118,36 @@ body.modal-open {
   color: #637b5a;
   font-size: 13px;
 }
+
+/* crunch. - Coffee Shop Card Ratings */
+
+.card-rating {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 7px 0;
+  color: #80776c;
+  font-family: "DM Sans", sans-serif;
+  font-size: 13px;
+}
+
+.card-rating-star {
+  color: #d9962b;
+  font-size: 18px;
+}
+
+.card-rating strong {
+  color: #493e32;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.card-rating-count {
+  color: #80776c;
+  font-size: 12px;
+}
+
+.rating-placeholder {
+  color: #80776c;
+  font-size: 12px;
+}

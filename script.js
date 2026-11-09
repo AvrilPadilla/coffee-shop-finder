@@ -1,6 +1,7 @@
 // Find the empty box on the page where our cards will go
 const cardContainer = document.getElementById("shop-cards");
 let allShops = [];
+let shopRatings = {};
 let currentShop = null;
 
 const SCHOOLS = {
@@ -80,6 +81,11 @@ function makeCard(shop) {
         <div class="shop-heading">
           <div>
             <h3>${shop.name}</h3>
+
+            <div class="card-rating" data-rating-shop="${shop.id}">
+              <span class="rating-placeholder">No reviews yet</span>
+            </div>
+
             <p class="shop-distance">
               📍 ${distance} miles from campus
             </p>
@@ -129,6 +135,76 @@ function makePin(type) {
   });
 }
 
+async function loadShopRatings() {
+  const student = await getVerifiedStudent();
+
+  // Only verified students can read reviews
+  if (!student) {
+    shopRatings = {};
+    updateCardRatings();
+    return;
+  }
+
+  const { data, error } = await db.from("reviews").select("shop_id, rating");
+
+  if (error) {
+    console.error("Could not load shop ratings:", error);
+    return;
+  }
+
+  const totals = {};
+
+  data.forEach((review) => {
+    if (!totals[review.shop_id]) {
+      totals[review.shop_id] = {
+        total: 0,
+        count: 0,
+      };
+    }
+
+    totals[review.shop_id].total += review.rating;
+    totals[review.shop_id].count++;
+  });
+
+  shopRatings = {};
+
+  Object.keys(totals).forEach((shopId) => {
+    shopRatings[shopId] = {
+      average: totals[shopId].total / totals[shopId].count,
+      count: totals[shopId].count,
+    };
+  });
+
+  updateCardRatings();
+}
+
+function updateCardRatings() {
+  document.querySelectorAll(".card-rating").forEach((element) => {
+    const shopId = element.dataset.ratingShop;
+    const rating = shopRatings[shopId];
+
+    if (!rating) {
+      element.textContent = "No reviews yet";
+      return;
+    }
+
+    element.replaceChildren();
+
+    const star = document.createElement("span");
+    star.className = "card-rating-star";
+    star.textContent = "★";
+
+    const score = document.createElement("strong");
+    score.textContent = rating.average.toFixed(1);
+
+    const count = document.createElement("span");
+    count.className = "card-rating-count";
+    count.textContent = `(${rating.count} ${rating.count === 1 ? "review" : "reviews"})`;
+
+    element.append(star, score, count);
+  });
+}
+
 // Put a list of shops onto the page
 
 function showShops(shops) {
@@ -142,6 +218,8 @@ function showShops(shops) {
   if (typeof updateSavedHearts === "function") {
     updateSavedHearts();
   }
+
+  updateCardRatings();
 
   markerLayer.clearLayers();
 
@@ -555,6 +633,7 @@ async function loadReviewForm(shopId) {
     if (!container.isConnected || currentShop?.id !== shopId) return;
 
     await loadShopReviews(shopId);
+    await loadShopRatings();
     await loadReviewForm(shopId);
   });
 
@@ -644,6 +723,7 @@ async function loadShops() {
     const shops = await response.json();
     allShops = shops;
     updateResults();
+    await loadShopRatings();
   } catch (error) {
     // If something goes wrong, tell the user and log details for you
     cardContainer.innerHTML =
