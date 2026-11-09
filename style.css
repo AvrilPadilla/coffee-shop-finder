@@ -1764,3 +1764,75 @@ body.modal-open {
   font-size: 11px;
   font-weight: 600;
 }
+
+/* =========================================
+   crunch. - Responsive Website Navigation
+   ========================================= */
+
+/* Desktop navigation hidden by default */
+.home-page .home-desktop-nav {
+  display: none;
+}
+
+/* Desktop and larger tablets */
+@media (min-width: 768px) {
+  .home-page .home-header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+
+  /* Hide the mobile spacer */
+  .home-page .home-header-spacer {
+    display: none;
+  }
+
+  /* Show desktop navigation */
+  .home-page .home-desktop-nav {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    margin-left: auto;
+  }
+
+  .home-page .home-desktop-nav a {
+    color: #80776c;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 8px 0;
+    border-bottom: 2px solid transparent;
+    transition: color 0.2s ease;
+  }
+
+  .home-page .home-desktop-nav a:hover {
+    color: #637b5a;
+  }
+
+  .home-page .home-desktop-nav a.active {
+    color: #637b5a;
+    border-bottom-color: #637b5a;
+  }
+
+  /* Hide app-style bottom navigation */
+  .home-page .home-bottom-nav {
+    display: none;
+  }
+
+  /* Remove unnecessary bottom spacing */
+  .home-page .home-main {
+    padding-bottom: 40px;
+  }
+}
+
+/* Mobile phones */
+@media (max-width: 767px) {
+  .home-page .home-desktop-nav {
+    display: none;
+  }
+
+  .home-page .home-bottom-nav {
+    display: flex;
+  }
+}
