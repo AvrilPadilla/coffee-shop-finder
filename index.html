@@ -1,168 +1,171 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600&family=Fraunces:wght@600&display=swap"
+      rel="stylesheet"
+    />
+    <meta charset="UTF-8" />
+    <script>
+      try {
+        // Make sure the browser can actually save things before we rely on it
+        localStorage.setItem("crunchTest", "1");
+        localStorage.removeItem("crunchTest");
 
-<head>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600&family=Fraunces:wght@600&display=swap"
-    rel="stylesheet">
-  <meta charset="UTF-8">
-  <script>
-    try {
-      // Make sure the browser can actually save things before we rely on it
-      localStorage.setItem("crunchTest", "1");
-      localStorage.removeItem("crunchTest");
-
-      if (localStorage.getItem("crunchSeenWelcome") !== "yes") {
-        location.replace("welcome.html");
+        if (localStorage.getItem("crunchSeenWelcome") !== "yes") {
+          location.replace("welcome.html");
+        }
+      } catch (error) {
+        // Storage is blocked (some private modes): skip the intro instead of looping
       }
-    } catch (error) {
-      // Storage is blocked (some private modes): skip the intro instead of looping
-    }
-  </script>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>crunch. | Explore</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
-</head>
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>crunch. | Explore</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
+  </head>
 
-<body>
+  <body>
+    <!-- The top of the page -->
+    <header>
+      <h1>crunch.</h1>
+      <p>
+        Find a cafe with the wifi, outlets, noise level, and seating you need to
+        get work done.
+      </p>
 
-  <!-- The top of the page -->
-  <header>
-    <h1>crunch.</h1>
-    <p>Find a cafe with the wifi, outlets, noise level, and seating you need to get work done.</p>
+      <a href="account.html">Student account</a>
+      <a href="saved.html">Saved places</a>
+    </header>
 
-    <a href="account.html">Student account</a>
-    <a href="saved.html">Saved places</a>
-  </header>
+    <main>
+      <section id="filters">
+        <h2>Filters</h2>
 
-  <main>
-    <section id="filters">
-      <h2>Filters</h2>
+        <label class="check">
+          <input type="checkbox" id="filter-wifi" /> Wi-Fi required
+        </label>
 
-      <label class="check">
-        <input type="checkbox" id="filter-wifi"> Wi-Fi required
-      </label>
+        <label
+          >Outlets
+          <select id="filter-outlets">
+            <option value="any">Any</option>
+            <option value="limited">Limited</option>
+            <option value="some">Some</option>
+            <option value="plenty">Plenty</option>
+          </select>
+        </label>
 
-      <label>Outlets
-        <select id="filter-outlets">
-          <option value="any">Any</option>
-          <option value="limited">Limited</option>
-          <option value="some">Some</option>
-          <option value="plenty">Plenty</option>
-        </select>
-      </label>
+        <label
+          >Noise
+          <select id="filter-noise">
+            <option value="any">Any</option>
+            <option value="quiet">Quiet</option>
+            <option value="moderate">Moderate</option>
+            <option value="loud">Loud</option>
+          </select>
+        </label>
 
-      <label>Noise
-        <select id="filter-noise">
-          <option value="any">Any</option>
-          <option value="quiet">Quiet</option>
-          <option value="moderate">Moderate</option>
-          <option value="loud">Loud</option>
-        </select>
-      </label>
+        <label
+          >Seating
+          <select id="filter-seating">
+            <option value="any">Any</option>
+            <option value="small">Small</option>
+            <option value="medium">Medium</option>
+            <option value="large">Large</option>
+          </select>
+        </label>
 
-      <label>Seating
-        <select id="filter-seating">
-          <option value="any">Any</option>
-          <option value="small">Small</option>
-          <option value="medium">Medium</option>
-          <option value="large">Large</option>
-        </select>
-      </label>
+        <label
+          >Distance from campus
+          <select id="filter-distance">
+            <option value="any">Any distance</option>
+            <option value="1">Within 1 mile</option>
+            <option value="3">Within 3 miles</option>
+            <option value="5">Within 5 miles</option>
+            <option value="10">Within 10 miles</option>
+            <option value="15">Within 15 miles</option>
+          </select>
+        </label>
+      </section>
 
-      <label>Distance from campus
-        <select id="filter-distance">
-          <option value="any">Any distance</option>
-          <option value="1">Within 1 mile</option>
-          <option value="3">Within 3 miles</option>
-          <option value="5">Within 5 miles</option>
-          <option value="10">Within 10 miles</option>
-          <option value="15">Within 15 miles</option>
-        </select>
-      </label>
+      <section id="explore-section">
+        <h2>Explore near campus</h2>
+        <p>Discover coffee shops and study spots around your school.</p>
 
-    </section>
+        <!-- Search and sorting -->
+        <div class="explore-tools">
+          <label for="search-shops">Search locations</label>
+          <input
+            type="search"
+            id="search-shops"
+            placeholder="Search coffee shops..."
+          />
 
-    <section id="explore-section">
-      <h2>Explore near campus</h2>
-      <p>Discover coffee shops and study spots around your school.</p>
+          <label for="sort-shops">Sort by</label>
+          <select id="sort-shops">
+            <option value="closest">Closest first</option>
+            <option value="az">Name: A to Z</option>
+            <option value="rating">Highest Rated</option>
+          </select>
 
-      <!-- Search and sorting -->
-      <div class="explore-tools">
+          <div class="results-toolbar">
+            <p id="results-count" role="status">Loading locations...</p>
 
-        <label for="search-shops">Search locations</label>
-        <input type="search" id="search-shops" placeholder="Search coffee shops...">
-
-        <label for="sort-shops">Sort by</label>
-        <select id="sort-shops">
-          <option value="closest">Closest first</option>
-          <option value="az">Name: A to Z</option>
-        </select>
-
-        <div class="results-toolbar">
-          <p id="results-count" role="status">
-            Loading locations...
-          </p>
-
-          <button id="reset-filters" type="button">
-            Reset filters
-          </button>
+            <button id="reset-filters" type="button">Reset filters</button>
+          </div>
         </div>
 
-      </div>
+        <!-- Switch between Map and List -->
+        <div class="view-toggle">
+          <button id="map-button" class="active" type="button">Map</button>
 
-      <!-- Switch between Map and List -->
-      <div class="view-toggle">
-        <button id="map-button" class="active" type="button">
-          Map
+          <button id="list-button" type="button">List</button>
+        </div>
+
+        <!-- Map view -->
+        <div id="map-view">
+          <div id="map"></div>
+        </div>
+
+        <!-- List view -->
+        <div id="list-view" class="hidden">
+          <div id="shop-cards"></div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Shop details popup -->
+    <div id="shop-modal" class="modal hidden">
+      <div class="modal-content">
+        <button
+          id="close-modal"
+          class="close-modal"
+          type="button"
+          aria-label="Close details"
+        >
+          &times;
         </button>
 
-        <button id="list-button" type="button">
-          List
-        </button>
+        <div id="modal-details"></div>
       </div>
-
-      <!-- Map view -->
-      <div id="map-view">
-        <div id="map"></div>
-      </div>
-
-      <!-- List view -->
-      <div id="list-view" class="hidden">
-        <div id="shop-cards"></div>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- Shop details popup -->
-  <div id="shop-modal" class="modal hidden">
-
-    <div class="modal-content">
-
-      <button id="close-modal" class="close-modal" type="button" aria-label="Close details">
-        &times;
-      </button>
-
-      <div id="modal-details"></div>
-
     </div>
 
-  </div>
+    <footer>
+      <p>Built by Avril Padilla at Saddleback College</p>
 
-  <footer>
-    <p>Built by Avril Padilla at Saddleback College</p>
+      <p>
+        <a href="privacy.html">Privacy Policy</a>
+      </p>
+    </footer>
 
-    <p>
-      <a href="privacy.html">Privacy Policy</a>
-    </p>
-  </footer>
-
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="supabase-client.js"></script>
-  <script src="script.js" defer></script>
-  <script src="saved.js" defer></script>
-</body>
-
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-client.js"></script>
+    <script src="script.js" defer></script>
+    <script src="saved.js" defer></script>
+  </body>
 </html>

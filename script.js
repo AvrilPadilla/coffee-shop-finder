@@ -178,6 +178,9 @@ async function loadShopRatings() {
   });
 
   updateCardRatings();
+  if (sortSelect.value === "rating") {
+    updateResults();
+  }
 }
 
 function updateCardRatings() {
@@ -816,8 +819,30 @@ function updateResults() {
   const filteredShops = allShops.filter(matchesFilters);
 
   if (sortSelect.value === "az") {
+    // Sort alphabetically
     filteredShops.sort((a, b) => a.name.localeCompare(b.name));
+  } else if (sortSelect.value === "rating" && ratingsVerified) {
+    // Sort from highest to lowest rating
+    filteredShops.sort((a, b) => {
+      const ratingA = shopRatings[a.id]?.average ?? -1;
+      const ratingB = shopRatings[b.id]?.average ?? -1;
+
+      if (ratingA !== ratingB) {
+        return ratingB - ratingA;
+      }
+
+      // If ratings match, prioritize more reviews
+      const countA = shopRatings[a.id]?.count ?? 0;
+      const countB = shopRatings[b.id]?.count ?? 0;
+
+      if (countA !== countB) {
+        return countB - countA;
+      }
+
+      return a.name.localeCompare(b.name);
+    });
   } else {
+    // Default: closest to campus
     filteredShops.sort((a, b) => {
       const distanceA = getDistance(school.lat, school.lng, a.lat, a.lng);
 
