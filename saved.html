@@ -1,37 +1,87 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Saved Places | crunch.</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600&family=Fraunces:wght@600&display=swap"
-        rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600&family=Fraunces:wght@600&display=swap"
+      rel="stylesheet"
+    />
 
-    <link rel="stylesheet" href="style.css">
-</head>
+    <link rel="stylesheet" href="style.css" />
 
-<body>
+    <!-- Lucide Icons -->
+    <script
+      src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"
+      defer
+    ></script>
+  </head>
 
-    <main class="saved-page">
+  <body class="saved-page">
+  <header class="home-header">
+    <div class="home-header-inner">
+      <span class="home-header-spacer"></span>
 
-        <h1>crunch.</h1>
-        <h2>Your saved places</h2>
+      <a href="index.html" class="home-logo">crunch.</a>
 
-        <p id="saved-message" role="status"></p>
+      <nav class="home-desktop-nav" aria-label="Desktop navigation">
+        <a href="index.html">Home</a>
+        <a href="explore.html">Explore</a>
+        <a href="saved.html" class="active" aria-current="page">Saved</a>
+      </nav>
 
-        <div id="saved-list"></div>
+      <a href="account.html" class="home-profile" aria-label="Student account">
+        <i data-lucide="circle-user-round"></i>
+      </a>
+    </div>
+  </header>
 
-        <a href="index.html">Back to Explore</a>
+  <main class="saved-main">
 
+    <!-- Saved Places Content -->
+    <main class="saved-main">
+      <h2>Your saved places</h2>
+
+      <p id="saved-message" role="status"></p>
+
+      <div id="saved-list"></div>
+
+      <a href="explore.html">Back to Explore</a>
     </main>
 
+    <!-- Mobile Bottom Navigation -->
+    <nav class="home-bottom-nav" aria-label="Main navigation">
+      <a href="index.html">
+        <i data-lucide="house"></i>
+        <span>Home</span>
+      </a>
+
+      <a href="explore.html">
+        <i data-lucide="map"></i>
+        <span>Explore</span>
+      </a>
+
+      <a href="saved.html" class="active" aria-current="page">
+        <i data-lucide="heart"></i>
+        <span>Saved</span>
+      </a>
+    </nav>
+
+    <!-- Supabase -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="supabase-client.js"></script>
     <script src="saved-page.js"></script>
 
-</body>
-
+    <!-- Initialize Icons -->
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        if (window.lucide) {
+          lucide.createIcons();
+        }
+      });
+    </script>
+  </body>
 </html>

@@ -26,19 +26,36 @@
       rel="stylesheet"
       href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
     />
+    <script
+      src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"
+      defer
+    ></script>
   </head>
 
-  <body>
+  <body class="explore-page">
     <!-- The top of the page -->
-    <header>
-      <h1>crunch.</h1>
-      <p>
-        Find a cafe with the wifi, outlets, noise level, and seating you need to
-        get work done.
-      </p>
 
-      <a href="account.html">Student account</a>
-      <a href="saved.html">Saved places</a>
+    <!-- crunch. Responsive Header -->
+    <header class="home-header">
+      <div class="home-header-inner">
+        <span class="home-header-spacer"></span>
+
+        <a href="index.html" class="home-logo">crunch.</a>
+
+        <nav class="home-desktop-nav" aria-label="Desktop navigation">
+          <a href="index.html">Home</a>
+          <a href="explore.html">Explore</a>
+          <a href="saved.html">Saved</a>
+        </nav>
+
+        <a
+          href="account.html"
+          class="home-profile"
+          aria-label="Student account"
+        >
+          <i data-lucide="circle-user-round"></i>
+        </a>
+      </div>
     </header>
 
     <main>
@@ -162,10 +179,35 @@
       </p>
     </footer>
 
+    <!-- Mobile Bottom Navigation -->
+    <nav class="home-bottom-nav" aria-label="Main navigation">
+      <a href="index.html">
+        <i data-lucide="house"></i>
+        <span>Home</span>
+      </a>
+
+      <a href="explore.html" class="active" aria-current="page">
+        <i data-lucide="map"></i>
+        <span>Explore</span>
+      </a>
+
+      <a href="saved.html">
+        <i data-lucide="heart"></i>
+        <span>Saved</span>
+      </a>
+    </nav>
+
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="supabase-client.js"></script>
     <script src="script.js" defer></script>
     <script src="saved.js" defer></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        if (window.lucide) {
+          lucide.createIcons();
+        }
+      });
+    </script>
   </body>
 </html>
