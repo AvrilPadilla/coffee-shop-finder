@@ -2,6 +2,7 @@
 const cardContainer = document.getElementById("shop-cards");
 let allShops = [];
 let shopRatings = {};
+let ratingsVerified = false;
 let currentShop = null;
 
 const SCHOOLS = {
@@ -83,7 +84,7 @@ function makeCard(shop) {
             <h3>${shop.name}</h3>
 
             <div class="card-rating" data-rating-shop="${shop.id}">
-              <span class="rating-placeholder">No reviews yet</span>
+              <span class="rating-placeholder">Sign in to see ratings</span>
             </div>
 
             <p class="shop-distance">
@@ -137,6 +138,7 @@ function makePin(type) {
 
 async function loadShopRatings() {
   const student = await getVerifiedStudent();
+  ratingsVerified = Boolean(student);
 
   // Only verified students can read reviews
   if (!student) {
@@ -185,6 +187,11 @@ function updateCardRatings() {
 
     if (!rating) {
       element.textContent = "No reviews yet";
+
+      if (!ratingsVerified) {
+        element.textContent = "Sign in to see ratings";
+      }
+
       return;
     }
 
