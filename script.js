@@ -282,7 +282,7 @@ async function loadShops() {
     const response = await fetch("shops.json");
     const shops = await response.json();
     allShops = shops;
-    showShops(shops);
+    updateResults();
   } catch (error) {
     // If something goes wrong, tell the user and log details for you
     cardContainer.innerHTML = "<p>Could not load shops. Check shops.json for typos.</p>";
@@ -302,10 +302,20 @@ const outletsSelect = document.getElementById("filter-outlets");
 const noiseSelect = document.getElementById("filter-noise");
 const seatingSelect = document.getElementById("filter-seating");
 const distanceSelect = document.getElementById("filter-distance");
+const searchInput = document.getElementById("search-shops");
+const sortSelect = document.getElementById("sort-shops");
+const resultsCount = document.getElementById("results-count");
+const resetButton = document.getElementById("reset-filters");
 
 // Does ONE shop pass ALL the filters? "return false" means reject it.
 
 function matchesFilters(shop) {
+  const search = searchInput.value.trim().toLowerCase();
+
+  if (!shop.name.toLowerCase().includes(search)) {
+    return false;
+  }
+
   if (wifiBox.checked && shop.wifi !== true) return false;
 
   // Outlets and seating: at least this much
@@ -348,8 +358,32 @@ function matchesFilters(shop) {
 }
 
 
+
 function updateResults() {
-  showShops(allShops.filter(matchesFilters));
+  const filteredShops = allShops.filter(matchesFilters);
+
+  if (sortSelect.value === "az") {
+    filteredShops.sort((a, b) =>
+      a.name.localeCompare(b.name)
+    );
+  } else {
+    filteredShops.sort((a, b) => {
+      const distanceA = getDistance(
+        school.lat, school.lng, a.lat, a.lng
+      );
+
+      const distanceB = getDistance(
+        school.lat, school.lng, b.lat, b.lng
+      );
+
+      return distanceA - distanceB;
+    });
+  }
+
+  resultsCount.textContent =
+    `Showing ${filteredShops.length} of ${allShops.length} shops`;
+
+  showShops(filteredShops);
 }
 
 // Every control runs the same function
@@ -357,6 +391,23 @@ function updateResults() {
   control.addEventListener("change", updateResults);
 });
 
+
+searchInput.addEventListener("input", updateResults);
+
+sortSelect.addEventListener("change", updateResults);
+
+resetButton.addEventListener("click", () => {
+  searchInput.value = "";
+  sortSelect.value = "closest";
+
+  wifiBox.checked = false;
+  outletsSelect.value = "any";
+  noiseSelect.value = "any";
+  seatingSelect.value = "any";
+  distanceSelect.value = "any";
+
+  updateResults();
+});
 
 const mapButton = document.getElementById("map-button");
 const listButton = document.getElementById("list-button");

@@ -87,6 +87,30 @@
       <h2>Explore near campus</h2>
       <p>Discover coffee shops and study spots around your school.</p>
 
+      <!-- Search and sorting -->
+      <div class="explore-tools">
+
+        <label for="search-shops">Search locations</label>
+        <input type="search" id="search-shops" placeholder="Search coffee shops...">
+
+        <label for="sort-shops">Sort by</label>
+        <select id="sort-shops">
+          <option value="closest">Closest first</option>
+          <option value="az">Name: A to Z</option>
+        </select>
+
+        <div class="results-toolbar">
+          <p id="results-count" role="status">
+            Loading locations...
+          </p>
+
+          <button id="reset-filters" type="button">
+            Reset filters
+          </button>
+        </div>
+
+      </div>
+
       <!-- Switch between Map and List -->
       <div class="view-toggle">
         <button id="map-button" class="active" type="button">
