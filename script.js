@@ -263,6 +263,8 @@ function openShopDetails(shop) {
         <p>Loading student reviews...</p>
       </div>
 
+      <div id="review-form-container"></div>
+
       <button class="modal-save" type="button">♡ Save this spot</button>
 
       <a
@@ -310,6 +312,7 @@ function openShopDetails(shop) {
 
   updateSavedHearts();
   loadShopReviews(shop.id);
+  loadReviewForm(shop.id);
 }
 
 async function loadShopReviews(shopId) {
@@ -409,6 +412,181 @@ async function loadShopReviews(shopId) {
     card.append(header, author, comment);
     container.append(card);
   });
+}
+
+async function loadReviewForm(shopId) {
+  const container = document.getElementById("review-form-container");
+
+  if (!container) return;
+
+  const student = await getVerifiedStudent();
+
+  if (!container.isConnected || currentShop?.id !== shopId) return;
+
+  // Guests cannot submit reviews
+  if (!student) {
+    container.replaceChildren();
+    return;
+  }
+
+  const { data: existingReview, error } = await db
+    .from("reviews")
+    .select("id, rating, comment")
+    .eq("shop_id", shopId)
+    .eq("user_id", student.id)
+    .maybeSingle();
+
+  if (!container.isConnected || currentShop?.id !== shopId) return;
+
+  if (error) {
+    console.error("Could not load your review:", error);
+    container.textContent = "Could not load your review form.";
+    return;
+  }
+
+  let selectedRating = existingReview?.rating || 0;
+
+  container.innerHTML = /* HTML */ `
+    <div class="review-form">
+      <h3>${existingReview ? "Edit your review" : "Leave a review"}</h3>
+
+      <p>How was your experience studying here?</p>
+
+      <div class="rating-input" role="group" aria-label="Star rating">
+        ${[1, 2, 3, 4, 5]
+          .map(
+            (star) => `
+              <button
+                type="button"
+                class="rating-star"
+                data-rating="${star}"
+                aria-label="${star} stars"
+                aria-pressed="${star === selectedRating}"
+              >${star <= selectedRating ? "★" : "☆"}</button>
+            `,
+          )
+          .join("")}
+      </div>
+
+      <textarea
+        id="review-comment"
+        maxlength="2000"
+        placeholder="Was the Wi-Fi reliable? Were there enough outlets? Was it quiet enough to study?"
+        rows="4"
+      ></textarea>
+
+      <p class="review-form-message" role="status"></p>
+
+      <button type="button" class="submit-review">
+        ${existingReview ? "Update review" : "Post review"}
+      </button>
+
+      ${existingReview
+        ? `<button type="button" class="delete-review">Delete my review</button>`
+        : ""}
+    </div>
+  `;
+
+  const textarea = container.querySelector("#review-comment");
+  const message = container.querySelector(".review-form-message");
+  const submitButton = container.querySelector(".submit-review");
+  const deleteButton = container.querySelector(".delete-review");
+  const stars = container.querySelectorAll(".rating-star");
+
+  textarea.value = existingReview?.comment || "";
+
+  function updateStars() {
+    stars.forEach((button) => {
+      const value = Number(button.dataset.rating);
+      button.textContent = value <= selectedRating ? "★" : "☆";
+      button.setAttribute("aria-pressed", String(value === selectedRating));
+    });
+  }
+
+  stars.forEach((button) => {
+    button.addEventListener("click", () => {
+      selectedRating = Number(button.dataset.rating);
+      updateStars();
+    });
+  });
+
+  submitButton.addEventListener("click", async () => {
+    const comment = textarea.value.trim();
+
+    if (selectedRating < 1 || selectedRating > 5) {
+      message.textContent = "Please select a star rating.";
+      return;
+    }
+
+    if (!comment || comment.length > 2000) {
+      message.textContent = "Write a review between 1 and 2000 characters.";
+      return;
+    }
+
+    submitButton.disabled = true;
+    if (deleteButton) deleteButton.disabled = true;
+    message.textContent = "Saving your review...";
+
+    const payload = {
+      shop_id: shopId,
+      user_id: student.id,
+      rating: selectedRating,
+      comment: comment,
+    };
+
+    const result = existingReview
+      ? await db
+          .from("reviews")
+          .update({
+            rating: selectedRating,
+            comment: comment,
+          })
+          .eq("id", existingReview.id)
+          .eq("user_id", student.id)
+      : await db.from("reviews").insert(payload);
+
+    if (result.error) {
+      message.textContent = "Could not save review: " + result.error.message;
+      submitButton.disabled = false;
+      if (deleteButton) deleteButton.disabled = false;
+      return;
+    }
+
+    if (!container.isConnected || currentShop?.id !== shopId) return;
+
+    await loadShopReviews(shopId);
+    await loadReviewForm(shopId);
+  });
+
+  if (deleteButton) {
+    deleteButton.addEventListener("click", async () => {
+      const confirmed = confirm("Are you sure you want to delete your review?");
+
+      if (!confirmed) return;
+
+      submitButton.disabled = true;
+      deleteButton.disabled = true;
+      message.textContent = "Deleting your review...";
+
+      const { error: deleteError } = await db
+        .from("reviews")
+        .delete()
+        .eq("id", existingReview.id)
+        .eq("user_id", student.id);
+
+      if (deleteError) {
+        message.textContent = "Could not delete review: " + deleteError.message;
+        submitButton.disabled = false;
+        deleteButton.disabled = false;
+        return;
+      }
+
+      if (!container.isConnected || currentShop?.id !== shopId) return;
+
+      await loadShopReviews(shopId);
+      await loadReviewForm(shopId);
+    });
+  }
 }
 
 function closeShopDetails() {

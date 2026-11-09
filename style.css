@@ -1010,3 +1010,111 @@ body.modal-open {
   font-weight: 600;
   text-decoration: underline;
 }
+
+/* crunch. - Student Review Form */
+
+.review-form {
+  margin-top: 22px;
+  padding: 20px;
+  border: 1px solid #e6d9c8;
+  border-radius: 16px;
+  background: #fffdf8;
+}
+
+.review-form h3 {
+  margin-top: 0;
+  color: #493e32;
+}
+
+.review-form p {
+  color: #80776c;
+  font-size: 14px;
+}
+
+.rating-input {
+  display: flex;
+  gap: 5px;
+  margin: 14px 0;
+}
+
+.rating-star {
+  border: none;
+  background: transparent;
+  color: #d9962b;
+  font-size: 34px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 3px;
+}
+
+.rating-star:hover {
+  transform: scale(1.12);
+}
+
+.rating-star:focus-visible {
+  outline: 2px solid #637b5a;
+  border-radius: 6px;
+}
+
+#review-comment {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 14px;
+  border: 1px solid #d8d3c8;
+  border-radius: 12px;
+  background: #fffdf8;
+  color: #493e32;
+  font-family: "DM Sans", sans-serif;
+  font-size: 14px;
+  resize: vertical;
+}
+
+#review-comment:focus {
+  outline: 2px solid #637b5a;
+}
+
+.submit-review {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 12px;
+  background: #637b5a;
+  color: white;
+  font-family: "DM Sans", sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.submit-review:hover {
+  background: #526b49;
+}
+
+.submit-review:disabled,
+.delete-review:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.delete-review {
+  width: 100%;
+  margin-top: 10px;
+  padding: 12px;
+  border: 1px solid #c66b79;
+  border-radius: 12px;
+  background: transparent;
+  color: #a44c5b;
+  font-family: "DM Sans", sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.delete-review:hover {
+  background: #fff0f2;
+}
+
+.review-form-message {
+  min-height: 18px;
+  margin: 10px 0;
+  color: #637b5a;
+  font-size: 13px;
+}
