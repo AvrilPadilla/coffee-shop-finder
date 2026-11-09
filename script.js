@@ -93,23 +93,35 @@ function makeCard(shop) {
 
         <p class="address">${shop.address}</p>
 
-        <div class="shop-tags">
-          <span class="shop-tag">
-            ${shop.wifi ? "✓ Wi-Fi" : "No Wi-Fi"}
-          </span>
+        
+<h3>Study-friendly amenities</h3>
 
-          <span class="shop-tag">
-            Outlets: ${capitalize(shop.outlets)}
-          </span>
+<div class="modal-amenities">
+  <div class="amenity-card">
+    <span class="amenity-icon">☕</span>
+    <span class="amenity-label">Wi-Fi</span>
+    <strong>${shop.wifi === true ? "Available" : shop.wifi === false ? "Not available" : "Not confirmed"}</strong>
+  </div>
 
-          <span class="shop-tag">
-            Noise: ${capitalize(shop.noise)}
-          </span>
+  <div class="amenity-card">
+    <span class="amenity-icon">🔌</span>
+    <span class="amenity-label">Outlets</span>
+    <strong>${shop.outlets ? capitalize(shop.outlets) : "Not confirmed"}</strong>
+  </div>
 
-          <span class="shop-tag">
-            Seating: ${capitalize(shop.seating)}
-          </span>
-        </div>
+  <div class="amenity-card">
+    <span class="amenity-icon">🔈</span>
+    <span class="amenity-label">Noise level</span>
+    <strong>${shop.noise ? capitalize(shop.noise) : "Not confirmed"}</strong>
+  </div>
+
+  <div class="amenity-card">
+    <span class="amenity-icon">🪑</span>
+    <span class="amenity-label">Seating</span>
+    <strong>${shop.seating ? capitalize(shop.seating) : "Not confirmed"}</strong>
+  </div>
+</div>
+
 
       </div>
     </article>

@@ -798,3 +798,45 @@ body.modal-open {
         font-size: 25px;
     }
 }
+
+
+/* crunch. - Coffee Shop Amenities */
+
+.modal-amenities {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin: 16px 0 26px;
+}
+
+.amenity-card {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 18px;
+    border-radius: 16px;
+    background: #f4f1e9;
+    border: 1px solid #e6e0d5;
+}
+
+.amenity-icon {
+    font-size: 23px;
+    line-height: 1.3;
+}
+
+.amenity-label {
+    font-size: 13px;
+    color: #80776c;
+}
+
+.amenity-card strong {
+    font-size: 15px;
+    color: #493e32;
+    font-weight: 600;
+}
+
+@media (max-width: 360px) {
+    .modal-amenities {
+        grid-template-columns: 1fr;
+    }
+}
