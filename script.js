@@ -258,8 +258,9 @@ function openShopDetails(shop) {
       </p>
 
       <h3>Student reviews</h3>
-      <div class="modal-reviews">
-        Verify your student email to read all reviews and share your experience.
+
+      <div class="modal-reviews" id="student-reviews">
+        <p>Loading student reviews...</p>
       </div>
 
       <button class="modal-save" type="button">♡ Save this spot</button>
@@ -308,6 +309,106 @@ function openShopDetails(shop) {
   document.body.classList.add("modal-open");
 
   updateSavedHearts();
+  loadShopReviews(shop.id);
+}
+
+async function loadShopReviews(shopId) {
+  const container = document.getElementById("student-reviews");
+
+  if (!container) return;
+
+  const student = await getVerifiedStudent();
+
+  // Prevent an older request from updating a different popup
+  if (!container.isConnected || currentShop?.id !== shopId) return;
+
+  if (!student) {
+    container.innerHTML = `
+      <p>Verify your student email to read reviews
+      and share your experience.</p>
+      <a href="account.html" class="reviews-account-link">
+        Log in or create an account
+      </a>
+    `;
+    return;
+  }
+
+  const { data: reviews, error } = await db
+    .from("reviews")
+    .select("id, rating, comment, created_at")
+    .eq("shop_id", shopId)
+    .order("created_at", { ascending: false });
+
+  if (!container.isConnected || currentShop?.id !== shopId) return;
+
+  if (error) {
+    console.error("Error loading reviews:", error);
+    container.textContent = "Could not load reviews. Please try again.";
+    return;
+  }
+
+  if (!reviews || reviews.length === 0) {
+    container.textContent = "No student reviews yet. Be the first!";
+    return;
+  }
+
+  const average =
+    reviews.reduce((total, review) => total + review.rating, 0) /
+    reviews.length;
+
+  // Clear the loading message
+  container.replaceChildren();
+
+  const summary = document.createElement("div");
+  summary.className = "reviews-summary";
+
+  const score = document.createElement("strong");
+  score.className = "reviews-average";
+  score.textContent = average.toFixed(1);
+
+  const summaryInfo = document.createElement("div");
+
+  const stars = document.createElement("div");
+  stars.className = "review-stars";
+  stars.textContent =
+    "★".repeat(Math.round(average)) + "☆".repeat(5 - Math.round(average));
+
+  const count = document.createElement("p");
+  count.className = "reviews-count";
+  count.textContent = `${reviews.length} student ${reviews.length === 1 ? "review" : "reviews"}`;
+
+  summaryInfo.append(stars, count);
+  summary.append(score, summaryInfo);
+  container.append(summary);
+
+  reviews.forEach((review) => {
+    const card = document.createElement("div");
+    card.className = "review-card";
+
+    const header = document.createElement("div");
+    header.className = "review-header";
+
+    const rating = document.createElement("span");
+    rating.className = "review-stars";
+    rating.textContent =
+      "★".repeat(review.rating) + "☆".repeat(5 - review.rating);
+
+    const date = document.createElement("span");
+    date.className = "review-date";
+    date.textContent = new Date(review.created_at).toLocaleDateString();
+
+    header.append(rating, date);
+
+    const author = document.createElement("strong");
+    author.textContent = "Verified student";
+
+    const comment = document.createElement("p");
+    comment.className = "review-comment";
+    comment.textContent = review.comment;
+
+    card.append(header, author, comment);
+    container.append(card);
+  });
 }
 
 function closeShopDetails() {
