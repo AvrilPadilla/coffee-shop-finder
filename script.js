@@ -236,13 +236,52 @@ function showShops(shops) {
   shops.forEach((shop) => {
     if (typeof shop.lat !== "number" || typeof shop.lng !== "number") return;
 
-    L.marker([shop.lat, shop.lng], {
+    const marker = L.marker([shop.lat, shop.lng], {
       icon: makePin(shop.type),
-    })
-      .on("click", () => {
-        openShopDetails(shop);
-      })
-      .addTo(markerLayer);
+    });
+
+    // Calculate distance from the selected campus
+    const distance = getDistance(
+      school.lat,
+      school.lng,
+      shop.lat,
+      shop.lng,
+    ).toFixed(1);
+
+    // Create the shop preview
+    const preview = document.createElement("div");
+    preview.className = "map-shop-preview";
+
+    // Shop photo
+    const photo = document.createElement("img");
+    photo.src = shop.image || "images/default-cafe.jpg";
+    photo.alt = shop.name;
+
+    // Shop name
+    const name = document.createElement("h3");
+    name.textContent = shop.name;
+
+    // Distance from campus
+    const distanceText = document.createElement("p");
+    distanceText.textContent = `📍 ${distance} miles from campus`;
+
+    // View Details button
+    const detailsButton = document.createElement("button");
+    detailsButton.type = "button";
+    detailsButton.textContent = "View Details";
+
+    detailsButton.addEventListener("click", () => {
+      marker.closePopup();
+      openShopDetails(shop);
+    });
+
+    // Put everything inside the preview
+    preview.append(photo, name, distanceText, detailsButton);
+
+    // Attach preview to the marker
+    marker.bindPopup(preview);
+
+    marker.addTo(markerLayer);
   });
 }
 
@@ -251,6 +290,8 @@ const modalDetails = document.getElementById("modal-details");
 const closeModalButton = document.getElementById("close-modal");
 
 function openShopDetails(shop) {
+  map.closePopup();
+
   currentShop = shop;
 
   const distance = getDistance(

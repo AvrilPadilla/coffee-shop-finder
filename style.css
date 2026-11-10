@@ -2026,3 +2026,68 @@ body.saved-page > .home-header {
     display: none;
   }
 }
+/* =========================================
+   crunch. - Map Shop Preview
+========================================= */
+
+.map-shop-preview {
+  width: 230px;
+  font-family: "DM Sans", sans-serif;
+  color: #4b3024;
+}
+
+.map-shop-preview img {
+  width: 100%;
+  height: 130px;
+  object-fit: cover;
+  border-radius: 10px;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.map-shop-preview h3 {
+  font-family: "Fraunces", serif;
+  font-size: 19px;
+  font-weight: 600;
+  margin: 0 0 7px;
+  color: #884a28;
+}
+
+.map-shop-preview p {
+  font-size: 12px;
+  color: #80776c;
+  margin: 0 0 14px;
+}
+
+.map-shop-preview button {
+  width: 100%;
+  padding: 11px 14px;
+  background: #884a28;
+  color: #faf5ee;
+  border: none;
+  border-radius: 9px;
+  font-family: "DM Sans", sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.map-shop-preview button:hover {
+  background: #6d3920;
+}
+
+/* Match Leaflet's popup to crunch.'s theme */
+.leaflet-popup-content-wrapper {
+  background: #faf5ee;
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(75, 48, 36, 0.16);
+}
+
+.leaflet-popup-content {
+  margin: 14px;
+}
+
+.leaflet-popup-tip {
+  background: #faf5ee;
+}
