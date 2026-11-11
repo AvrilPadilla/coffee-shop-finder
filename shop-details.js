@@ -189,6 +189,23 @@ function closeSharedShopDetails() {
   sharedCurrentShop = null;
 }
 
+// Close popup with X
+sharedCloseModal.addEventListener("click", closeSharedShopDetails);
+
+// Close popup when clicking outside
+sharedShopModal.addEventListener("click", (event) => {
+  if (event.target === sharedShopModal) {
+    closeSharedShopDetails();
+  }
+});
+
+// Close popup with Escape
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && !sharedShopModal.classList.contains("hidden")) {
+    closeSharedShopDetails();
+  }
+});
+
 // Display student reviews in the shared popup
 async function loadSharedShopReviews(shopId) {
   const container = sharedModalDetails.querySelector("#student-reviews");
