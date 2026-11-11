@@ -292,6 +292,11 @@ const closeModalButton = document.getElementById("close-modal");
 function openShopDetails(shop) {
   map.closePopup();
 
+  // Use the shared popup
+  openSharedShopDetails(shop);
+  updateSavedHearts();
+  return;
+
   currentShop = shop;
 
   const distance = getDistance(
@@ -719,9 +724,9 @@ async function loadReviewForm(shopId) {
   }
 }
 
+// Close the shared shop details popup
 function closeShopDetails() {
-  shopModal.classList.add("hidden");
-  document.body.classList.remove("modal-open");
+  closeSharedShopDetails();
   currentShop = null;
 }
 

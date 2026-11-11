@@ -133,6 +133,8 @@ function openSharedShopDetails(shop) {
 
       <div id="review-form-container"></div>
 
+      <button class="modal-save" type="button">♡ Save this spot</button>
+
       <a
         class="modal-directions"
         href="https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(

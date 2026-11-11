@@ -191,6 +191,7 @@ const homeCloseModal = document.getElementById("close-modal");
 // Open a shop's details without leaving Home
 function openHomeShopDetails(shop) {
   openSharedShopDetails(shop);
+  updateSharedSavedButton();
 }
 
 // Close the popup
