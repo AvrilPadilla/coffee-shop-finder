@@ -14,7 +14,6 @@ async function loadSharedSavedPlaces() {
 
   // Guests cannot access saved places
   if (!student) {
-    updateSharedSavedButton();
     return;
   }
 
@@ -31,6 +30,8 @@ async function loadSharedSavedPlaces() {
   data.forEach((place) => {
     sharedSavedPlaces.add(place.shop_id);
   });
+
+  updateSharedSavedButton();
 }
 
 updateSharedSavedButton();
@@ -88,14 +89,8 @@ async function toggleSharedSavedPlace(shopId) {
     sharedSavedPlaces.add(shopId);
   }
 
-  // Keep Explore's card hearts synchronized with the shared popup
-  if (typeof savedPlaces !== "undefined") {
-    if (alreadySaved) {
-      savedPlaces.delete(shopId);
-    } else {
-      savedPlaces.add(shopId);
-    }
-
+  // Update Explore's card hearts when available
+  if (typeof updateSavedHearts === "function") {
     updateSavedHearts();
   }
 

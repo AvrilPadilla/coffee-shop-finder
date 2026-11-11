@@ -1,29 +1,12 @@
-let savedPlaces = new Set(); // holds shop ids, like "moongoat-irvine"
-
 function shopNameFor(shopId) {
   const shop = allShops.find((item) => item.id === shopId);
   return shop ? shop.name : "this place";
 }
 
+// Load Explore's card hearts from the shared saved places
+// Load saved places and update Explore's card hearts
 async function loadSavedHearts() {
-  const student = await getVerifiedStudent();
-
-  savedPlaces.clear();
-
-  if (!student) {
-    updateSavedHearts();
-    return;
-  }
-
-  const { data, error } = await db.from("saved_places").select("shop_id");
-
-  if (error) {
-    console.error("Could not load saved places:", error);
-    return;
-  }
-
-  data.forEach((place) => savedPlaces.add(place.shop_id));
-
+  await loadSharedSavedPlaces();
   updateSavedHearts();
 }
 
@@ -42,7 +25,7 @@ function updateSavedHearts() {
       shopId = sharedCurrentShop.id;
     }
 
-    const isSaved = savedPlaces.has(shopId);
+    const isSaved = sharedSavedPlaces.has(shopId);
     const name = shopNameFor(shopId);
 
     button.classList.toggle("is-saved", isSaved);
@@ -71,62 +54,9 @@ function updateSavedHearts() {
   });
 }
 
+// Save or remove a shop using the shared saving system
 async function toggleSavedPlace(shopId) {
-  const student = await getVerifiedStudent();
-
-  if (!student) {
-    const goToAccount = confirm(
-      "Verify your school email to save places on crunch.\n\n" +
-        "Would you like to create an account or log in?",
-    );
-
-    if (goToAccount) {
-      window.location.href = "account.html";
-    }
-
-    return;
-  }
-
-  const alreadySaved = savedPlaces.has(shopId);
-
-  let error;
-
-  if (alreadySaved) {
-    const result = await db
-      .from("saved_places")
-      .delete()
-      .eq("user_id", student.id)
-      .eq("shop_id", shopId);
-
-    error = result.error;
-  } else {
-    const result = await db.from("saved_places").insert({
-      user_id: student.id,
-      shop_id: shopId,
-    });
-
-    error = result.error;
-  }
-
-  if (error) {
-    alert("Could not update saved place: " + error.message);
-    return;
-  }
-
-  if (alreadySaved) {
-    savedPlaces.delete(shopId);
-  } else {
-    savedPlaces.add(shopId);
-  }
-  // Keep the shared popup synchronized with Explore's card hearts
-  if (alreadySaved) {
-    sharedSavedPlaces.delete(shopId);
-  } else {
-    sharedSavedPlaces.add(shopId);
-  }
-
-  updateSharedSavedButton();
-  updateSavedHearts();
+  await toggleSharedSavedPlace(shopId);
 }
 
 // Heart buttons on shop cards
