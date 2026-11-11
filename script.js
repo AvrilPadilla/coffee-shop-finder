@@ -294,7 +294,7 @@ function openShopDetails(shop) {
 
   // Use the shared popup
   openSharedShopDetails(shop);
-  updateSavedHearts();
+  updateSharedSavedButton();
   return;
 
   currentShop = shop;

@@ -88,6 +88,17 @@ async function toggleSharedSavedPlace(shopId) {
     sharedSavedPlaces.add(shopId);
   }
 
+  // Keep Explore's card hearts synchronized with the shared popup
+  if (typeof savedPlaces !== "undefined") {
+    if (alreadySaved) {
+      savedPlaces.delete(shopId);
+    } else {
+      savedPlaces.add(shopId);
+    }
+
+    updateSavedHearts();
+  }
+
   // We'll connect the Save button's appearance in the next step
 }
 

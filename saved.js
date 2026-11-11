@@ -118,7 +118,14 @@ async function toggleSavedPlace(shopId) {
   } else {
     savedPlaces.add(shopId);
   }
+  // Keep the shared popup synchronized with Explore's card hearts
+  if (alreadySaved) {
+    sharedSavedPlaces.delete(shopId);
+  } else {
+    sharedSavedPlaces.add(shopId);
+  }
 
+  updateSharedSavedButton();
   updateSavedHearts();
 }
 
@@ -137,21 +144,6 @@ cardContainer.addEventListener("click", async (event) => {
 
   try {
     await toggleSavedPlace(card.dataset.shopId);
-  } finally {
-    button.disabled = false;
-  }
-});
-
-// Save button inside the shared shop details popup
-modalDetails.addEventListener("click", async (event) => {
-  const button = event.target.closest(".modal-save");
-
-  if (!button || button.disabled || !sharedCurrentShop) return;
-
-  button.disabled = true;
-
-  try {
-    await toggleSavedPlace(sharedCurrentShop.id);
   } finally {
     button.disabled = false;
   }
