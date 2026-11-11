@@ -3,37 +3,20 @@ function shopNameFor(shopId) {
   return shop ? shop.name : "this place";
 }
 
-// Load Explore's card hearts from the shared saved places
-// Load saved places and update Explore's card hearts
-async function loadSavedHearts() {
-  await loadSharedSavedPlaces();
-  updateSavedHearts();
-}
-
 function updateSavedHearts() {
-  const buttons = document.querySelectorAll(".save-button, .modal-save");
-
+  const buttons = document.querySelectorAll(".save-button");
   buttons.forEach((button) => {
-    let shopId;
+    const card = button.closest(".shop-card");
+    if (!card) return;
 
-    if (button.classList.contains("save-button")) {
-      const card = button.closest(".shop-card");
-      if (!card) return;
-      shopId = card.dataset.shopId;
-    } else {
-      if (!sharedCurrentShop) return;
-      shopId = sharedCurrentShop.id;
-    }
+    const shopId = card.dataset.shopId;
 
     const isSaved = sharedSavedPlaces.has(shopId);
     const name = shopNameFor(shopId);
 
     button.classList.toggle("is-saved", isSaved);
 
-    if (button.classList.contains("modal-save")) {
-      button.textContent = isSaved ? "Remove saved spot" : "Save this spot";
-    } else {
-      button.innerHTML = `
+    button.innerHTML = `
         <svg class="heart-icon" viewBox="0 0 24 24"
              fill="${isSaved ? "currentColor" : "none"}"
              stroke="currentColor"
@@ -44,7 +27,6 @@ function updateSavedHearts() {
             <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
         </svg>
     `;
-    }
 
     button.setAttribute(
       "aria-label",
@@ -78,6 +60,3 @@ cardContainer.addEventListener("click", async (event) => {
     button.disabled = false;
   }
 });
-
-// Load saved places when the page opens
-loadSavedHearts();

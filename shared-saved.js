@@ -32,6 +32,11 @@ async function loadSharedSavedPlaces() {
   });
 
   updateSharedSavedButton();
+
+  // Update Explore's card hearts after saved places finish loading
+  if (typeof updateSavedHearts === "function") {
+    updateSavedHearts();
+  }
 }
 
 updateSharedSavedButton();
