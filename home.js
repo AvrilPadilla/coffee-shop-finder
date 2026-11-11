@@ -53,9 +53,11 @@ function makeHomeCard(shop) {
   const image = shop.image || "images/default-cafe.jpg";
 
   return /* HTML */ `
-    <a
+    <article
       class="home-place-card"
-      href="explore.html?shop=${encodeURIComponent(shop.id)}"
+      data-shop-id="${shop.id}"
+      tabindex="0"
+      role="button"
       aria-label="View details for ${shop.name}"
     >
       <div class="home-place-image">
@@ -72,7 +74,7 @@ function makeHomeCard(shop) {
           <span>${shop.noise || "Study spot"}</span>
         </div>
       </div>
-    </a>
+    </article>
   `;
 }
 
@@ -177,3 +179,64 @@ updateHomeDistance();
 homeSearch.addEventListener("input", renderHomeShops);
 
 loadHomeShops();
+
+// =========================================
+// crunch. - Home Shop Details Modal
+// =========================================
+
+const homeShopModal = document.getElementById("shop-modal");
+const homeModalDetails = document.getElementById("modal-details");
+const homeCloseModal = document.getElementById("close-modal");
+
+// Open a shop's details without leaving Home
+function openHomeShopDetails(shop) {
+  openSharedShopDetails(shop);
+}
+
+// Close the popup
+function closeHomeShopDetails() {
+  closeSharedShopDetails();
+}
+
+// Handle clicks on Home shop cards
+document.addEventListener("click", (event) => {
+  const card = event.target.closest(".home-place-card");
+
+  if (!card) return;
+
+  const shop = homeShops.find((item) => item.id === card.dataset.shopId);
+
+  if (shop) openHomeShopDetails(shop);
+});
+
+// Close using the X button
+homeCloseModal.addEventListener("click", closeHomeShopDetails);
+
+// Close when clicking outside the popup
+homeShopModal.addEventListener("click", (event) => {
+  if (event.target === homeShopModal) {
+    closeHomeShopDetails();
+  }
+});
+
+// Close using Escape
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") {
+    closeHomeShopDetails();
+  }
+});
+
+// Open a focused shop card using Enter or Space
+document.addEventListener("keydown", (event) => {
+  if (event.key !== "Enter" && event.key !== " ") return;
+
+  const card = event.target.closest(".home-place-card");
+
+  if (!card) return;
+
+  event.preventDefault();
+
+  const shop = homeShops.find((item) => item.id === card.dataset.shopId);
+
+  if (shop) openHomeShopDetails(shop);
+});

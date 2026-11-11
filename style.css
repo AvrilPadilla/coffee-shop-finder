@@ -2091,3 +2091,41 @@ body.saved-page > .home-header {
 .leaflet-popup-tip {
   background: #faf5ee;
 }
+/* =========================================
+   crunch. - Shop Details Modal
+   ========================================= */
+
+.shop-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.55);
+  padding: 20px;
+}
+
+.shop-modal.hidden {
+  display: none;
+}
+
+.shop-modal-content {
+  position: relative;
+  background: #faf5ee;
+  width: 100%;
+  max-width: 650px;
+  max-height: 90vh;
+  overflow-y: auto;
+  border-radius: 18px;
+  padding: 30px;
+  box-sizing: border-box;
+}
+
+.close-modal {
+  position: absolute;
+  top: 15px;
+  right: 18px;
+  z-index: 2;
+  cursor: pointer;
+}

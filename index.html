@@ -139,8 +139,29 @@
       </section>
     </main>
 
-    <!-- Bottom Navigation -->
+    <!-- Shop Details Modal -->
+    <div
+      id="shop-modal"
+      class="shop-modal hidden"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Shop details"
+    >
+      <div class="shop-modal-content">
+        <button
+          id="close-modal"
+          class="close-modal"
+          type="button"
+          aria-label="Close shop details"
+        >
+          &times;
+        </button>
 
+        <div id="modal-details"></div>
+      </div>
+    </div>
+
+    <!-- Bottom Navigation -->
     <nav class="home-bottom-nav" aria-label="Main navigation">
       <a href="index.html" class="active" aria-current="page">
         <i data-lucide="house"></i>
@@ -158,6 +179,7 @@
       </a>
     </nav>
 
+    <script src="shop-details.js" defer></script>
     <script src="home.js" defer></script>
     <script>
       document.addEventListener("DOMContentLoaded", () => {
