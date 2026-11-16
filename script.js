@@ -555,21 +555,17 @@ function updateResults() {
   showShops(filteredShops);
 }
 
-// Every control runs the same function
-[wifiBox, outletsSelect, noiseSelect, seatingSelect, distanceSelect].forEach(
-  (control) => {
-    [
-      wifiBox,
-      outletsSelect,
-      noiseSelect,
-      seatingSelect,
-      distanceSelect,
-      budgetSelect,
-    ].forEach((control) => {
-      control.addEventListener("change", updateResults);
-    });
-  },
-);
+// Update results whenever a filter changes
+[
+  wifiBox,
+  outletsSelect,
+  noiseSelect,
+  seatingSelect,
+  distanceSelect,
+  budgetSelect,
+].forEach((control) => {
+  control.addEventListener("change", updateResults);
+});
 
 searchInput.addEventListener("input", updateResults);
 
@@ -616,6 +612,7 @@ resetButton.addEventListener("click", () => {
 
   // Reset category to All
   selectedCategory = "all";
+  document.querySelector(".food-budget-filter").classList.add("hidden");
 
   categoryButtons.forEach((button) => {
     const isActive = button.dataset.category === "all";
@@ -653,3 +650,14 @@ listButton.addEventListener("click", () => {
 });
 
 loadShops();
+
+/* Mobile filter toggle */
+const mobileFilterToggle = document.getElementById("mobile-filter-toggle");
+
+const filterControls = document.getElementById("filter-controls");
+
+mobileFilterToggle.addEventListener("click", () => {
+  const isOpen = filterControls.classList.toggle("is-open");
+
+  mobileFilterToggle.setAttribute("aria-expanded", String(isOpen));
+});

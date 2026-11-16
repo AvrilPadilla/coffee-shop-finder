@@ -60,53 +60,65 @@
 
     <main>
       <section id="filters">
-        <h2>Filters</h2>
+        <button
+          type="button"
+          id="mobile-filter-toggle"
+          aria-expanded="false"
+          aria-controls="filter-controls"
+        >
+          <span>Filters</span>
+          <span class="filter-toggle-icon" aria-hidden="true">⌄</span>
+        </button>
 
-        <label class="check">
-          <input type="checkbox" id="filter-wifi" /> Wi-Fi required
-        </label>
+        <div id="filter-controls">
+          <h2>Filters</h2>
 
-        <label
-          >Outlets
-          <select id="filter-outlets">
-            <option value="any">Any</option>
-            <option value="limited">Limited</option>
-            <option value="some">Some</option>
-            <option value="plenty">Plenty</option>
-          </select>
-        </label>
+          <label class="check">
+            <input type="checkbox" id="filter-wifi" /> Wi-Fi required
+          </label>
 
-        <label
-          >Noise
-          <select id="filter-noise">
-            <option value="any">Any</option>
-            <option value="quiet">Quiet</option>
-            <option value="moderate">Moderate</option>
-            <option value="loud">Loud</option>
-          </select>
-        </label>
+          <label
+            >Outlets
+            <select id="filter-outlets">
+              <option value="any">Any</option>
+              <option value="limited">Limited</option>
+              <option value="some">Some</option>
+              <option value="plenty">Plenty</option>
+            </select>
+          </label>
 
-        <label
-          >Seating
-          <select id="filter-seating">
-            <option value="any">Any</option>
-            <option value="small">Small</option>
-            <option value="medium">Medium</option>
-            <option value="large">Large</option>
-          </select>
-        </label>
+          <label
+            >Noise
+            <select id="filter-noise">
+              <option value="any">Any</option>
+              <option value="quiet">Quiet</option>
+              <option value="moderate">Moderate</option>
+              <option value="loud">Loud</option>
+            </select>
+          </label>
 
-        <label
-          >Distance from campus
-          <select id="filter-distance">
-            <option value="any">Any distance</option>
-            <option value="1">Within 1 mile</option>
-            <option value="3">Within 3 miles</option>
-            <option value="5">Within 5 miles</option>
-            <option value="10">Within 10 miles</option>
-            <option value="15">Within 15 miles</option>
-          </select>
-        </label>
+          <label
+            >Seating
+            <select id="filter-seating">
+              <option value="any">Any</option>
+              <option value="small">Small</option>
+              <option value="medium">Medium</option>
+              <option value="large">Large</option>
+            </select>
+          </label>
+
+          <label
+            >Distance from campus
+            <select id="filter-distance">
+              <option value="any">Any distance</option>
+              <option value="1">Within 1 mile</option>
+              <option value="3">Within 3 miles</option>
+              <option value="5">Within 5 miles</option>
+              <option value="10">Within 10 miles</option>
+              <option value="15">Within 15 miles</option>
+            </select>
+          </label>
+        </div>
       </section>
 
       <!-- Food budget filter -->

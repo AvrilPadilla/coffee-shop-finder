@@ -2731,3 +2731,675 @@ body.saved-page > .home-header {
     font-size: 21px;
   }
 }
+
+/* =========================================
+   crunch. - Explore Responsive Layout
+   ========================================= */
+
+/* Match the Home page content width */
+.explore-page main {
+  width: min(100% - 48px, 1220px);
+  max-width: 1220px;
+  margin: 0 auto;
+  padding: 36px 0 60px;
+}
+
+/* Consistent spacing between sections */
+.explore-page #filters {
+  margin-bottom: 28px;
+}
+
+.explore-page #explore-section {
+  margin-bottom: 40px;
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+  .explore-page main {
+    width: calc(100% - 40px);
+    padding-top: 28px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .explore-page main {
+    width: calc(100% - 32px);
+    padding: 24px 0 110px;
+  }
+
+  .explore-page #filters {
+    margin-bottom: 24px;
+  }
+
+  .explore-page #explore-section {
+    margin-bottom: 32px;
+  }
+}
+
+/* =========================================
+   crunch. - Explore Filter Panel Polish
+   ========================================= */
+
+/* Main filter panel */
+.explore-page #filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: 18px;
+  padding: 26px;
+  background: #fffdf8;
+  border: 1px solid #e6d9c8;
+  border-radius: 20px;
+  box-shadow: 0 4px 16px rgba(59, 42, 34, 0.05);
+  backdrop-filter: none;
+}
+
+/* Filter heading */
+.explore-page #filters h2 {
+  width: 100%;
+  margin: 0 0 4px;
+  font-size: 23px;
+  color: #493e32;
+}
+
+/* Individual filter labels */
+.explore-page #filters label {
+  flex: 1 1 170px;
+  min-width: 0;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #493e32;
+}
+
+/* Dropdown styling */
+.explore-page #filters select {
+  width: 100%;
+  min-height: 44px;
+  padding: 10px 12px;
+  background: #faf5ee;
+  border: 1px solid #e6d9c8;
+  border-radius: 12px;
+  color: #493e32;
+  font-family: "DM Sans", sans-serif;
+  font-size: 14px;
+}
+
+/* Sage-green focus */
+.explore-page #filters select:focus-visible {
+  outline: 2px solid #637b5a;
+  outline-offset: 2px;
+}
+
+/* Wi-Fi checkbox */
+
+.explore-page #filters .check {
+  flex: 0 0 auto;
+  min-height: 0;
+  align-items: center;
+  gap: 10px;
+}
+
+.explore-page #filter-wifi {
+  width: 18px;
+  height: 18px;
+  accent-color: #637b5a;
+  cursor: pointer;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .explore-page #filters {
+    gap: 16px;
+    padding: 12px 16px;
+    border-radius: 18px;
+  }
+
+  .explore-page #filters h2 {
+    font-size: 21px;
+  }
+
+  .explore-page #filters label {
+    flex-basis: 100%;
+  }
+}
+
+/* =========================================
+   crunch. - Explore Search & Sorting Polish
+   ========================================= */
+
+/* Explore section */
+.explore-page #explore-section {
+  padding: 28px;
+  background: #fffdf8;
+  border: 1px solid #e6d9c8;
+  border-radius: 22px;
+  box-shadow: 0 4px 16px rgba(59, 42, 34, 0.05);
+  backdrop-filter: none;
+}
+
+/* Main heading */
+.explore-page #explore-section > h2 {
+  margin: 0 0 8px;
+  font-size: 28px;
+  color: #493e32;
+}
+
+/* Introductory description */
+.explore-page #explore-section > p {
+  margin: 0;
+  color: #80776c;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* Search and sorting layout */
+.explore-page .explore-tools {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(180px, 1fr);
+  column-gap: 18px;
+  row-gap: 10px;
+  align-items: end;
+  margin: 28px 0 20px;
+}
+
+/* Search label */
+.explore-page .explore-tools label[for="search-shops"] {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+/* Search input */
+.explore-page #search-shops {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+/* Sorting label */
+.explore-page .explore-tools label[for="sort-shops"] {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+/* Sorting dropdown */
+.explore-page #sort-shops {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+/* Shared input appearance */
+.explore-page #search-shops,
+.explore-page #sort-shops {
+  min-height: 52px;
+  padding: 12px 16px;
+  border: 1px solid #e6d9c8;
+  border-radius: 14px;
+  background: #faf5ee;
+  color: #493e32;
+  font-size: 14px;
+}
+
+/* Focus appearance */
+.explore-page #search-shops:focus,
+.explore-page #sort-shops:focus {
+  outline: none;
+  border-color: #637b5a;
+  box-shadow: 0 0 0 3px rgba(99, 123, 90, 0.12);
+}
+
+/* Results count and reset button */
+.explore-page .results-toolbar {
+  grid-column: 1 / -1;
+  grid-row: 3;
+  margin-top: 10px;
+}
+
+/* Mobile adjustments */
+@media (max-width: 600px) {
+  .explore-page #explore-section {
+    padding: 20px 16px;
+    border-radius: 18px;
+  }
+
+  .explore-page #explore-section > h2 {
+    font-size: 24px;
+  }
+
+  .explore-page .explore-tools {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 10px;
+  }
+
+  .explore-page .explore-tools label[for="search-shops"] {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .explore-page #search-shops {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .explore-page .explore-tools label[for="sort-shops"] {
+    grid-column: 1;
+    grid-row: 3;
+  }
+
+  .explore-page #sort-shops {
+    grid-column: 1;
+    grid-row: 4;
+  }
+
+  .explore-page .results-toolbar {
+    grid-column: 1;
+    grid-row: 5;
+  }
+}
+
+/* =========================================
+   crunch. - Explore Map & List Polish
+   ========================================= */
+
+/* Map / List segmented toggle */
+.explore-page .view-toggle {
+  display: flex;
+  width: fit-content;
+  gap: 5px;
+  padding: 5px;
+  margin: 24px 0 20px;
+  background: #edf1e9;
+  border: 1px solid #dce4d6;
+  border-radius: 14px;
+}
+
+/* Toggle buttons */
+.explore-page .view-toggle button {
+  flex: 0 0 auto;
+  min-width: 110px;
+  padding: 11px 24px;
+  border: none;
+  border-radius: 10px;
+  background: transparent;
+  color: #526b49;
+  font-family: "DM Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+/* Selected view */
+.explore-page .view-toggle button.active {
+  background: #637b5a;
+  color: #fffdf8;
+  box-shadow: 0 2px 8px rgba(59, 42, 34, 0.12);
+}
+
+/* Keyboard accessibility */
+.explore-page .view-toggle button:focus-visible {
+  outline: 3px solid #884a28;
+  outline-offset: 3px;
+}
+
+/* Map container */
+.explore-page #map-view {
+  width: 100%;
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid #e6d9c8;
+  border-radius: 20px;
+  background: #eae5dc;
+  box-shadow: 0 4px 16px rgba(59, 42, 34, 0.08);
+}
+
+/* Larger desktop map */
+.explore-page #map {
+  width: 100%;
+  height: 560px;
+  border-radius: 20px;
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+  .explore-page #map {
+    height: 480px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .explore-page .view-toggle {
+    width: 100%;
+  }
+
+  .explore-page .view-toggle button {
+    flex: 1;
+    min-width: 0;
+    padding: 12px;
+  }
+
+  .explore-page #map-view,
+  .explore-page #map {
+    border-radius: 16px;
+  }
+
+  .explore-page #map {
+    height: 420px;
+  }
+}
+
+/* =========================================
+   crunch. - Explore Location Cards Polish
+   ========================================= */
+
+/* Responsive card grid */
+.explore-page #shop-cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+  align-items: stretch;
+}
+
+/* Individual location cards */
+.explore-page .shop-card {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background: #fffdf8;
+  border: 1px solid #e6d9c8;
+  border-radius: 20px;
+  box-shadow: 0 4px 14px rgba(59, 42, 34, 0.06);
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+/* Hover effect */
+.explore-page .shop-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(59, 42, 34, 0.12);
+}
+
+/* Shop photos */
+.explore-page .shop-image {
+  height: 190px;
+  overflow: hidden;
+  background: #eae5dc;
+}
+
+.explore-page .shop-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.explore-page .shop-card:hover .shop-image img {
+  transform: scale(1.04);
+}
+
+/* Card content */
+.explore-page .shop-info {
+  padding: 20px;
+}
+
+.explore-page .shop-heading h3 {
+  font-family: "DM Sans", sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.4;
+  color: #493e32;
+}
+
+/* Distance and address */
+.explore-page .shop-distance {
+  margin: 8px 0;
+  color: #637b5a;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.explore-page .shop-info .address {
+  margin: 10px 0;
+  color: #80776c;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+/* Amenity tags */
+.explore-page .shop-tag {
+  padding: 7px 11px;
+  background: #edf1e9;
+  color: #526b49;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* Save button */
+.explore-page .shop-card .save-button {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  color: #637b5a;
+}
+
+.explore-page .shop-card .save-button:hover {
+  background: #edf1e9;
+}
+
+/* Keyboard accessibility */
+.explore-page .shop-card:focus-visible {
+  outline: 3px solid #637b5a;
+  outline-offset: 3px;
+}
+
+/* Tablet */
+@media (max-width: 1000px) {
+  .explore-page #shop-cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .explore-page #shop-cards {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+  }
+
+  .explore-page .shop-image {
+    height: 190px;
+  }
+
+  .explore-page .shop-info {
+    padding: 17px;
+  }
+
+  .explore-page .shop-heading h3 {
+    font-size: 16px;
+  }
+}
+
+/* =========================================
+   crunch. - Collapsible Mobile Filters
+   ========================================= */
+
+/* Desktop: filters always visible */
+.explore-page #mobile-filter-toggle {
+  display: none;
+}
+
+.explore-page #filter-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: 18px;
+  width: 100%;
+}
+
+/* Mobile: expandable filter panel */
+@media (max-width: 600px) {
+  .explore-page #filters > h2 {
+    display: none;
+  }
+
+  .explore-page #mobile-filter-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 4px 0;
+    border: none;
+    background: transparent;
+    color: #493e32;
+    font:
+      700 17px "DM Sans",
+      sans-serif;
+    cursor: pointer;
+  }
+
+  .explore-page .filter-toggle-icon {
+    font-size: 24px;
+    transition: transform 0.2s ease;
+  }
+
+  .explore-page
+    #mobile-filter-toggle[aria-expanded="true"]
+    .filter-toggle-icon {
+    transform: rotate(180deg);
+  }
+
+  .explore-page #filter-controls {
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+  }
+
+  .explore-page #filter-controls.is-open {
+    display: flex;
+  }
+
+  .explore-page #filter-controls label {
+    flex: none;
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
+
+/* crunch. - Mobile Explore Category Scrolling */
+@media (max-width: 600px) {
+  .explore-page .explore-categories {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 10px;
+    padding-bottom: 6px;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .explore-page .explore-categories::-webkit-scrollbar {
+    display: none;
+  }
+
+  .explore-page .explore-categories button {
+    flex: 0 0 auto;
+    white-space: nowrap;
+  }
+}
+
+/* crunch. - Mobile Filter Spacing Fix */
+@media (max-width: 600px) {
+  /* Hide the duplicate Filters heading */
+  .explore-page #filters h2 {
+    display: none;
+
+    /* Prevent the Wi-Fi checkbox from stretching */
+    .explore-page #filter-controls .check {
+      flex: 0 0 auto;
+      min-height: 0;
+      height: auto;
+      width: 100%;
+      align-items: center;
+      margin: 0;
+    }
+
+    /* Keep all dropdown labels compact */
+    .explore-page #filter-controls > label {
+      flex: 0 0 auto;
+      min-height: 0;
+      height: auto;
+      margin: 0;
+    }
+
+    /* Hide the duplicate heading */
+    .explore-page #filter-controls > h2 {
+      display: none;
+    }
+  }
+
+  /* Remove excessive spacing between controls */
+  .explore-page #filter-controls {
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  .explore-page #filter-controls.is-open {
+    display: flex;
+  }
+
+  /* Keep each filter compact */
+  .explore-page #filter-controls label {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    min-height: 0;
+    flex: 0 0 auto;
+  }
+
+  /* Keep dropdowns aligned */
+  .explore-page #filter-controls select {
+    width: 100%;
+    margin: 0;
+  }
+
+  /* Remove extra spacing inside the Filters card */
+  .explore-page #filters {
+    gap: 12px;
+  }
+}
+
+/* crunch. - Compact Mobile Explore Layout */
+@media (max-width: 600px) {
+  .explore-page .explore-categories {
+    margin: 18px 0 12px;
+  }
+
+  .explore-page .explore-tools {
+    margin: 16px 0 12px;
+    row-gap: 8px;
+  }
+
+  .explore-page .results-toolbar {
+    margin-top: 4px;
+  }
+
+  .explore-page .view-toggle {
+    margin: 16px 0 14px;
+  }
+}
