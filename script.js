@@ -99,10 +99,12 @@ function makeCard(shop) {
             <div class="card-rating" data-rating-shop="${shop.id}">
               <span class="rating-placeholder">Sign in to see ratings</span>
             </div>
-
+            
             <p class="shop-distance">
-              📍 ${distance} miles from campus
+            <i data-lucide="map-pin"></i>
+            ${distance} miles from campus
             </p>
+
           </div>
 
           <button class="save-button" type="button"
@@ -284,6 +286,14 @@ function showShops(shops) {
     cardContainer.innerHTML = shops.map(makeCard).join("");
   }
 
+  // Render Lucide icons in the Explore list cards
+  if (window.lucide) {
+    lucide.createIcons({
+      root: cardContainer,
+      attrs: { "stroke-width": 1.8 },
+    });
+  }
+
   if (typeof updateSavedHearts === "function") {
     updateSavedHearts();
   }
@@ -322,7 +332,15 @@ function showShops(shops) {
 
     // Distance from campus
     const distanceText = document.createElement("p");
-    distanceText.textContent = `📍 ${distance} miles from campus`;
+    distanceText.className = "map-popup-distance";
+
+    const locationIcon = document.createElement("i");
+    locationIcon.setAttribute("data-lucide", "map-pin");
+
+    distanceText.append(
+      locationIcon,
+      document.createTextNode(`${distance} miles from campus`),
+    );
 
     // View Details button
     const detailsButton = document.createElement("button");
@@ -339,6 +357,16 @@ function showShops(shops) {
 
     // Attach preview to the marker
     marker.bindPopup(preview);
+
+    // Render the location icon when the map popup opens
+    marker.on("popupopen", () => {
+      if (window.lucide) {
+        lucide.createIcons({
+          root: preview,
+          attrs: { "stroke-width": 1.8 },
+        });
+      }
+    });
 
     marker.addTo(markerLayer);
   });

@@ -261,6 +261,16 @@ select {
   color: #637b5a;
   font-size: 13px;
   margin: 6px 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.shop-distance svg {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+  stroke-width: 1.8;
 }
 
 .shop-info .address {
@@ -753,12 +763,14 @@ body.modal-open {
 }
 
 .modal-content {
-  max-width: 560px;
+  width: 100%;
+  max-width: 600px;
   max-height: 88vh;
+  overflow-y: auto;
   border-radius: 24px;
   background: #fffdf8;
-  border: 1px solid rgba(255, 255, 255, 0.8);
-  box-shadow: 0 24px 70px rgba(59, 42, 34, 0.25);
+  border: 1px solid #e6d9c8;
+  box-shadow: 0 24px 70px rgba(59, 42, 34, 0.22);
 }
 
 .modal-image {
@@ -769,7 +781,7 @@ body.modal-open {
 }
 
 .modal-body {
-  padding: 28px;
+  padding: 30px 32px 34px;
 }
 
 .modal-body h2 {
@@ -787,9 +799,19 @@ body.modal-open {
 }
 
 .modal-distance {
+  display: flex;
+  align-items: center;
+  gap: 6px;
   color: #637b5a;
   font-weight: 600;
   margin: 8px 0;
+}
+
+.modal-distance svg {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+  stroke-width: 1.8;
 }
 
 .modal-body .address {
@@ -889,27 +911,44 @@ body.modal-open {
 .amenity-card {
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  padding: 18px;
+  gap: 8px;
+  padding: 20px;
   border-radius: 16px;
-  background: #f4f1e9;
-  border: 1px solid #e6e0d5;
+  background: #faf5ee;
+  border: 1px solid #e6d9c8;
+  transition: border-color 0.2s ease;
+}
+
+.amenity-card:hover {
+  border-color: #b98a6a;
 }
 
 .amenity-icon {
-  font-size: 23px;
-  line-height: 1.3;
+  display: flex;
+  align-items: center;
+  color: #884a28;
+}
+
+.amenity-icon svg {
+  width: 20px;
+  height: 20px;
+  stroke-width: 1.8;
 }
 
 .amenity-label {
-  font-size: 13px;
+  font-family: "DM Sans", sans-serif;
+  font-size: 12px;
+  font-weight: 500;
   color: #80776c;
+  letter-spacing: 0.2px;
 }
 
 .amenity-card strong {
-  font-size: 15px;
+  font-family: "DM Sans", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.4;
   color: #493e32;
-  font-weight: 600;
 }
 
 @media (max-width: 360px) {
@@ -2149,6 +2188,19 @@ body.saved-page > .home-header {
 
 .map-shop-preview button:hover {
   background: #6d3920;
+}
+
+.map-popup-distance {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.map-popup-distance svg {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+  stroke-width: 1.8;
 }
 
 /* Match Leaflet's popup to crunch.'s theme */

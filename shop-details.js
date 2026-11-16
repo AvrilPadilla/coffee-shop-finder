@@ -81,7 +81,10 @@ function openSharedShopDetails(shop) {
     <div class="modal-body">
       <h2>${shop.name}</h2>
 
-      <p class="modal-distance">📍 ${distance} miles from campus</p>
+      <p class="modal-distance">
+        <i data-lucide="map-pin"></i>
+        ${distance} miles from campus
+      </p>
 
       <p class="address">${shop.address}</p>
 
@@ -100,7 +103,7 @@ function openSharedShopDetails(shop) {
 
       <div class="modal-amenities">
         <div class="amenity-card">
-          <span class="amenity-icon">📶</span>
+          <span class="amenity-icon"><i data-lucide="wifi"></i></span>
           <span class="amenity-label">Wi-Fi</span>
           <strong>
             ${shop.wifi === true
@@ -112,7 +115,7 @@ function openSharedShopDetails(shop) {
         </div>
 
         <div class="amenity-card">
-          <span class="amenity-icon">🔌</span>
+          <span class="amenity-icon"><i data-lucide="plug"></i></span>
           <span class="amenity-label">Outlets</span>
           <strong>
             ${shop.outlets
@@ -122,7 +125,7 @@ function openSharedShopDetails(shop) {
         </div>
 
         <div class="amenity-card">
-          <span class="amenity-icon">🔈</span>
+          <span class="amenity-icon"><i data-lucide="volume-2"></i></span>
           <span class="amenity-label">Noise level</span>
           <strong>
             ${shop.noise
@@ -132,7 +135,7 @@ function openSharedShopDetails(shop) {
         </div>
 
         <div class="amenity-card">
-          <span class="amenity-icon">🪑</span>
+          <span class="amenity-icon"><i data-lucide="armchair"></i></span>
           <span class="amenity-label">Seating</span>
           <strong>
             ${shop.seating
@@ -170,6 +173,17 @@ function openSharedShopDetails(shop) {
       </a>
     </div>
   `;
+
+  // Render Lucide icons inside the shop details popup
+  if (window.lucide) {
+    lucide.createIcons({
+      root: sharedModalDetails,
+      attrs: {
+        "stroke-width": 1.8,
+      },
+    });
+  }
+
   // Photo gallery controls
   let currentPhotoIndex = 0;
 
