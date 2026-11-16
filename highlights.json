@@ -1,0 +1,21 @@
+{
+  "currentMonth": "2026-12",
+  "highlights": {
+    "study": {
+      "shopId": null,
+      "featuredItem": null,
+      "featuredPrice": null,
+      "review": null,
+      "photo": null,
+      "visitDate": null
+    },
+    "food": {
+      "shopId": null,
+      "featuredItem": null,
+      "featuredPrice": null,
+      "review": null,
+      "photo": null,
+      "visitDate": null
+    }
+  }
+}

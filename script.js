@@ -3,6 +3,8 @@ const cardContainer = document.getElementById("shop-cards");
 let allShops = [];
 let shopRatings = {};
 let ratingsVerified = false;
+// Currently selected Explore category
+let selectedCategory = "all";
 
 const SCHOOLS = {
   saddleback: {
@@ -57,6 +59,18 @@ function capitalize(word) {
   return word.charAt(0).toUpperCase() + word.slice(1);
 }
 
+// Convert stored price ranges into readable labels
+function getPriceRangeText(priceRange) {
+  const priceRanges = {
+    "under-10": "Under $10",
+    "10-15": "$10–$15",
+    "15-20": "$15–$20",
+    "20-plus": "$20+",
+  };
+
+  return priceRanges[priceRange] || "Price not confirmed";
+}
+
 // Build the HTML for ONE shop
 
 function makeCard(shop) {
@@ -100,22 +114,48 @@ function makeCard(shop) {
         <p class="address">${shop.address}</p>
 
         <div class="shop-tags">
-          <span class="shop-tag">
-            ${shop.wifi ? "✓ Wi-Fi" : "No Wi-Fi"}
-          </span>
 
-          <span class="shop-tag">
-            Outlets: ${capitalize(shop.outlets)}
-          </span>
+  ${
+    shop.type === "food"
+      ? `<span class="shop-tag food-price-tag">
+           💰 ${getPriceRangeText(shop.priceRange)}
+         </span>`
+      : ""
+  }
 
-          <span class="shop-tag">
-            Noise: ${capitalize(shop.noise)}
-          </span>
+  ${
+    typeof shop.wifi === "boolean"
+      ? `<span class="shop-tag">
+           ${shop.wifi ? "✓ Wi-Fi" : "No Wi-Fi"}
+         </span>`
+      : ""
+  }
 
-          <span class="shop-tag">
-            Seating: ${capitalize(shop.seating)}
-          </span>
-        </div>
+  ${
+    shop.outlets
+      ? `<span class="shop-tag">
+           Outlets: ${capitalize(shop.outlets)}
+         </span>`
+      : ""
+  }
+
+  ${
+    shop.noise
+      ? `<span class="shop-tag">
+           Noise: ${capitalize(shop.noise)}
+         </span>`
+      : ""
+  }
+
+  ${
+    shop.seating
+      ? `<span class="shop-tag">
+           Seating: ${capitalize(shop.seating)}
+         </span>`
+      : ""
+  }
+
+</div>
 
       </div>
     </article>
@@ -218,8 +258,28 @@ function updateCardRatings() {
 
 function showShops(shops) {
   if (shops.length === 0) {
-    cardContainer.innerHTML =
-      "<p>No shops match those filters. Try loosening one.</p>";
+    const categoryNames = {
+      study: "study spots",
+      food: "food spots",
+      activity: "activities",
+      event: "events",
+    };
+
+    const categoryName = categoryNames[selectedCategory];
+
+    const categoryIsEmpty =
+      selectedCategory !== "all" &&
+      !allShops.some((shop) => shop.type === selectedCategory);
+
+    const message = categoryIsEmpty
+      ? `We're still adding ${categoryName} near your campus. Check back soon!`
+      : "No locations match your filters. Try adjusting your search or filters.";
+
+    const emptyMessage = document.createElement("p");
+    emptyMessage.className = "explore-empty-message";
+    emptyMessage.textContent = message;
+
+    cardContainer.replaceChildren(emptyMessage);
   } else {
     cardContainer.innerHTML = shops.map(makeCard).join("");
   }
@@ -370,14 +430,42 @@ const outletsSelect = document.getElementById("filter-outlets");
 const noiseSelect = document.getElementById("filter-noise");
 const seatingSelect = document.getElementById("filter-seating");
 const distanceSelect = document.getElementById("filter-distance");
+const budgetSelect = document.getElementById("filter-budget");
 const searchInput = document.getElementById("search-shops");
 const sortSelect = document.getElementById("sort-shops");
 const resultsCount = document.getElementById("results-count");
 const resetButton = document.getElementById("reset-filters");
+// Explore category buttons
+const categoryButtons = document.querySelectorAll(
+  ".explore-categories .category-button",
+);
 
 // Does ONE shop pass ALL the filters? "return false" means reject it.
 
 function matchesFilters(shop) {
+  // Only show locations in the selected category
+  if (selectedCategory !== "all" && shop.type !== selectedCategory) {
+    return false;
+  }
+
+  // Filter food spots by maximum meal budget
+  if (budgetSelect.value !== "any" && shop.type === "food") {
+    const priceRanks = {
+      "under-10": 1,
+      "10-15": 2,
+      "15-20": 3,
+      "20-plus": 4,
+    };
+
+    const selectedBudget = priceRanks[budgetSelect.value];
+    const shopPrice = priceRanks[shop.priceRange];
+
+    // Do not include food spots with unconfirmed prices
+    if (!shopPrice || shopPrice > selectedBudget) {
+      return false;
+    }
+  }
+
   const search = searchInput.value.trim().toLowerCase();
 
   if (!shop.name.toLowerCase().includes(search)) {
@@ -470,13 +558,50 @@ function updateResults() {
 // Every control runs the same function
 [wifiBox, outletsSelect, noiseSelect, seatingSelect, distanceSelect].forEach(
   (control) => {
-    control.addEventListener("change", updateResults);
+    [
+      wifiBox,
+      outletsSelect,
+      noiseSelect,
+      seatingSelect,
+      distanceSelect,
+      budgetSelect,
+    ].forEach((control) => {
+      control.addEventListener("change", updateResults);
+    });
   },
 );
 
 searchInput.addEventListener("input", updateResults);
 
 sortSelect.addEventListener("change", updateResults);
+
+// Change category when a category button is clicked
+categoryButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    selectedCategory = button.dataset.category;
+    // Only show the meal budget filter for Food
+    const budgetFilter = document.querySelector(".food-budget-filter");
+
+    budgetFilter.classList.toggle("hidden", selectedCategory !== "food");
+
+    // Reset the budget when leaving Food
+    if (selectedCategory !== "food") {
+      budgetSelect.value = "any";
+      document.querySelector(".food-budget-filter").classList.add("hidden");
+    }
+
+    // Highlight the selected category
+    categoryButtons.forEach((categoryButton) => {
+      const isActive = categoryButton === button;
+
+      categoryButton.classList.toggle("active", isActive);
+      categoryButton.setAttribute("aria-pressed", String(isActive));
+    });
+
+    // Refresh the map and shop cards
+    updateResults();
+  });
+});
 
 resetButton.addEventListener("click", () => {
   searchInput.value = "";
@@ -487,6 +612,17 @@ resetButton.addEventListener("click", () => {
   noiseSelect.value = "any";
   seatingSelect.value = "any";
   distanceSelect.value = "any";
+  budgetSelect.value = "any";
+
+  // Reset category to All
+  selectedCategory = "all";
+
+  categoryButtons.forEach((button) => {
+    const isActive = button.dataset.category === "all";
+
+    button.classList.toggle("active", isActive);
+    button.setAttribute("aria-pressed", String(isActive));
+  });
 
   updateResults();
 });

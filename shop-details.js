@@ -10,6 +10,18 @@ const sharedCloseModal = document.getElementById("close-modal");
 // Track the shop currently being viewed
 let sharedCurrentShop = null;
 
+// Convert stored price ranges into readable labels
+function getModalPriceRangeText(priceRange) {
+  const priceRanges = {
+    "under-10": "Under $10",
+    "10-15": "$10–$15",
+    "15-20": "$15–$20",
+    "20-plus": "$20+",
+  };
+
+  return priceRanges[priceRange] || "Price not confirmed";
+}
+
 // Open the shared shop details popup
 function openSharedShopDetails(shop) {
   sharedCurrentShop = shop;
@@ -73,7 +85,18 @@ function openSharedShopDetails(shop) {
 
       <p class="address">${shop.address}</p>
 
-      <h3>Study-friendly amenities</h3>
+      ${shop.type === "food"
+        ? `<div class="modal-food-price">
+         <span>💰 Typical meal price</span>
+         <strong>${getModalPriceRangeText(shop.priceRange)}</strong>
+       </div>`
+        : ""}
+
+      <h3>
+        ${shop.type === "study"
+          ? "Study-friendly amenities"
+          : "Location amenities"}
+      </h3>
 
       <div class="modal-amenities">
         <div class="amenity-card">
@@ -138,7 +161,7 @@ function openSharedShopDetails(shop) {
       <a
         class="modal-directions"
         href="https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(
-          `${shop.lat},${shop.lng}`,
+          shop.address,
         )}"
         target="_blank"
         rel="noopener noreferrer"
@@ -346,7 +369,11 @@ async function loadSharedReviewForm(shopId) {
     <div class="review-form">
       <h3>${existingReview ? "Edit your review" : "Leave a review"}</h3>
 
-      <p>How was your experience studying here?</p>
+      <p>
+        ${sharedCurrentShop?.type === "study"
+          ? "How was your experience studying here?"
+          : "How was your experience at this location?"}
+      </p>
 
       <div class="rating-input" role="group" aria-label="Star rating">
         ${[1, 2, 3, 4, 5]
@@ -367,7 +394,9 @@ async function loadSharedReviewForm(shopId) {
       <textarea
         id="review-comment"
         maxlength="2000"
-        placeholder="Was the Wi-Fi reliable? Were there enough outlets? Was it quiet enough to study?"
+        placeholder="${sharedCurrentShop?.type === "study"
+          ? "Was the Wi-Fi reliable? Were there enough outlets? Was it quiet enough to study?"
+          : "How was the food, service, atmosphere, and overall experience?"}"
         rows="4"
       ></textarea>
 

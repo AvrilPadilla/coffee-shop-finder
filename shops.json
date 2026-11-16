@@ -106,5 +106,136 @@
     "noise": "loud",
     "seating": "large",
     "type": "study"
+  },
+
+  {
+    "id": "el-pollo-loco-mission-viejo",
+    "name": "El Pollo Loco",
+    "address": "25110 Marguerite Pkwy, Mission Viejo, CA 92692",
+    "lat": 33.59723,
+    "lng": -117.6756,
+    "type": "food",
+    "priceRange": "10-15",
+    "description": "Quick-service restaurant serving fire-grilled chicken, bowls, burritos, and other meals."
+  },
+
+  {
+    "id": "dad's-sandwiches-and-things",
+    "name": "Dad's Sandwiches and Things",
+    "address": "27533 Puerta Real, Mission Viejo, CA 92691",
+    "lat": 33.56301,
+    "lng": -117.671794,
+    "type": "food",
+    "description": "Quick-service restaurant serving sandwiches, salads, and other snacks."
+  },
+
+  {
+    "id": "scott's-donuts-and-cafe",
+    "name": "Scott's Donuts & Cafe",
+    "address": "27500 Marguerite Pkwy #3, Mission Viejo, CA 92692",
+    "lat": 33.5625,
+    "lng": -117.6653,
+    "type": "food",
+    "description": "Quick-service cafe serving donuts, pastries, and other snacks."
+  },
+
+  {
+    "id": "ronaldo's-taco-shop",
+    "name": "Ronaldo's Taco Shop",
+    "address": "27620 Marguerite Pkwy, Mission Viejo, CA 92692",
+    "lat": 33.5997,
+    "lng": -117.6755,
+    "type": "food",
+    "description": "Quick-service restaurant serving tacos, burritos, and other Mexican cuisine."
+  },
+
+  {
+    "id": "stacks-pancake-house",
+    "name": "Stacks Pancake House",
+    "address": "27680 Marguerite Pkwy, Mission Viejo, CA 92692",
+    "lat": 33.5618561,
+    "lng": -117.6581768,
+    "type": "food",
+    "description": "Quick-service restaurant serving pancakes, waffles, and other breakfast dishes."
+  },
+
+  {
+    "id": "pho-the-bowl",
+    "name": "Pho The Bowl",
+    "address": "27660 Marguerite Pkwy, Mission Viejo, CA 92692",
+    "lat": 33.5618,
+    "lng": -117.6576,
+    "type": "food",
+    "description": "Quick-service restaurant serving pho, rice bowls, and other Vietnamese dishes."
+  },
+
+  {
+    "id": "fat-treats",
+    "name": "Fat Treats",
+    "address": "27741 Crown Valley Pkwy #23, Mission Viejo, CA 92691",
+    "lat": 33.5612541,
+    "lng": -117.6715352,
+    "type": "food",
+    "description": "Quick-service restaurant serving ice cream, frozen yogurt, and other sweet treats."
+  },
+
+  {
+    "id": "oniguru",
+    "name": "Oniguru",
+    "address": "555 The, Shops At Mission Viejo Ste VC07, Mission Viejo, CA 92691",
+    "lat": 33.5577,
+    "lng": -117.6695,
+    "type": "food",
+    "description": "Quick-service restaurant serving onigiri, rice bowls, and other Japanese dishes."
+  },
+
+  {
+    "id": "taco-stand",
+    "name": "Taco Stand",
+    "address": "24440 Alicia Pkwy Ste b2, Mission Viejo, CA 92691",
+    "lat": 33.6071914,
+    "lng": -117.6890659,
+    "type": "food",
+    "description": "Quick-service restaurant serving tacos, burritos, and other Mexican cuisine."
+  },
+
+  {
+    "id": "prime-pizza",
+    "name": "Prime Pizza",
+    "address": "24420 Alicia Pkwy, Mission Viejo, CA 92691",
+    "lat": 33.6073,
+    "lng": -117.6887,
+    "type": "food",
+    "description": "Quick-service restaurant serving pizza, salads, and other Italian dishes."
+  },
+
+  {
+    "id": "mendocino-farms",
+    "name": "Mendocino Farms",
+    "address": "24420 Alicia Pkwy, Mission Viejo, CA 92691",
+    "lat": 33.6073,
+    "lng": -117.6887,
+    "type": "food",
+    "description": "Quick-service restaurant serving sandwiches, salads, and other farm-to-table dishes."
+  },
+
+  {
+    "id": "perlas-taqueria",
+    "name": "Perla's Taqueria",
+    "address": "25222 Charlinda Dr, Mission Viejo, CA 92691",
+    "lat": 33.6082,
+    "lng": -117.6903,
+    "type": "food",
+    "description": "Quick-service restaurant serving tacos, burritos, and other Mexican cuisine."
+  },
+
+  {
+    "id": "scratch-bakery-cafe",
+    "name": "Scratch Bakery Cafe",
+    "address": "24321 Avenida De La Carlota, Laguna Hills, CA 92653",
+    "lat": 33.6085,
+    "lng": -117.7026,
+    "type": "study",
+    "description": "Quick-service restaurant serving fresh-baked pastries, cakes, and other bakery items."
   }
 ]

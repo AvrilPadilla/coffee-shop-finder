@@ -3,6 +3,7 @@
    ========================================= */
 
 let homeShops = [];
+let homeHighlights = null;
 
 const popularContainer = document.getElementById("popular-now");
 const nearbyContainer = document.getElementById("near-campus");
@@ -50,7 +51,7 @@ function makeHomeCard(shop) {
     shop.lng,
   ).toFixed(1);
 
-  const image = shop.image || "images/default-cafe.jpg";
+  const image = shop.image || "";
 
   return /* HTML */ `
     <article
@@ -61,7 +62,9 @@ function makeHomeCard(shop) {
       aria-label="View details for ${shop.name}"
     >
       <div class="home-place-image">
-        <img src="${image}" alt="${shop.name}" loading="lazy" />
+        ${image
+          ? `<img src="${image}" alt="${shop.name}" loading="lazy" />`
+          : `<div class="home-image-placeholder">Photo coming soon</div>`}
       </div>
 
       <div class="home-place-info">
@@ -128,6 +131,89 @@ function renderHomeShops() {
     : `<p class="home-empty-message">No places match your filters.</p>`;
 }
 
+// Display the monthly crunch. highlights
+function renderHomeHighlights() {
+  if (!homeHighlights || homeShops.length === 0) return;
+
+  // Display the current highlight month
+  const monthLabel = document.getElementById("highlights-month");
+
+  if (monthLabel && homeHighlights.currentMonth) {
+    const [year, month] = homeHighlights.currentMonth.split("-");
+
+    const date = new Date(Number(year), Number(month) - 1, 1);
+
+    monthLabel.textContent =
+      date.toLocaleDateString("en-US", {
+        month: "long",
+        year: "numeric",
+      }) + " Edition";
+  }
+
+  const highlightTypes = ["study", "food"];
+
+  highlightTypes.forEach((type) => {
+    const highlight = homeHighlights.highlights?.[type];
+    const card = document.getElementById(`${type}-highlight`);
+
+    if (!card || !highlight) return;
+
+    const shop = homeShops.find(
+      (item) => String(item.id) === String(highlight.shopId),
+    );
+
+    const title = card.querySelector("h3");
+    const description = card.querySelector(".highlight-content p");
+
+    if (!title || !description) return;
+
+    // Make the highlight card clickable only when a shop is selected
+    card.dataset.shopId = shop ? String(shop.id) : "";
+
+    card.tabIndex = shop ? 0 : -1;
+
+    if (shop) {
+      card.setAttribute("role", "button");
+      card.setAttribute("aria-label", `View details for ${shop.name}`);
+    } else {
+      card.removeAttribute("role");
+      card.removeAttribute("aria-label");
+    }
+
+    if (!shop) {
+      title.textContent = "Coming soon";
+
+      description.textContent =
+        type === "study"
+          ? "Our next study favorite is brewing. Check back soon!"
+          : "Something delicious is on its way. Stay tuned!";
+
+      return;
+    }
+
+    title.textContent = shop.name;
+    description.textContent =
+      highlight.review || "A new crunch. highlight is on its way!";
+  });
+}
+
+// Load monthly highlights
+async function loadHomeHighlights() {
+  try {
+    const response = await fetch("highlights.json");
+
+    if (!response.ok) {
+      throw new Error("Could not fetch highlights.json");
+    }
+
+    homeHighlights = await response.json();
+
+    renderHomeHighlights();
+  } catch (error) {
+    console.error("Error loading crunch. highlights:", error);
+  }
+}
+
 // Load shops.json
 async function loadHomeShops() {
   try {
@@ -140,6 +226,7 @@ async function loadHomeShops() {
     homeShops = await response.json();
 
     renderHomeShops();
+    renderHomeHighlights();
   } catch (error) {
     console.error("Error loading Home shops:", error);
 
@@ -179,6 +266,7 @@ updateHomeDistance();
 homeSearch.addEventListener("input", renderHomeShops);
 
 loadHomeShops();
+loadHomeHighlights();
 
 // =========================================
 // crunch. - Home Shop Details Modal
@@ -240,4 +328,38 @@ document.addEventListener("keydown", (event) => {
   const shop = homeShops.find((item) => item.id === card.dataset.shopId);
 
   if (shop) openHomeShopDetails(shop);
+});
+
+// Open shop details when clicking a crunch. highlight
+document.addEventListener("click", (event) => {
+  const card = event.target.closest(".highlight-card");
+
+  if (!card || !card.dataset.shopId) return;
+
+  const shop = homeShops.find(
+    (item) => String(item.id) === card.dataset.shopId,
+  );
+
+  if (shop) {
+    openHomeShopDetails(shop);
+  }
+});
+
+// Allow keyboard users to open highlights
+document.addEventListener("keydown", (event) => {
+  if (event.key !== "Enter" && event.key !== " ") return;
+
+  const card = event.target.closest(".highlight-card");
+
+  if (!card || !card.dataset.shopId) return;
+
+  event.preventDefault();
+
+  const shop = homeShops.find(
+    (item) => String(item.id) === card.dataset.shopId,
+  );
+
+  if (shop) {
+    openHomeShopDetails(shop);
+  }
 });

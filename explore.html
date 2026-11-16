@@ -109,10 +109,74 @@
         </label>
       </section>
 
+      <!-- Food budget filter -->
+      <div class="food-budget-filter hidden">
+        <label for="filter-budget">Meal budget</label>
+
+        <select id="filter-budget">
+          <option value="any">Any budget</option>
+          <option value="under-10">Under $10</option>
+          <option value="10-15">Up to $15</option>
+          <option value="15-20">Up to $20</option>
+          <option value="20-plus">All price ranges</option>
+        </select>
+      </div>
+
       <section id="explore-section">
         <h2>Explore near campus</h2>
         <p>Discover coffee shops and study spots around your school.</p>
 
+        <!-- Category filters -->
+        <div
+          class="explore-categories"
+          role="group"
+          aria-label="Filter by category"
+        >
+          <button
+            type="button"
+            class="category-button active"
+            data-category="all"
+            aria-pressed="true"
+          >
+            All
+          </button>
+
+          <button
+            type="button"
+            class="category-button"
+            data-category="study"
+            aria-pressed="false"
+          >
+            Study
+          </button>
+
+          <button
+            type="button"
+            class="category-button"
+            data-category="food"
+            aria-pressed="false"
+          >
+            Food
+          </button>
+
+          <button
+            type="button"
+            class="category-button"
+            data-category="activity"
+            aria-pressed="false"
+          >
+            Activities
+          </button>
+
+          <button
+            type="button"
+            class="category-button"
+            data-category="event"
+            aria-pressed="false"
+          >
+            Events
+          </button>
+        </div>
         <!-- Search and sorting -->
         <div class="explore-tools">
           <label for="search-shops">Search locations</label>

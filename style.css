@@ -603,6 +603,80 @@ body.modal-open {
   }
 }
 
+/* =========================================
+   crunch. - Explore Category Filters
+   ========================================= */
+
+.explore-page .explore-categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 24px 0;
+}
+
+.explore-page .category-button {
+  padding: 11px 20px;
+  border: 1px solid #e6d9c8;
+  border-radius: 30px;
+  background: #fffdf8;
+  color: #884a28;
+  font-family: "DM Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+/* Hover effect */
+.explore-page .category-button:hover {
+  background: #f3e2cc;
+  border-color: #884a28;
+}
+
+/* Selected category */
+.explore-page .category-button.active {
+  background: #884a28;
+  color: #faf5ee;
+  border-color: #884a28;
+}
+
+/* Keyboard accessibility */
+.explore-page .category-button:focus-visible {
+  outline: 3px solid #d9962b;
+  outline-offset: 3px;
+}
+
+/* Mobile adjustments */
+@media (max-width: 600px) {
+  .explore-page .explore-categories {
+    gap: 8px;
+  }
+
+  .explore-page .category-button {
+    padding: 10px 15px;
+    font-size: 13px;
+  }
+}
+
+/* Explore empty results message */
+
+.explore-page .explore-empty-message {
+  padding: 28px 20px;
+  margin: 12px 0;
+  background: #fffdf8;
+  border: 1px dashed #d8c5b5;
+  border-radius: 16px;
+  color: #884a28;
+  font-family: "DM Sans", sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  text-align: center;
+}
+
 /* Search, sort, and results toolbar */
 
 .explore-tools {
@@ -2128,4 +2202,282 @@ body.saved-page > .home-header {
   right: 18px;
   z-index: 2;
   cursor: pointer;
+}
+
+/* Food price range tag */
+.explore-page .food-price-tag {
+  background: #f3e2cc;
+  color: #884a28;
+  border: 1px solid #e6d9c8;
+  font-weight: 600;
+}
+
+/* Food pricing in shop details popup */
+
+.modal-food-price {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+
+  padding: 14px 18px;
+  margin: 18px 0;
+
+  background: #f3e2cc;
+  border: 1px solid #e6d9c8;
+  border-radius: 12px;
+
+  color: #884a28;
+  font-family: "DM Sans", sans-serif;
+  font-size: 14px;
+}
+
+.modal-food-price strong {
+  font-weight: 700;
+}
+
+/* Food budget filter */
+
+.explore-page .food-budget-filter {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.explore-page .food-budget-filter label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #884a28;
+}
+
+.explore-page .food-budget-filter select {
+  padding: 11px 12px;
+  border: 1px solid #e6d9c8;
+  border-radius: 10px;
+  background: #fffdf8;
+  color: #3b2a22;
+  font-family: "DM Sans", sans-serif;
+  font-size: 14px;
+}
+
+.explore-page .food-budget-filter.hidden {
+  display: none;
+}
+
+/* ========================================
+   CRUNCH HIGHLIGHTS
+======================================== */
+
+.crunch-highlights {
+  max-width: 1200px;
+  margin: 48px auto;
+  padding: 0 24px;
+}
+
+.highlights-heading {
+  margin-bottom: 24px;
+}
+
+.highlights-eyebrow {
+  display: block;
+  margin-bottom: 8px;
+  color: #a77957;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.highlights-heading h2 {
+  margin: 0 0 8px;
+  color: #603b2a;
+  font-size: 28px;
+  font-weight: 800;
+}
+
+.highlights-heading p {
+  margin: 0;
+  color: #8b7567;
+  font-size: 14px;
+}
+
+/* Two featured cards */
+
+.highlights-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.highlight-card {
+  overflow: hidden;
+  background: #fffaf3;
+  border: 1px solid #eadfd2;
+  border-radius: 20px;
+  box-shadow: 0 5px 18px rgba(75, 46, 29, 0.06);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.highlight-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(75, 46, 29, 0.1);
+}
+
+/* Image area */
+
+.highlight-image {
+  position: relative;
+  height: 220px;
+  background: linear-gradient(135deg, #ead7c0, #c7a88b);
+  background-size: cover;
+  background-position: center;
+}
+
+.highlight-badge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  padding: 8px 12px;
+  background: #fff9ef;
+  border-radius: 20px;
+  color: #75462e;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* Card content */
+
+.highlight-content {
+  padding: 20px;
+}
+
+.highlight-category {
+  color: #a77957;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.4px;
+}
+
+.highlight-content h3 {
+  margin: 10px 0 8px;
+  color: #4b3023;
+  font-size: 21px;
+}
+
+.highlight-content p {
+  margin: 0;
+  color: #826d5f;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* Mobile layout */
+
+@media (max-width: 650px) {
+  .crunch-highlights {
+    margin: 32px auto;
+    padding: 0 16px;
+  }
+
+  .highlights-heading h2 {
+    font-size: 24px;
+  }
+
+  .highlights-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .highlight-image {
+    height: 190px;
+  }
+
+  .highlight-content {
+    padding: 18px;
+  }
+}
+
+/* crunch. Highlights monthly edition */
+
+.highlights-month {
+  display: inline-block;
+  margin-top: 14px;
+  padding: 7px 14px;
+
+  background: #efe0ce;
+  color: #75462e;
+
+  border-radius: 20px;
+
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+
+/* =========================================
+   crunch. - Home Layout Alignment
+   ========================================= */
+
+.home-page .crunch-highlights {
+  width: 100%;
+  max-width: none;
+  margin: 40px 0;
+  padding: 0;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  backdrop-filter: none;
+}
+
+@media (max-width: 650px) {
+  .home-page .crunch-highlights {
+    margin: 32px 0;
+  }
+}
+
+/* =========================================
+   crunch. - Responsive Home Layout
+   ========================================= */
+
+/* Desktop layout */
+.home-page .home-main {
+  width: min(100% - 48px, 1220px);
+  max-width: 1220px;
+  margin: 0 auto;
+  padding: 36px 0 60px;
+}
+
+/* Consistent spacing between sections */
+.home-page .home-categories {
+  margin: 30px 0 40px;
+}
+
+.home-page .home-discovery-section {
+  margin-bottom: 44px;
+}
+
+/* Tablet layout */
+@media (max-width: 900px) {
+  .home-page .home-main {
+    width: calc(100% - 40px);
+    padding-top: 28px;
+  }
+}
+
+/* Mobile layout */
+@media (max-width: 600px) {
+  .home-page .home-main {
+    width: calc(100% - 32px);
+    padding: 24px 0 110px;
+  }
+
+  .home-page .home-categories {
+    margin: 24px 0 32px;
+  }
+
+  .home-page .home-discovery-section {
+    margin-bottom: 36px;
+  }
 }
