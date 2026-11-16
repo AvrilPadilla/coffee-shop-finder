@@ -2481,3 +2481,253 @@ body.saved-page > .home-header {
     margin-bottom: 36px;
   }
 }
+
+/* =========================================
+   crunch. - Home Search & Categories Polish
+   ========================================= */
+
+/* Search bar */
+.home-page .home-search-box {
+  min-height: 56px;
+  border: 1px solid #e6d9c8;
+  border-radius: 16px;
+  background: #fffdf8;
+  padding: 0 18px;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.home-page .home-search-box:focus-within {
+  border-color: #637b5a;
+  box-shadow: 0 0 0 3px rgba(99, 123, 90, 0.12);
+}
+
+.home-page .home-search-box input {
+  font-size: 15px;
+  color: #493e32;
+}
+
+.home-page .home-search-box input::placeholder {
+  color: #91877d;
+}
+
+/* Explore filters button */
+.home-page .home-filter-button {
+  width: 56px;
+  height: 56px;
+  flex-shrink: 0;
+  border-radius: 16px;
+  background: #884a28;
+  color: #faf5ee;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.home-page .home-filter-button:hover {
+  background: #6d3920;
+  transform: translateY(-2px);
+}
+
+/* Category cards */
+.home-page .home-category {
+  min-height: 112px;
+  border-radius: 18px;
+  background: #fffdf8;
+  border: 1px solid #e6d9c8;
+  box-shadow: 0 3px 12px rgba(59, 42, 34, 0.04);
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+/* Category icons */
+.home-page .home-category svg {
+  width: 27px;
+  height: 27px;
+  color: #637b5a;
+  stroke-width: 1.8;
+}
+
+/* Category labels */
+.home-page .home-category span {
+  font-size: 14px;
+  font-weight: 600;
+  color: #493e32;
+}
+
+/* Hover and selected appearance */
+.home-page .home-category:hover,
+.home-page .home-category.active {
+  background: #edf1e9;
+  border-color: #a8b79f;
+  box-shadow: 0 6px 18px rgba(59, 42, 34, 0.07);
+}
+
+/* Keyboard accessibility */
+.home-page .home-category:focus-visible,
+.home-page .home-filter-button:focus-visible {
+  outline: 3px solid #637b5a;
+  outline-offset: 3px;
+}
+
+/* Mobile adjustments */
+@media (max-width: 600px) {
+  .home-page .home-search-box {
+    min-height: 50px;
+    padding: 0 14px;
+  }
+
+  .home-page .home-filter-button {
+    width: 50px;
+    height: 50px;
+  }
+
+  .home-page .home-category {
+    min-height: 92px;
+    padding: 12px 4px;
+    gap: 9px;
+  }
+
+  .home-page .home-category svg {
+    width: 23px;
+    height: 23px;
+  }
+
+  .home-page .home-category span {
+    font-size: 12px;
+  }
+}
+
+/* =========================================
+   crunch. - Home Discovery Cards Refinement
+   ========================================= */
+
+/* Consistent card proportions */
+.home-page .home-place-card {
+  flex: 0 0 270px;
+  border-radius: 20px;
+  cursor: pointer;
+  outline: none;
+}
+
+/* Larger, consistent image area */
+.home-page .home-place-image {
+  height: 170px;
+}
+
+/* Consistent text spacing */
+.home-page .home-place-info {
+  padding: 18px;
+}
+
+.home-page .home-place-info h3 {
+  font-size: 16px;
+  line-height: 1.4;
+  margin-bottom: 8px;
+}
+
+/* Sage-green amenity tags */
+.home-page .home-place-tags span {
+  background: #edf1e9;
+  color: #526b49;
+  padding: 6px 10px;
+}
+
+/* Accessible keyboard focus */
+.home-page .home-place-card:focus-visible {
+  outline: 3px solid #637b5a;
+  outline-offset: 3px;
+}
+
+/* More comfortable carousel scrolling */
+.home-page .home-card-carousel {
+  gap: 18px;
+  padding: 6px 4px 20px;
+  scroll-padding-inline: 4px;
+}
+
+/* Mobile card proportions */
+@media (max-width: 600px) {
+  .home-page .home-place-card {
+    flex-basis: min(250px, 82vw);
+  }
+
+  .home-page .home-place-image {
+    height: 155px;
+  }
+
+  .home-page .home-place-info {
+    padding: 15px;
+  }
+
+  .home-page .home-card-carousel {
+    gap: 14px;
+  }
+}
+
+/* =========================================
+   crunch. - Monthly Highlights Polish
+   ========================================= */
+
+/* Featured cards */
+.home-page .highlight-card {
+  border-radius: 22px;
+  border: 1px solid #e6d9c8;
+  background: #fffdf8;
+  box-shadow: 0 4px 16px rgba(59, 42, 34, 0.06);
+}
+
+/* More prominent photography */
+.home-page .highlight-image {
+  height: 240px;
+  background-color: #eae5dc;
+}
+
+/* Editorial content spacing */
+.home-page .highlight-content {
+  padding: 24px;
+}
+
+.home-page .highlight-content h3 {
+  font-size: 23px;
+  line-height: 1.3;
+  color: #493e32;
+}
+
+/* Sage-green category label */
+.home-page .highlight-category {
+  color: #526b49;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+}
+
+/* Monthly edition badge */
+.home-page .highlights-month {
+  background: #edf1e9;
+  color: #526b49;
+}
+
+/* Keyboard accessibility */
+.home-page .highlight-card:focus-visible {
+  outline: 3px solid #637b5a;
+  outline-offset: 3px;
+}
+
+/* Mobile adjustments */
+@media (max-width: 650px) {
+  .home-page .highlight-image {
+    height: 200px;
+  }
+
+  .home-page .highlight-content {
+    padding: 19px;
+  }
+
+  .home-page .highlight-content h3 {
+    font-size: 21px;
+  }
+}
