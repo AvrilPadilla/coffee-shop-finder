@@ -804,7 +804,7 @@ body.modal-open {
   gap: 6px;
   color: #637b5a;
   font-weight: 600;
-  margin: 8px 0;
+  margin: 8px 0 4px;
 }
 
 .modal-distance svg {
