@@ -51,7 +51,11 @@ body {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, rgba(40, 25, 15, 0.4), transparent 50%);
+  background: linear-gradient(
+    to bottom,
+    rgba(40, 25, 15, 0.4),
+    transparent 50%
+  );
 }
 
 .brand {
@@ -87,7 +91,11 @@ body {
   padding: 1.5rem 1.25rem 1rem;
   text-align: center;
   border-radius: 28px;
-  background: linear-gradient(180deg, rgba(255, 252, 246, 0.88), rgba(246, 236, 220, 0.78));
+  background: linear-gradient(
+    180deg,
+    rgba(255, 252, 246, 0.88),
+    rgba(246, 236, 220, 0.78)
+  );
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border: 1px solid rgba(255, 255, 255, 0.8);
@@ -144,9 +152,17 @@ body {
   border-radius: 999px;
   overflow: hidden;
   cursor: pointer;
-  font: 600 1.05rem "DM Sans", system-ui, sans-serif;
+  font:
+    600 1.05rem "DM Sans",
+    system-ui,
+    sans-serif;
   color: #fff;
-  background: linear-gradient(180deg, var(--green-light) 0%, var(--green) 55%, var(--green-dark) 100%);
+  background: linear-gradient(
+    180deg,
+    var(--green-light) 0%,
+    var(--green) 55%,
+    var(--green-dark) 100%
+  );
   box-shadow:
     0 8px 18px rgba(62, 86, 57, 0.35),
     inset 0 1px 0 rgba(255, 255, 255, 0.55),
@@ -162,7 +178,10 @@ body {
   top: 3px;
   height: 45%;
   border-radius: 999px;
-  background: linear-gradient(rgba(255, 255, 255, 0.45), rgba(255, 255, 255, 0));
+  background: linear-gradient(
+    rgba(255, 255, 255, 0.45),
+    rgba(255, 255, 255, 0)
+  );
   pointer-events: none;
 }
 
@@ -201,4 +220,28 @@ body {
 a.btn {
   text-align: center;
   text-decoration: none;
+}
+
+/* Welcome page slide transitions */
+
+.screen {
+  transition:
+    transform 0.3s ease-in-out,
+    opacity 0.3s ease-in-out;
+}
+
+.screen.slide-out-left {
+  transform: translateX(-100%);
+  opacity: 0;
+}
+
+.screen.slide-out-right {
+  transform: translateX(100%);
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .screen {
+    transition: none;
+  }
 }
