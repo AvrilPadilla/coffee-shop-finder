@@ -54,6 +54,22 @@
       <a href="explore.html">Back to Explore</a>
     </main>
 
+    <!-- Shop details popup -->
+    <div id="shop-modal" class="modal hidden">
+      <div class="modal-content">
+        <button
+          id="close-modal"
+          class="close-modal"
+          type="button"
+          aria-label="Close details"
+        >
+          &times;
+        </button>
+
+        <div id="modal-details"></div>
+      </div>
+    </div>
+
     <!-- Mobile Bottom Navigation -->
     <nav class="home-bottom-nav" aria-label="Main navigation">
       <a href="index.html">
@@ -75,6 +91,12 @@
     <!-- Supabase -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="supabase-client.js"></script>
+
+    <!-- Shared shop details and saving -->
+    <script src="shop-details.js"></script>
+    <script src="shared-saved.js"></script>
+
+    <!-- Saved page -->
     <script src="saved-page.js"></script>
 
     <!-- Initialize Icons -->

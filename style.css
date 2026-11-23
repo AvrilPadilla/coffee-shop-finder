@@ -1039,6 +1039,18 @@ body.modal-open {
   text-decoration: none;
 
   transition: all 0.2s ease;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.modal-directions svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  stroke-width: 1.8;
 }
 
 .modal-directions:hover {
@@ -3454,4 +3466,264 @@ body.saved-page > .home-header {
   .explore-page .view-toggle {
     margin: 16px 0 14px;
   }
+}
+
+.home-place-distance {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.home-place-distance svg {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+  stroke-width: 1.8;
+}
+
+/* =========================================
+   crunch. - Saved Page Layout
+   ========================================= */
+
+.saved-page .saved-main {
+  width: min(100% - 48px, 1220px);
+  max-width: 1220px;
+  margin: 0 auto;
+  padding: 36px 0 80px;
+}
+
+.saved-page .saved-main h2 {
+  margin: 0 0 24px;
+  font-size: 30px;
+  color: #493e32;
+}
+
+.saved-page #saved-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+  align-items: stretch;
+}
+
+.saved-page #saved-list .shop-card {
+  min-width: 0;
+  margin: 0;
+  background: #fffdf8;
+  border: 1px solid #e6d9c8;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 4px 14px rgba(59, 42, 34, 0.06);
+}
+
+.saved-page #saved-list .shop-image {
+  height: 190px;
+  overflow: hidden;
+  background: #eae5dc;
+}
+
+.saved-page #saved-list .shop-info {
+  padding: 20px;
+}
+
+.saved-page #saved-list .shop-info h3 {
+  font-family: "DM Sans", sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  color: #493e32;
+}
+
+/* Tablet */
+@media (max-width: 1000px) {
+  .saved-page #saved-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .saved-page .saved-main {
+    width: calc(100% - 32px);
+    padding: 24px 0 110px;
+  }
+
+  .saved-page .saved-main h2 {
+    font-size: 25px;
+  }
+
+  .saved-page #saved-list {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+  }
+
+  .saved-page #saved-list .shop-info {
+    padding: 17px;
+  }
+}
+/* crunch. - Saved Page Heart Buttons */
+
+.saved-page .remove-saved {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  margin-top: 14px;
+  padding: 8px;
+
+  background: #faf5ee;
+  color: #c66b79;
+  border: 1px solid #e6d9c8;
+  border-radius: 50%;
+
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.saved-page .remove-saved:hover {
+  background: #fff0f2;
+  transform: scale(1.08);
+}
+
+.saved-page .remove-saved:disabled {
+  opacity: 0.5;
+  cursor: wait;
+}
+
+.saved-page .remove-saved:focus-visible {
+  outline: 3px solid #884a28;
+  outline-offset: 3px;
+}
+/* crunch. - Saved Card Heading */
+
+.saved-page .shop-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.saved-page .shop-heading h3 {
+  flex: 1;
+  margin: 0;
+}
+
+.saved-page .shop-heading .remove-saved {
+  flex-shrink: 0;
+  margin: 0;
+}
+/* =========================================
+   crunch. - Saved Page Empty State
+   ========================================= */
+
+.saved-page .saved-empty {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 65px 24px;
+  background: #fffdf8;
+  border: 1px dashed #d8c5b5;
+  border-radius: 22px;
+}
+
+.saved-page .saved-empty-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 72px;
+  height: 72px;
+  margin-bottom: 22px;
+  background: #f3e2cc;
+  color: #884a28;
+  border-radius: 50%;
+}
+
+.saved-page .saved-empty-icon svg {
+  width: 32px;
+  height: 32px;
+}
+
+.saved-page .saved-empty h2 {
+  margin: 0 0 12px;
+  font-size: 26px;
+  color: #493e32;
+}
+
+.saved-page .saved-empty p {
+  max-width: 380px;
+  margin: 0 0 26px;
+  color: #80776c;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.saved-page .saved-explore-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 13px 24px;
+  background: #884a28;
+  color: #faf5ee;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+
+.saved-page .saved-explore-button:hover {
+  background: #6d3920;
+}
+
+.saved-page .saved-explore-button:focus-visible {
+  outline: 3px solid #d9962b;
+  outline-offset: 3px;
+}
+
+@media (max-width: 600px) {
+  .saved-page .saved-empty {
+    padding: 48px 20px;
+  }
+
+  .saved-page .saved-empty h2 {
+    font-size: 23px;
+  }
+}
+/* =========================================
+   crunch. - Saved Card Interactions
+   ========================================= */
+
+.saved-page #saved-list .shop-card {
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.saved-page #saved-list .shop-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 26px rgba(59, 42, 34, 0.12);
+  border-color: #d4b99e;
+}
+
+.saved-page #saved-list .shop-card:active {
+  transform: translateY(-1px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .saved-page #saved-list .shop-card {
+    transition: none;
+  }
+}
+
+/* Saved Card Keyboard Accessibility */
+
+.saved-page #saved-list .shop-card:focus-visible {
+  outline: 3px solid #884a28;
+  outline-offset: 4px;
 }

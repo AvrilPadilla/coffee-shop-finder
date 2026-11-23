@@ -70,7 +70,10 @@ function makeHomeCard(shop) {
       <div class="home-place-info">
         <h3>${shop.name}</h3>
 
-        <p class="home-place-distance">📍 ${distance} miles from campus</p>
+        <p class="home-place-distance">
+          <i data-lucide="map-pin"></i>
+          ${distance} miles from campus
+        </p>
 
         <div class="home-place-tags">
           <span>${shop.wifi ? "✓ Wi-Fi" : "No Wi-Fi"}</span>
@@ -129,6 +132,19 @@ function renderHomeShops() {
   popularContainer.innerHTML = filteredShops.length
     ? filteredShops.slice(0, 4).map(makeHomeCard).join("")
     : `<p class="home-empty-message">No places match your filters.</p>`;
+
+  // Render Lucide icons in Home page cards
+  if (window.lucide) {
+    lucide.createIcons({
+      root: nearbyContainer,
+      attrs: { "stroke-width": 1.8 },
+    });
+
+    lucide.createIcons({
+      root: popularContainer,
+      attrs: { "stroke-width": 1.8 },
+    });
+  }
 }
 
 // Display the monthly crunch. highlights

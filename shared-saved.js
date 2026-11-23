@@ -99,7 +99,13 @@ async function toggleSharedSavedPlace(shopId) {
     updateSavedHearts();
   }
 
-  // We'll connect the Save button's appearance in the next step
+  // Refresh the Saved page when a place is added or removed
+  if (document.body.classList.contains("saved-page")) {
+    await loadSavedPlaces();
+  }
+
+  // Update the popup's saved button
+  updateSharedSavedButton();
 }
 
 // Update the Save button inside the shared shop popup

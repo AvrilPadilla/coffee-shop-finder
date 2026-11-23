@@ -1,50 +1,84 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>crunch. | Study spots for real life</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=DM+Sans:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="welcome.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>crunch. | Study spots for real life</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=DM+Sans:wght@400;600&display=swap"
-    rel="stylesheet">
-  <link rel="stylesheet" href="welcome.css">
-</head>
+  <body>
+    <!-- SCREEN 1 of 3. Screens 2 and 3 will be added next. -->
+    <main class="screen">
+      <!-- Top half: photo with the app name and slogan on top of it -->
+      <header class="hero">
+        <div class="brand">
+          <h1>crunch.</h1>
+          <p class="slogan">Study spots for real life</p>
+        </div>
+      </header>
 
-<body>
+      <!-- Glass card that overlaps the bottom of the photo -->
+      <section class="card">
+        <h2>Find your place to focus.</h2>
+        <p>
+          Discover cozy cafés, quiet spaces, and hidden gems near your college.
+          Whether you need a change of scenery or a new favorite spot, crunch.
+          helps you find the perfect place to study.
+        </p>
+        <div class="dots" aria-label="Page 1 of 4">
+          <span class="active"></span><span></span><span></span><span></span>
+        </div>
+      </section>
 
-  <!-- SCREEN 1 of 3. Screens 2 and 3 will be added next. -->
-  <main class="screen">
-
-    <!-- Top half: photo with the app name and slogan on top of it -->
-    <header class="hero">
-      <div class="brand">
-        <h1>crunch.</h1>
-        <p class="slogan">Study spots for real life</p>
+      <!-- Button at the bottom. It doesn't go anywhere yet (screen 2 is next). -->
+      <div class="actions">
+        <a class="btn" href="welcome-2.html"><span>Get Started &rarr;</span></a>
       </div>
-    </header>
+    </main>
 
-    <!-- Glass card that overlaps the bottom of the photo -->
-    <section class="card">
-      <h2>Find your place to focus.</h2>
-      <p>
-        Discover cozy cafés, quiet spaces, and hidden gems near your college.
-        Whether you need a change of scenery or a new favorite spot,
-        crunch. helps you find the perfect place to study.
-      </p>
-      <div class="dots" aria-label="Page 1 of 4">
-        <span class="active"></span><span></span><span></span><span></span>
-      </div>
-    </section>
+    <script>
+      let touchStartX = 0;
+      let touchStartY = 0;
 
-    <!-- Button at the bottom. It doesn't go anywhere yet (screen 2 is next). -->
-    <div class="actions">
-      <a class="btn" href="welcome-2.html"><span>Get Started &rarr;</span></a>
-    </div>
+      document.addEventListener(
+        "touchstart",
+        (event) => {
+          touchStartX = event.changedTouches[0].screenX;
+          touchStartY = event.changedTouches[0].screenY;
+        },
+        { passive: true },
+      );
 
-  </main>
+      document.addEventListener(
+        "touchend",
+        (event) => {
+          const touchEndX = event.changedTouches[0].screenX;
+          const touchEndY = event.changedTouches[0].screenY;
 
-</body>
+          const differenceX = touchStartX - touchEndX;
+          const differenceY = touchStartY - touchEndY;
 
+          // Only respond to intentional horizontal swipes
+          if (
+            Math.abs(differenceX) > 60 &&
+            Math.abs(differenceX) > Math.abs(differenceY) * 1.5
+          ) {
+            if (differenceX > 0) {
+              window.location.href = "welcome-2.html";
+            }
+          }
+        },
+        { passive: true },
+      );
+    </script>
+  </body>
 </html>

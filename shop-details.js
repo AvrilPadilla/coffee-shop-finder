@@ -169,7 +169,8 @@ function openSharedShopDetails(shop) {
         target="_blank"
         rel="noopener noreferrer"
       >
-        📍 Get Directions
+        <i data-lucide="map-pin"></i>
+        Get Directions
       </a>
     </div>
   `;
@@ -214,6 +215,12 @@ function openSharedShopDetails(shop) {
   nextButton.disabled = photos.length <= 1;
   sharedShopModal.classList.remove("hidden");
   document.body.classList.add("modal-open");
+
+  // Display the correct saved state when opening the popup
+  if (typeof updateSharedSavedButton === "function") {
+    updateSharedSavedButton();
+  }
+
   loadSharedShopReviews(shop.id);
   loadSharedReviewForm(shop.id);
 }
