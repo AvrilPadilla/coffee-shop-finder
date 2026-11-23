@@ -44,47 +44,5 @@
         <a class="btn" href="welcome-2.html"><span>Get Started &rarr;</span></a>
       </div>
     </main>
-
-    <script>
-      let touchStartX = 0;
-      let touchStartY = 0;
-
-      document.addEventListener(
-        "touchstart",
-        (event) => {
-          touchStartX = event.changedTouches[0].screenX;
-          touchStartY = event.changedTouches[0].screenY;
-        },
-        { passive: true },
-      );
-
-      document.addEventListener(
-        "touchend",
-        (event) => {
-          const touchEndX = event.changedTouches[0].screenX;
-          const touchEndY = event.changedTouches[0].screenY;
-
-          const differenceX = touchStartX - touchEndX;
-          const differenceY = touchStartY - touchEndY;
-
-          // Only respond to intentional horizontal swipes
-          if (
-            Math.abs(differenceX) > 60 &&
-            Math.abs(differenceX) > Math.abs(differenceY) * 1.5
-          ) {
-            if (differenceX > 0) {
-              const screen = document.querySelector(".screen");
-
-              screen.classList.add("slide-out-left");
-
-              setTimeout(() => {
-                window.location.href = "welcome-2.html";
-              }, 300);
-            }
-          }
-        },
-        { passive: true },
-      );
-    </script>
   </body>
 </html>

@@ -221,27 +221,3 @@ a.btn {
   text-align: center;
   text-decoration: none;
 }
-
-/* Welcome page slide transitions */
-
-.screen {
-  transition:
-    transform 0.3s ease-in-out,
-    opacity 0.3s ease-in-out;
-}
-
-.screen.slide-out-left {
-  transform: translateX(-100%);
-  opacity: 0;
-}
-
-.screen.slide-out-right {
-  transform: translateX(100%);
-  opacity: 0;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .screen {
-    transition: none;
-  }
-}
